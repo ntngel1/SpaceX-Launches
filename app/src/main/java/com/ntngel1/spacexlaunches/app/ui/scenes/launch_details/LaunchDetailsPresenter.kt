@@ -1,5 +1,6 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details
 
+import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import com.ntngel1.spacexlaunches.domain.gateway.LaunchGateway
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -13,13 +14,20 @@ class LaunchDetailsPresenter @Inject constructor(
     private val launchGateway: LaunchGateway
 ): MvpPresenter<LaunchDetailsView>() {
 
+    // Args
     var launchId = -1
+
+    lateinit var launch: LaunchEntity
 
     private val compositeDisposable = CompositeDisposable()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         loadLaunch()
+    }
+
+    fun onFlickrImageClicked(position: Int) {
+        viewState.showImagesFullscreen(launch.links.flickrImages, position)
     }
 
     private fun loadLaunch() {
@@ -32,8 +40,9 @@ class LaunchDetailsPresenter @Inject constructor(
             .doFinally {
                 viewState.setProgressBarIsVisible(false)
             }
-            .subscribe({ launch ->
-                viewState.showLaunchDetails(launch)
+            .subscribe({ fetchedLaunch ->
+                launch = fetchedLaunch
+                viewState.showLaunchDetails(fetchedLaunch)
             }, {
                 // TODO Handle error
                 it.printStackTrace()

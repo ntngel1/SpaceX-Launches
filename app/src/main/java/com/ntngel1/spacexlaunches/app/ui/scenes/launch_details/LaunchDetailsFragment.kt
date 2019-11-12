@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.ImagesViewPagerAdapter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.SmallImagesViewPagerAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.makeHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
@@ -25,7 +26,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
     private val args: LaunchDetailsFragmentArgs by navArgs()
 
-    private val imagesAdapter = ImagesViewPagerAdapter()
+    private val imagesAdapter = SmallImagesViewPagerAdapter(::onFlickrImageClicked)
 
     @Inject
     lateinit var dateTimeFormatter: DateTimeFormatter
@@ -70,6 +71,15 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         showDescription(launch)
         showImages(launch)
         showLinks(launch)
+    }
+
+    override fun showImagesFullscreen(images: List<String>, offset: Int) {
+        FullscreenImagesDialogFragment(images, offset)
+            .show(childFragmentManager, null)
+    }
+
+    private fun onFlickrImageClicked(position: Int) {
+        presenter.onFlickrImageClicked(position)
     }
 
     private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
