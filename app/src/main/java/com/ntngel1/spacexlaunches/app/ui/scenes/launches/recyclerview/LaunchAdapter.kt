@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.scenes.launches.adapters
+package com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View

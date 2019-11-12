@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.scenes.launches.adapters
+package com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview
 
 import androidx.recyclerview.widget.DiffUtil
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity

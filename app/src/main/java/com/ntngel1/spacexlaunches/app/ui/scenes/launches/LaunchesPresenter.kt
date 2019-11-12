@@ -27,6 +27,10 @@ class LaunchesPresenter @Inject constructor(
         loadLaunches()
     }
 
+    fun onLoadMoreLaunches() {
+        loadLaunches()
+    }
+
     private fun loadLaunches() {
         if (isLoading || didLoadAllData) {
             return

@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
-import com.ntngel1.spacexlaunches.app.ui.scenes.launches.adapters.LaunchAdapter
+import com.ntngel1.spacexlaunches.app.ui.recyclerview.PaginationScrollListener
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchAdapter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchItemDecoration
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launches.*
 import moxy.MvpAppCompatFragment
@@ -40,6 +42,14 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     private fun setupRecyclerView() {
         with(launchRecyclerView) {
             adapter = launchAdapter
+            addItemDecoration(LaunchItemDecoration())
+
+            val paginationScrollListener = PaginationScrollListener(
+                LaunchesPresenter.LAUNCHES_LIMIT,
+                presenter::onLoadMoreLaunches
+            )
+
+            addOnScrollListener(paginationScrollListener)
         }
     }
 
