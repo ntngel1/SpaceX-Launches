@@ -8,8 +8,10 @@ import retrofit2.http.Query
 interface SpaceXApi {
 
     @GET("launches")
-    fun getLaunches(
+    fun getLaunchesWithDescendingLaunchDate(
         @Query("offset") offset: Int,
-        @Query("limit") limit: Int
+        @Query("limit") limit: Int,
+        @Query("sort") sort: String = "launch_date_local",
+        @Query("order") order: String = "desc"
     ): Single<List<LaunchEntity>>
 }
