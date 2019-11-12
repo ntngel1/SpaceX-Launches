@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.item_launch.view.*
+import org.threeten.bp.format.DateTimeFormatter
+import org.threeten.bp.format.DateTimeFormatterBuilder
 
 class LaunchAdapter(
     private val onLaunchClicked: (launch: LaunchEntity) -> Unit
@@ -55,13 +57,18 @@ class LaunchAdapter(
 
             with(itemView) {
                 nameTextView.text = launch.missionName
-                launchDateTextView.text = launch.launchDate.toString()
+                launchDateTextView.text = getFormattedLaunchDate()
 
                 Glide.with(this)
                     .load(launch.links.missionPatchSmall)
                     .placeholder(R.color.colorGray)
                     .into(patchImageView)
             }
+        }
+
+        private fun getFormattedLaunchDate(): String {
+            val dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm")
+            return launch.launchDate.format(dateTimeFormatter)
         }
     }
 }
