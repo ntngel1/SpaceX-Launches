@@ -59,6 +59,7 @@ class LaunchAdapter(
 
                 Glide.with(this)
                     .load(launch.links.missionPatchSmall)
+                    .placeholder(R.color.colorGray)
                     .into(patchImageView)
             }
         }

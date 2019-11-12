@@ -9,4 +9,7 @@ interface LaunchesView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun setLaunches(launches: List<LaunchEntity>)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun setIsProgressBarVisible(isVisible: Boolean)
 }

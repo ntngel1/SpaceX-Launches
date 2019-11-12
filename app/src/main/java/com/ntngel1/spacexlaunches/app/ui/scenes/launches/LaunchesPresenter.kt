@@ -41,6 +41,7 @@ class LaunchesPresenter @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 isLoading = true
+                viewState.setIsProgressBarVisible(true)
             }
             .doOnSuccess { fetchedLaunches ->
                 offset += LAUNCHES_LIMIT
@@ -51,6 +52,7 @@ class LaunchesPresenter @Inject constructor(
             }
             .doFinally {
                 isLoading = false
+                viewState.setIsProgressBarVisible(false)
             }
             .subscribe({ fetchedLaunches ->
                 launches.addAll(fetchedLaunches)

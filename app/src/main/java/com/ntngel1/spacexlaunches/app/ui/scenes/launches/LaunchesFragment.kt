@@ -9,6 +9,7 @@ import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.PaginationScrollListener
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchAdapter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchItemDecoration
+import com.ntngel1.spacexlaunches.app.utils.setIsVisible
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launches.*
 import moxy.MvpAppCompatFragment
@@ -39,6 +40,14 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
         setupRecyclerView()
     }
 
+    override fun setLaunches(launches: List<LaunchEntity>) {
+        launchAdapter.setLaunches(launches)
+    }
+
+    override fun setIsProgressBarVisible(isVisible: Boolean) {
+        progressBar.setIsVisible(isVisible)
+    }
+
     private fun setupRecyclerView() {
         with(launchRecyclerView) {
             adapter = launchAdapter
@@ -51,10 +60,6 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
             addOnScrollListener(paginationScrollListener)
         }
-    }
-
-    override fun setLaunches(launches: List<LaunchEntity>) {
-        launchAdapter.setLaunches(launches)
     }
 
     private fun onLaunchClicked(launch: LaunchEntity) {
