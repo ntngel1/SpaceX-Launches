@@ -36,7 +36,7 @@ class LaunchesPresenter @Inject constructor(
             return
         }
 
-        launchGateway.getLaunches(offset, LAUNCHES_LIMIT)
+        launchGateway.getLaunchesWithDescendingLaunchDate(offset, LAUNCHES_LIMIT)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
