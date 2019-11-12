@@ -5,4 +5,5 @@ import io.reactivex.Single
 
 interface LaunchGateway {
     fun getLaunchesWithDescendingLaunchDate(offset: Int, limit: Int): Single<List<LaunchEntity>>
+    fun getLaunchByFlightNumber(flightNumber: Int): Single<LaunchEntity>
 }

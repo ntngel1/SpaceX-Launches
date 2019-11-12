@@ -15,7 +15,6 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     @ProvidePresenter
     fun provideMainPresenter() = App.appComponent.provideMainPresenter()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

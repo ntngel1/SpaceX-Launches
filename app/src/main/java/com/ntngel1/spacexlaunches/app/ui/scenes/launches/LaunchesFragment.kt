@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.PaginationScrollListener
@@ -26,7 +27,6 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
     private val launchAdapter = LaunchAdapter(::onLaunchClicked)
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,6 +48,11 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
         progressBar.setIsVisible(isVisible)
     }
 
+    override fun openLaunchDetailsScene(flightNumber: Int) {
+        LaunchesFragmentDirections.openLaunchDetailsScene(flightNumber)
+            .let(findNavController()::navigate)
+    }
+
     private fun setupRecyclerView() {
         with(launchRecyclerView) {
             adapter = launchAdapter
@@ -63,6 +68,6 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     private fun onLaunchClicked(launch: LaunchEntity) {
-        TODO()
+        presenter.onLaunchClicked(launch)
     }
 }

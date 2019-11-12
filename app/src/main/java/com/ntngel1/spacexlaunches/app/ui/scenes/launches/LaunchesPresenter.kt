@@ -31,6 +31,10 @@ class LaunchesPresenter @Inject constructor(
         loadLaunches()
     }
 
+    fun onLaunchClicked(launch: LaunchEntity) {
+        viewState.openLaunchDetailsScene(launch.flightNumber)
+    }
+
     private fun loadLaunches() {
         if (isLoading || didLoadAllData) {
             return

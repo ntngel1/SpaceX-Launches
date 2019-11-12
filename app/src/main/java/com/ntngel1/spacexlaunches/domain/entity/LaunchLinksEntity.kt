@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class LaunchLinksEntity(
     @SerializedName("mission_patch")
-    val missionPatch: String,
+    val missionPatch: String?,
     @SerializedName("mission_patch_small")
-    val missionPatchSmall: String
+    val missionPatchSmall: String?
 )

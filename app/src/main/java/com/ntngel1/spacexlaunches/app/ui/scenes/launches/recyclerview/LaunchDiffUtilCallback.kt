@@ -16,8 +16,7 @@ class LaunchDiffUtilCallback(
         val oldLaunch = oldLaunches[oldItemPosition]
         val newLaunch = newLaunches[newItemPosition]
 
-        return oldLaunch.missionName == newLaunch.missionName
-
+        return oldLaunch.flightNumber == newLaunch.flightNumber
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {

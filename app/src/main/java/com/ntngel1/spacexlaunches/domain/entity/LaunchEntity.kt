@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName
 import org.threeten.bp.ZonedDateTime
 
 data class LaunchEntity(
+    @SerializedName("flight_number")
+    val flightNumber: Int,
     @SerializedName("mission_name")
     val missionName: String,
     val links: LaunchLinksEntity,
