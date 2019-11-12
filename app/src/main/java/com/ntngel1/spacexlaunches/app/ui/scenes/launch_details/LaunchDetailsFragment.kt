@@ -53,12 +53,31 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
+        showMissionNameAndLaunchDate(launch)
+        showMissionPatch(launch)
+        showDescription(launch)
+        showLinks(launch)
+    }
+
+    private fun showDescription(launch: LaunchEntity) {
+        val description = buildString {
+            appendln(resources.getString(R.string.rocketNameFormat, launch.rocket.rocketName))
+            append(resources.getString(R.string.rocketTypeFormat, launch.rocket.rocketType))
+        }
+
+        descriptionTextView.text = description
+        descriptionTextView.setIsVisible(true)
+    }
+
+    private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
         nameTextView.text = launch.missionName
         nameTextView.setIsVisible(true)
 
         launchDateTextView.text = launch.launchDate.format(dateTimeFormatter)
         launchDateTextView.setIsVisible(true)
+    }
 
+    private fun showMissionPatch(launch: LaunchEntity) {
         if (launch.links.missionPatch != null) {
             patchImageView.loadImage(launch.links.missionPatch)
         } else {
@@ -66,7 +85,9 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         }
 
         patchImageView.setIsVisible(true)
+    }
 
+    private fun showLinks(launch: LaunchEntity) {
         val linksText = makeHtmlLinks(
             listOf(
                 launch.links.redditMedia to resources.getString(R.string.redditMedia),

@@ -18,8 +18,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/missionPatch"
-                android:visibility="gone"
                 android:scaleType="center"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -54,16 +54,28 @@
                 tools:visibility="visible" />
 
             <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="@id/launchDateTextView"
+                app:layout_constraintRight_toRightOf="@id/launchDateTextView"
+                app:layout_constraintTop_toBottomOf="@id/launchDateTextView"
+                tools:text="Rocket name: Falcon 1\nRocket Type: Merlin 1"
+                tools:visibility="visible" />
+
+            <TextView
                 android:id="@+id/linksTextView"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:visibility="gone"
-                app:layout_constraintLeft_toLeftOf="@id/launchDateTextView"
-                app:layout_constraintRight_toRightOf="@id/launchDateTextView"
-                app:layout_constraintTop_toBottomOf="@id/launchDateTextView"
-                tools:text="Reddit | YouTube"
+                app:layout_constraintLeft_toLeftOf="@id/descriptionTextView"
+                app:layout_constraintRight_toRightOf="@id/descriptionTextView"
+                app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+                tools:text="Reddit\nYouTube\nWikipedia\nArticle"
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

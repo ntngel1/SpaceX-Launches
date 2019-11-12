@@ -5,4 +5,6 @@
     <string name="article">Article</string>
     <string name="wikipedia">Wikipedia</string>
     <string name="youtube">YouTube</string>
+    <string name="rocketNameFormat">Rocket name: %1$s</string>
+    <string name="rocketTypeFormat">Rocket type: %1$s</string>
 </resources>

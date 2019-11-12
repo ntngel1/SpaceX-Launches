@@ -13,5 +13,6 @@ data class LaunchEntity(
     @SerializedName("launch_date_local")
     val launchDate: ZonedDateTime,
 
-    val links: LaunchLinksEntity
+    val links: LaunchLinksEntity,
+    val rocket: RocketEntity
 )
