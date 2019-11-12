@@ -8,6 +8,6 @@ fun ImageView.loadImage(url: String) {
     Glide.with(this)
         .load(url)
         .placeholder(R.color.colorGray)
-        .error(R.drawable.no_image_available)
+        .error(R.drawable.placeholder_no_image_available)
         .into(this)
 }

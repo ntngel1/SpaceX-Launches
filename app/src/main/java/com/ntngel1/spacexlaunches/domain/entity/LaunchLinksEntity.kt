@@ -19,5 +19,8 @@ data class LaunchLinksEntity(
     @SerializedName("video_link")
     val youtube: String?,
 
+    @SerializedName("flickr_images")
+    val flickrImages: List<String>,
+
     val wikipedia: String?
 )

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.ImagesViewPagerAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.makeHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
@@ -23,6 +24,8 @@ import javax.inject.Inject
 class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
     private val args: LaunchDetailsFragmentArgs by navArgs()
+
+    private val imagesAdapter = ImagesViewPagerAdapter()
 
     @Inject
     lateinit var dateTimeFormatter: DateTimeFormatter
@@ -48,25 +51,25 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         return inflater.inflate(R.layout.fragment_launch_details, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupImagesViewPager()
+    }
+
+    private fun setupImagesViewPager() {
+        imagesViewPager.adapter = imagesAdapter
+    }
+
     override fun setProgressBarIsVisible(isVisible: Boolean) {
         progressBar.setIsVisible(isVisible)
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
-        showMissionNameAndLaunchDate(launch)
         showMissionPatch(launch)
+        showMissionNameAndLaunchDate(launch)
         showDescription(launch)
+        showImages(launch)
         showLinks(launch)
-    }
-
-    private fun showDescription(launch: LaunchEntity) {
-        val description = buildString {
-            appendln(resources.getString(R.string.rocketNameFormat, launch.rocket.rocketName))
-            append(resources.getString(R.string.rocketTypeFormat, launch.rocket.rocketType))
-        }
-
-        descriptionTextView.text = description
-        descriptionTextView.setIsVisible(true)
     }
 
     private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
@@ -81,10 +84,29 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         if (launch.links.missionPatch != null) {
             patchImageView.loadImage(launch.links.missionPatch)
         } else {
-            patchImageView.setImageResource(R.drawable.no_image_available)
+            patchImageView.setImageResource(R.drawable.placeholder_no_image_available)
         }
 
         patchImageView.setIsVisible(true)
+    }
+
+    private fun showDescription(launch: LaunchEntity) {
+        val description = buildString {
+            appendln(resources.getString(R.string.rocketNameFormat, launch.rocket.rocketName))
+            append(resources.getString(R.string.rocketTypeFormat, launch.rocket.rocketType))
+        }
+
+        descriptionTextView.text = description
+        descriptionTextView.setIsVisible(true)
+    }
+
+    private fun showImages(launch: LaunchEntity) {
+        if (launch.links.flickrImages.isEmpty()) {
+            return
+        }
+
+        imagesAdapter.setImages(launch.links.flickrImages)
+        imagesViewPager.setIsVisible(true)
     }
 
     private fun showLinks(launch: LaunchEntity) {

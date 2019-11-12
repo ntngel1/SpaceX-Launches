@@ -5,14 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.item_launch.view.*
 import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.format.DateTimeFormatterBuilder
 import javax.inject.Inject
 
 class LaunchAdapter(
@@ -72,7 +70,7 @@ class LaunchAdapter(
                 if (launch.links.missionPatchSmall != null) {
                     patchImageView.loadImage(launch.links.missionPatchSmall)
                 } else {
-                    patchImageView.setImageResource(R.drawable.no_image_available)
+                    patchImageView.setImageResource(R.drawable.placeholder_no_image_available)
                 }
             }
         }
