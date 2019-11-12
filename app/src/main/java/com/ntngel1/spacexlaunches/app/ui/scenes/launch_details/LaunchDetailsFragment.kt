@@ -1,6 +1,8 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details
 
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.utils.loadImage
+import com.ntngel1.spacexlaunches.app.utils.makeHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details.*
@@ -63,5 +66,20 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         }
 
         patchImageView.setIsVisible(true)
+
+        val linksText = makeHtmlLinks(
+            listOf(
+                launch.links.redditMedia to "Reddit Media",
+                launch.links.article to "Article",
+                launch.links.wikipedia to "Wikipedia",
+                launch.links.youtube to "YouTube"
+            )
+        )
+
+        if (linksText.isNotBlank()) {
+            linksTextView.text = Html.fromHtml(linksText)
+            linksTextView.movementMethod = LinkMovementMethod.getInstance()
+            linksTextView.setIsVisible(true)
+        }
     }
 }

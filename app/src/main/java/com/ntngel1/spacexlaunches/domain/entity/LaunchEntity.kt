@@ -6,9 +6,12 @@ import org.threeten.bp.ZonedDateTime
 data class LaunchEntity(
     @SerializedName("flight_number")
     val flightNumber: Int,
+
     @SerializedName("mission_name")
     val missionName: String,
-    val links: LaunchLinksEntity,
+
     @SerializedName("launch_date_local")
-    val launchDate: ZonedDateTime
+    val launchDate: ZonedDateTime,
+
+    val links: LaunchLinksEntity
 )
