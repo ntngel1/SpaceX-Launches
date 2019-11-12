@@ -69,10 +69,10 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
         val linksText = makeHtmlLinks(
             listOf(
-                launch.links.redditMedia to "Reddit Media",
-                launch.links.article to "Article",
-                launch.links.wikipedia to "Wikipedia",
-                launch.links.youtube to "YouTube"
+                launch.links.redditMedia to resources.getString(R.string.redditMedia),
+                launch.links.article to resources.getString(R.string.article),
+                launch.links.wikipedia to resources.getString(R.string.wikipedia),
+                launch.links.youtube to resources.getString(R.string.youtube)
             )
         )
 

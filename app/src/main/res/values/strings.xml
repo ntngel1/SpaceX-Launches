@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">SpaceX Launches</string>
     <string name="missionPatch">Mission Patch</string>
+    <string name="redditMedia">Reddit Media</string>
+    <string name="article">Article</string>
+    <string name="wikipedia">Wikipedia</string>
+    <string name="youtube">YouTube</string>
 </resources>
