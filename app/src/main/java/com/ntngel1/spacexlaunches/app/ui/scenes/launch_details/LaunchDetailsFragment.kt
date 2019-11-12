@@ -74,8 +74,9 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
     }
 
     override fun showImagesFullscreen(images: List<String>, offset: Int) {
-        FullscreenImagesDialogFragment(images, offset)
-            .show(childFragmentManager, null)
+        FullscreenImagesDialogFragment(images, offset) { position ->
+            imagesViewPager.setCurrentItem(position, false)
+        }.show(childFragmentManager, null)
     }
 
     private fun onFlickrImageClicked(position: Int) {
