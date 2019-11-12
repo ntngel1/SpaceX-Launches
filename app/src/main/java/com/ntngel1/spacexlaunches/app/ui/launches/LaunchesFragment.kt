@@ -16,7 +16,7 @@ import moxy.presenter.ProvidePresenter
 class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
     @InjectPresenter
-    internal lateinit var presenter: LaunchDetailsPresenter
+    internal lateinit var presenter: LaunchesPresenter
 
     @ProvidePresenter
     fun provideLaunchesPresenter() = App.appComponent.provideLaunchesPresenter()

@@ -20,8 +20,4 @@ class MainActivity : MvpAppCompatActivity(), MainView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-
-    override fun openLaunchesScreen() {
-        TODO()
-    }
 }
