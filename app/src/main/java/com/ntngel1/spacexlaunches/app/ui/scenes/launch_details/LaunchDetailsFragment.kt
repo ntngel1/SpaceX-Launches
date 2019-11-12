@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.launch_details
+package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
-import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter

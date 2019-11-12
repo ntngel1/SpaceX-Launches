@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.launches
+package com.ntngel1.spacexlaunches.app.ui.scenes.launches
 
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import moxy.MvpView

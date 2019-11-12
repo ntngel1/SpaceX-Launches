@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.launch_details
+package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details
 
 import moxy.InjectViewState
 import moxy.MvpPresenter
