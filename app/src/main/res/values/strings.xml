@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">SpaceX Launches</string>
-    <string name="missionPatch">Mission Patch Picture</string>
+    <string name="missionPatch">Mission Patch</string>
 </resources>
