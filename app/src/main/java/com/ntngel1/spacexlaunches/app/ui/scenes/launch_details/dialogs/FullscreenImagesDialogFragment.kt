@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.ntngel1.spacexlaunches.R
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.FullscreenImagesViewPagerAdapter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.FullscreenImagesPagerAdapter
 import kotlinx.android.synthetic.main.dialog_fullscreen_images.*
 
 class FullscreenImagesDialogFragment(
@@ -39,7 +39,7 @@ class FullscreenImagesDialogFragment(
     }
 
     private fun setupImagesViewPager() {
-        imagesViewPager.adapter = FullscreenImagesViewPagerAdapter(images)
+        imagesViewPager.adapter = FullscreenImagesPagerAdapter(images)
         imagesViewPager.setCurrentItem(offset, false)
     }
 }

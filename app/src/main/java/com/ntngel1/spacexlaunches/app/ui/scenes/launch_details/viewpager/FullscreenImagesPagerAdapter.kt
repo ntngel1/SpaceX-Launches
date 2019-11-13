@@ -8,11 +8,9 @@ import androidx.viewpager.widget.PagerAdapter
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 
-class SmallImagesViewPagerAdapter(
-    private val onImageClicked: (position: Int) -> Unit
+class FullscreenImagesPagerAdapter(
+    private val images: List<String>
 ) : PagerAdapter() {
-
-    private var images = emptyList<String>()
 
     override fun getCount(): Int = images.size
 
@@ -20,11 +18,7 @@ class SmallImagesViewPagerAdapter(
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = LayoutInflater.from(container.context)
-            .inflate(R.layout.item_image_small, container, false) as ImageView
-
-        imageView.setOnClickListener {
-            onImageClicked.invoke(position)
-        }
+            .inflate(R.layout.item_image_fullscreen, container, false) as ImageView
 
         imageView.loadImage(images[position])
         container.addView(imageView)
@@ -33,10 +27,5 @@ class SmallImagesViewPagerAdapter(
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as View)
-    }
-
-    fun setImages(newImages: List<String>) {
-        images = newImages
-        notifyDataSetChanged()
     }
 }

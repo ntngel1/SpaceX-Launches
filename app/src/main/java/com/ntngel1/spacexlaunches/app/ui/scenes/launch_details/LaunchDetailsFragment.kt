@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.FullscreenImagesDialogFragment
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.SmallImagesViewPagerAdapter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.SmallImagesPagerAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.makeHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
@@ -26,7 +26,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
     private val args: LaunchDetailsFragmentArgs by navArgs()
 
-    private val imagesAdapter = SmallImagesViewPagerAdapter(::onFlickrImageClicked)
+    private val imagesAdapter = SmallImagesPagerAdapter(::onFlickrImageClicked)
 
     @Inject
     lateinit var dateTimeFormatter: DateTimeFormatter
