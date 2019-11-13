@@ -14,6 +14,9 @@ interface LaunchesView : MvpView {
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun setIsProgressBarVisible(isVisible: Boolean)
 
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun setIsRefreshing(isRefreshing: Boolean)
+
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun openLaunchDetailsScene(flightNumber: Int)
 }

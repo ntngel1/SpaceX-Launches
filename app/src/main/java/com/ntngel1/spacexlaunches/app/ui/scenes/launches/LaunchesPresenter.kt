@@ -31,6 +31,14 @@ class LaunchesPresenter @Inject constructor(
         loadLaunches()
     }
 
+    fun onRefreshLaunches() {
+        compositeDisposable.clear()
+        offset = 0
+        didLoadAllData = false
+        isLoading = false
+        loadLaunches()
+    }
+
     fun onLaunchClicked(launch: LaunchEntity) {
         viewState.openLaunchDetailsScene(launch.flightNumber)
     }
@@ -45,22 +53,32 @@ class LaunchesPresenter @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 isLoading = true
-                viewState.setIsProgressBarVisible(true)
+
+                if (offset > 0) {
+                    viewState.setIsProgressBarVisible(true)
+                } else {
+                    viewState.setIsRefreshing(true)
+                }
             }
             .doOnSuccess { fetchedLaunches ->
+                if (offset == 0) {
+                    launches.clear()
+                }
+
+                launches.addAll(fetchedLaunches)
+                viewState.setLaunches(launches)
+            }
+            .doFinally {
+                isLoading = false
+                viewState.setIsProgressBarVisible(false)
+                viewState.setIsRefreshing(false)
+            }
+            .subscribe({ fetchedLaunches ->
                 offset += LAUNCHES_LIMIT
 
                 if (fetchedLaunches.isEmpty()) {
                     didLoadAllData = true
                 }
-            }
-            .doFinally {
-                isLoading = false
-                viewState.setIsProgressBarVisible(false)
-            }
-            .subscribe({ fetchedLaunches ->
-                launches.addAll(fetchedLaunches)
-                viewState.setLaunches(launches)
             }, {
                 // TODO Handle error
                 it.printStackTrace()

@@ -38,6 +38,10 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+
+        swipeRefreshLayout.setOnRefreshListener {
+            presenter.onRefreshLaunches()
+        }
     }
 
     override fun setLaunches(launches: List<LaunchEntity>) {
@@ -46,6 +50,10 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
     override fun setIsProgressBarVisible(isVisible: Boolean) {
         progressBar.setIsVisible(isVisible)
+    }
+
+    override fun setIsRefreshing(isRefreshing: Boolean) {
+        swipeRefreshLayout.isRefreshing = isRefreshing
     }
 
     override fun openLaunchDetailsScene(flightNumber: Int) {
