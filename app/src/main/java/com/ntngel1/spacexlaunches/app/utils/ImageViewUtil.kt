@@ -4,7 +4,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.ntngel1.spacexlaunches.R
 
-fun ImageView.loadImage(url: String) {
+fun ImageView.loadImage(url: String?) {
     Glide.with(this)
         .load(url)
         .placeholder(R.color.colorGray)

@@ -9,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.ui.recyclerview.CarouselMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.FullscreenImagesDialogFragment
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.SmallImagesPagerAdapter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
@@ -28,7 +30,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
     private val args: LaunchDetailsFragmentArgs by navArgs()
 
-    private val imagesAdapter = SmallImagesPagerAdapter(::onFlickrImageClicked)
+    private val imageCardAdapter = ImageCardAdapter(::onFlickrImageClicked)
 
     @Inject
     lateinit var dateTimeFormatter: DateTimeFormatter
@@ -56,11 +58,15 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupImagesViewPager()
+        setupImagesRecyclerView()
     }
 
-    private fun setupImagesViewPager() {
-        imagesViewPager.adapter = imagesAdapter
+    private fun setupImagesRecyclerView() {
+        imagesRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        imagesRecyclerView.adapter = imageCardAdapter
+        imagesRecyclerView.addItemDecoration(CarouselMarginItemDecoration())
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
@@ -76,9 +82,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
     }
 
     override fun showImagesFullscreen(images: List<String>, offset: Int) {
-        FullscreenImagesDialogFragment(images, offset) { position ->
-            imagesViewPager.setCurrentItem(position, false)
-        }.show(childFragmentManager, null)
+        FullscreenImagesDialogFragment(images, offset).show(childFragmentManager, null)
     }
 
     override fun navigateBackWithLoadingError() {
@@ -121,12 +125,12 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
     }
 
     private fun showImages(launch: LaunchEntity) {
-        if (launch.links.flickrImages.isEmpty()) {
-            return
+        if (launch.links.flickrImages.isNotEmpty()) {
+            imageCardAdapter.images = launch.links.flickrImages
+            imagesRecyclerView.setIsVisible(true)
+        } else {
+            imagesRecyclerView.setIsVisible(false)
         }
-
-        imagesAdapter.setImages(launch.links.flickrImages)
-        imagesViewPager.setIsVisible(true)
     }
 
     private fun showLinks(launch: LaunchEntity) {

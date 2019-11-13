@@ -11,8 +11,7 @@ import kotlinx.android.synthetic.main.dialog_fullscreen_images.*
 
 class FullscreenImagesDialogFragment(
     private val images: List<String>,
-    private val offset: Int = 0,
-    private val onClosed: (position: Int) -> Unit
+    private val offset: Int = 0
 ) : DialogFragment() {
 
     init {
@@ -31,7 +30,6 @@ class FullscreenImagesDialogFragment(
         super.onViewCreated(view, savedInstanceState)
 
         backButton.setOnClickListener {
-            onClosed.invoke(imagesViewPager.currentItem)
             dismiss()
         }
 
