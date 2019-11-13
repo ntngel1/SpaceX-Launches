@@ -14,7 +14,7 @@ import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.FullscreenImagesDialogFragment
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.SmallImagesPagerAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
-import com.ntngel1.spacexlaunches.app.utils.makeHtmlLinks
+import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details.*
@@ -130,7 +130,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
     }
 
     private fun showLinks(launch: LaunchEntity) {
-        val linksText = makeHtmlLinks(
+        val linksText = buildHtmlLinks(
             listOf(
                 launch.links.redditMedia to resources.getString(R.string.redditMedia),
                 launch.links.article to resources.getString(R.string.article),
