@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.CarouselMarginItemDecoration
@@ -67,6 +69,8 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
         imagesRecyclerView.adapter = imageCardAdapter
         imagesRecyclerView.addItemDecoration(CarouselMarginItemDecoration())
+
+        LinearSnapHelper().attachToRecyclerView(imagesRecyclerView)
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
