@@ -17,4 +17,7 @@ interface LaunchDetailsView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun showImagesFullscreen(images: List<String>, offset: Int)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun navigateBackWithLoadingError()
 }

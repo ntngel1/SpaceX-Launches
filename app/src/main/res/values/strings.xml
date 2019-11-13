@@ -7,4 +7,5 @@
     <string name="youtube">YouTube</string>
     <string name="rocketNameFormat">Rocket name: %1$s</string>
     <string name="rocketTypeFormat">Rocket type: %1$s</string>
+    <string name="unableToLoadLaunchDetails">Unable to load launch details!</string>
 </resources>

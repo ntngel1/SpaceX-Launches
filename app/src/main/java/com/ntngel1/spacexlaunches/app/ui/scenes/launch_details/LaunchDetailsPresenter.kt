@@ -44,7 +44,7 @@ class LaunchDetailsPresenter @Inject constructor(
                 launch = fetchedLaunch
                 viewState.showLaunchDetails(fetchedLaunch)
             }, {
-                // TODO Handle error
+                viewState.navigateBackWithLoadingError()
                 it.printStackTrace()
             })
             .let(compositeDisposable::add)

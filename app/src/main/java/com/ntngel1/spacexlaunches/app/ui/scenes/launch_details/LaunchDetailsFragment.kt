@@ -6,6 +6,8 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
@@ -77,6 +79,13 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         FullscreenImagesDialogFragment(images, offset) { position ->
             imagesViewPager.setCurrentItem(position, false)
         }.show(childFragmentManager, null)
+    }
+
+    override fun navigateBackWithLoadingError() {
+        Toast.makeText(context, getString(R.string.unableToLoadLaunchDetails), Toast.LENGTH_LONG)
+            .show()
+
+        findNavController().navigateUp()
     }
 
     private fun onFlickrImageClicked(position: Int) {
