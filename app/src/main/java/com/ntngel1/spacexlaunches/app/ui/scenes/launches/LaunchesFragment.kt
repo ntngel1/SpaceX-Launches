@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
@@ -59,6 +60,11 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     override fun openLaunchDetailsScene(flightNumber: Int) {
         LaunchesFragmentDirections.openLaunchDetailsScene(flightNumber)
             .let(findNavController()::navigate)
+    }
+
+    override fun showLoadingError() {
+        Toast.makeText(context, getString(R.string.unableToLoadLaunches), Toast.LENGTH_LONG)
+            .show()
     }
 
     private fun setupRecyclerView() {

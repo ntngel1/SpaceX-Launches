@@ -19,4 +19,7 @@ interface LaunchesView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun openLaunchDetailsScene(flightNumber: Int)
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showLoadingError()
 }

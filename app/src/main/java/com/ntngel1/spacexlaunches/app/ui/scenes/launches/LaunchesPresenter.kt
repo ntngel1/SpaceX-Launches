@@ -36,6 +36,9 @@ class LaunchesPresenter @Inject constructor(
         offset = 0
         didLoadAllData = false
         isLoading = false
+        launches.clear()
+        viewState.setLaunches(launches)
+
         loadLaunches()
     }
 
@@ -61,10 +64,6 @@ class LaunchesPresenter @Inject constructor(
                 }
             }
             .doOnSuccess { fetchedLaunches ->
-                if (offset == 0) {
-                    launches.clear()
-                }
-
                 launches.addAll(fetchedLaunches)
                 viewState.setLaunches(launches)
             }
@@ -80,7 +79,7 @@ class LaunchesPresenter @Inject constructor(
                     didLoadAllData = true
                 }
             }, {
-                // TODO Handle error
+                viewState.showLoadingError()
                 it.printStackTrace()
             })
             .let(compositeDisposable::add)
