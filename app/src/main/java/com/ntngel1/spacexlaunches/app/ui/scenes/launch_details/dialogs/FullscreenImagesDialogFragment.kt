@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.ntngel1.spacexlaunches.R
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview.FullscreenImageAdapter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.viewpager.FullscreenImagesPagerAdapter
 import kotlinx.android.synthetic.main.dialog_fullscreen_images.*
 
@@ -33,11 +36,19 @@ class FullscreenImagesDialogFragment(
             dismiss()
         }
 
-        setupImagesViewPager()
+        setupImagesRecyclerView()
     }
 
-    private fun setupImagesViewPager() {
-        imagesViewPager.adapter = FullscreenImagesPagerAdapter(images)
-        imagesViewPager.setCurrentItem(offset, false)
+    private fun setupImagesRecyclerView() {
+        imagesRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        PagerSnapHelper().attachToRecyclerView(imagesRecyclerView)
+
+        imagesRecyclerView.adapter = FullscreenImageAdapter().apply {
+            images = this@FullscreenImagesDialogFragment.images
+        }
+
+        imagesRecyclerView.scrollToPosition(offset)
     }
 }

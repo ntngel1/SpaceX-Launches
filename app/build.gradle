@@ -48,6 +48,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
     // Moxy
     def moxyVersion = '2.0.2'
     implementation "com.github.moxy-community:moxy:$moxyVersion"
