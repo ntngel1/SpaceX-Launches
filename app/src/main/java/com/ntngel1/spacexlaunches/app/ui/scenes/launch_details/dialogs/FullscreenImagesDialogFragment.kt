@@ -18,7 +18,7 @@ class FullscreenImagesDialogFragment(
 ) : DialogFragment() {
 
     init {
-        setStyle(STYLE_NO_TITLE, android.R.style.Theme_Black_NoTitleBar_Fullscreen)
+        setStyle(STYLE_NO_TITLE, android.R.style.Theme_Black_NoTitleBar)
     }
 
     override fun onCreateView(

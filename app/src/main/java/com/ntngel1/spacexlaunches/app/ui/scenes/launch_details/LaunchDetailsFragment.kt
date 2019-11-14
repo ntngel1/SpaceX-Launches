@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.CarouselMarginItemDecoration
+import com.ntngel1.spacexlaunches.app.ui.recyclerview.StartSnapHelper
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.FullscreenImagesDialogFragment
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
@@ -70,7 +71,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         imagesRecyclerView.adapter = imageCardAdapter
         imagesRecyclerView.addItemDecoration(CarouselMarginItemDecoration())
 
-        LinearSnapHelper().attachToRecyclerView(imagesRecyclerView)
+        StartSnapHelper().attachToRecyclerView(imagesRecyclerView)
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {

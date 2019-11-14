@@ -3,7 +3,6 @@ package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.chrisbanes.photoview.PhotoView
 import com.ntngel1.spacexlaunches.R
