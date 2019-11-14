@@ -91,14 +91,14 @@ class FullscreenImagesDialogFragment : DialogFragment() {
         val adapter = FullscreenImageAdapter()
 
         adapter.images = params.images
-        imagesRecyclerView.scrollToPosition(params.offset)
 
         val scrollListener = FullscreenImagesScrollListener { currentPosition ->
             toolbar.title = str(R.string.imageFormat, currentPosition + 1)
         }
 
-        imagesRecyclerView.addOnScrollListener(scrollListener)
         imagesRecyclerView.adapter = adapter
+        imagesRecyclerView.addOnScrollListener(scrollListener)
+        imagesRecyclerView.scrollToPosition(params.offset)
     }
 
     companion object {
