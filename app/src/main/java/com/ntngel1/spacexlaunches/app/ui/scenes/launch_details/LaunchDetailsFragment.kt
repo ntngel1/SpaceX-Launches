@@ -10,13 +10,11 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.CarouselMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.StartSnapHelper
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
@@ -87,7 +85,13 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
     }
 
     override fun showImagesFullscreen(images: List<String>, offset: Int) {
-        FullscreenImagesDialogFragment(images, offset).show(childFragmentManager, null)
+        val params = FullscreenImagesDialogFragment.Params.Images(
+            images = images,
+            offset = offset
+        )
+
+        FullscreenImagesDialogFragment.newInstance(params)
+            .show(childFragmentManager, null)
     }
 
     override fun navigateBackWithLoadingError() {
