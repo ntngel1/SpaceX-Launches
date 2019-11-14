@@ -9,4 +9,6 @@
     <string name="rocketTypeFormat">Rocket type: %1$s</string>
     <string name="unableToLoadLaunchDetails">Unable to load launch details!</string>
     <string name="unableToLoadLaunches">Unable to load information about launches.</string>
+    <string name="back">Back</string>
+    <string name="imageFormat">Image #%1$d</string>
 </resources>
