@@ -20,4 +20,7 @@ interface LaunchDetailsView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun navigateBackWithLoadingError()
+
+    @StateStrategyType(OneExecutionStateStrategy::class)
+    fun showImageWithTitle(image: String, title: String)
 }

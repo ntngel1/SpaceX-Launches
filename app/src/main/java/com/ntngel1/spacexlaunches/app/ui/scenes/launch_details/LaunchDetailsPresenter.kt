@@ -30,6 +30,12 @@ class LaunchDetailsPresenter @Inject constructor(
         viewState.showImagesFullscreen(launch.links.flickrImages, position)
     }
 
+    fun onMissionPatchClicked() {
+        launch.links.missionPatch?.let { missionPatch ->
+            viewState.showImageWithTitle(missionPatch, launch.missionName)
+        }
+    }
+
     private fun loadLaunch() {
         launchGateway.getLaunchByFlightNumber(launchId)
             .subscribeOn(Schedulers.io())

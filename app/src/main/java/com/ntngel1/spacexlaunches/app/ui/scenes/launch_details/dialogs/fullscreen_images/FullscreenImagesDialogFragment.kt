@@ -69,8 +69,6 @@ class FullscreenImagesDialogFragment : DialogFragment() {
 
         PagerSnapHelper().attachToRecyclerView(imagesRecyclerView)
 
-        val adapter = FullscreenImageAdapter()
-
         params.let { params ->
             when (params) {
                 is Params.Images -> {
@@ -81,8 +79,6 @@ class FullscreenImagesDialogFragment : DialogFragment() {
                 }
             }
         }
-
-        imagesRecyclerView.adapter = adapter
     }
 
     private fun initRecyclerViewWithImage(params: Params.Image) {

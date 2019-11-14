@@ -59,6 +59,11 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        patchImageView.setOnClickListener {
+            presenter.onMissionPatchClicked()
+        }
+
         setupImagesRecyclerView()
     }
 
@@ -88,6 +93,16 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
         val params = FullscreenImagesDialogFragment.Params.Images(
             images = images,
             offset = offset
+        )
+
+        FullscreenImagesDialogFragment.newInstance(params)
+            .show(childFragmentManager, null)
+    }
+
+    override fun showImageWithTitle(image: String, title: String) {
+        val params = FullscreenImagesDialogFragment.Params.Image(
+            image = image,
+            title = title
         )
 
         FullscreenImagesDialogFragment.newInstance(params)
