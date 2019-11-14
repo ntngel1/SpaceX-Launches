@@ -64,6 +64,9 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
             presenter.onMissionPatchClicked()
         }
 
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
+        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+
         setupImagesRecyclerView()
     }
 
