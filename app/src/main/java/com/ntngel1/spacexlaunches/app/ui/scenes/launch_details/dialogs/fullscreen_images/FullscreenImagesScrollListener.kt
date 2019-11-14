@@ -11,6 +11,7 @@ class FullscreenImagesScrollListener(
         if (newState == RecyclerView.SCROLL_STATE_IDLE) {
             val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
             val currentPosition = layoutManager.findFirstCompletelyVisibleItemPosition()
+            // TODO FLICKERING to 0 in some cases
             onImageScrolled.invoke(currentPosition)
         }
     }
