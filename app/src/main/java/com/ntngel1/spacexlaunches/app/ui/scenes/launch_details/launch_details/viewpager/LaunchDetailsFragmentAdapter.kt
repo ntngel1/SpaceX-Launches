@@ -1,6 +1,5 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.viewpager
 
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter

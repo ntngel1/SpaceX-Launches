@@ -97,4 +97,7 @@ dependencies {
     // Navigation Graph
     implementation "androidx.navigation:navigation-fragment-ktx:${rootProject.navGraphVersion}"
     implementation "androidx.navigation:navigation-ui-ktx:${rootProject.navGraphVersion}"
+
+    // Jsoup
+    implementation 'org.jsoup:jsoup:1.12.1'
 }
