@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details
+package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details
 
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import com.ntngel1.spacexlaunches.domain.gateway.LaunchGateway

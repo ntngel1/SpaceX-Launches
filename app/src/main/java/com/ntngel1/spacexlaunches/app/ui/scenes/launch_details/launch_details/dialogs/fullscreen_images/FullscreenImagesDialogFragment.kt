@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.fullscreen_images
+package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images
 
 import android.os.Bundle
 import android.os.Parcelable
@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.ntngel1.spacexlaunches.R
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview.FullscreenImageAdapter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.FullscreenImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
 import com.ntngel1.spacexlaunches.app.utils.str
 import kotlinx.android.parcel.Parcelize
@@ -31,7 +31,9 @@ class FullscreenImagesDialogFragment : DialogFragment() {
         ) : Params(), Parcelable
     }
 
-    private val params by argument<Params>(PARAMS_KEY)
+    private val params by argument<Params>(
+        PARAMS_KEY
+    )
 
     init {
         setStyle(STYLE_NO_TITLE, android.R.style.Theme_Black_NoTitleBar)
@@ -83,19 +85,22 @@ class FullscreenImagesDialogFragment : DialogFragment() {
     }
 
     private fun initRecyclerViewWithImage(params: Params.Image) {
-        val adapter = FullscreenImageAdapter()
+        val adapter =
+            FullscreenImageAdapter()
         adapter.images = listOf(params.image)
         imagesRecyclerView.adapter = adapter
     }
 
     private fun initRecyclerViewWithImages(params: Params.Images) {
-        val adapter = FullscreenImageAdapter()
+        val adapter =
+            FullscreenImageAdapter()
 
         adapter.images = params.images
 
-        val scrollListener = FullscreenImagesScrollListener { currentPosition ->
-            toolbar.title = str(R.string.imageFormat, currentPosition + 1)
-        }
+        val scrollListener =
+            FullscreenImagesScrollListener { currentPosition ->
+                toolbar.title = str(R.string.imageFormat, currentPosition + 1)
+            }
 
         imagesRecyclerView.adapter = adapter
         imagesRecyclerView.addOnScrollListener(scrollListener)

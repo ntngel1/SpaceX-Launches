@@ -10,12 +10,23 @@
         <action
             android:id="@+id/openLaunchDetailsScene"
             app:destination="@id/launchDetailsFragment" />
+        <action
+            android:id="@+id/openLaunchDetailsKinoplanScreen"
+            app:destination="@id/launchDetailsKinoplanFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/launchDetailsFragment"
-        android:name="com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.LaunchDetailsFragment"
+        android:name="com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.LaunchDetailsFragment"
         android:label="LaunchDetailsFragment" >
+        <argument
+            android:name="launchId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchDetailsKinoplanFragment"
+        android:name="com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.LaunchDetailsKinoplanFragment"
+        android:label="LaunchDetailsKinoplanFragment" >
         <argument
             android:name="launchId"
             app:argType="integer" />

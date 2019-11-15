@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details
+package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details
 
 import android.os.Bundle
 import android.text.Html
@@ -14,8 +14,8 @@ import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.CarouselMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.StartSnapHelper
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
-import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview.ImageCardAdapter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
@@ -28,11 +28,15 @@ import moxy.presenter.ProvidePresenter
 import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
-class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
+class LaunchDetailsFragment : MvpAppCompatFragment(),
+    LaunchDetailsView {
 
     private val args: LaunchDetailsFragmentArgs by navArgs()
 
-    private val imageCardAdapter = ImageCardAdapter(::onFlickrImageClicked)
+    private val imageCardAdapter =
+        ImageCardAdapter(
+            ::onFlickrImageClicked
+        )
 
     @Inject
     lateinit var dateTimeFormatter: DateTimeFormatter
