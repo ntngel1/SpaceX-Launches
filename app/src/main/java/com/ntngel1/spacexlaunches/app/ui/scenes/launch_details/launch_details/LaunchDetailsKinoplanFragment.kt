@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.viewpager.LaunchDetailsFragmentAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.app.utils.str
@@ -61,9 +64,9 @@ class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
     }
 
     private fun setupViewPager() {
-        with(pager) {
-
-        }
+        pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        pager.adapter = LaunchDetailsFragmentAdapter(args.launchId, childFragmentManager, lifecycle)
+        LaunchDetailsFragmentAdapter.getTabLayoutMediator(tab_layout, pager).attach()
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {

@@ -19,6 +19,10 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.fragment_launch_details_images, container, false)
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     companion object {
         private const val LAUNCH_ID_KEY = "launch_id"
 
