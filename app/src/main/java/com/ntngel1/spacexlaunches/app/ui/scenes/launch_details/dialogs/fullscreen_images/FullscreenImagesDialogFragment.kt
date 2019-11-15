@@ -14,6 +14,7 @@ import com.ntngel1.spacexlaunches.app.utils.str
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.dialog_fullscreen_images.*
 
+// TODO Refactor again
 class FullscreenImagesDialogFragment : DialogFragment() {
 
     sealed class Params {

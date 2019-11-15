@@ -19,6 +19,7 @@ import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.recyclerview.Imag
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
 import com.ntngel1.spacexlaunches.app.utils.setIsVisible
+import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details.*
 import moxy.MvpAppCompatFragment
@@ -64,8 +65,9 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
             presenter.onMissionPatchClicked()
         }
 
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp)
-        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        toolbar.setupToolbar(navigationIconId = R.drawable.ic_arrow_back_white_24dp) {
+            findNavController().navigateUp()
+        }
 
         setupImagesRecyclerView()
     }
@@ -124,8 +126,9 @@ class LaunchDetailsFragment : MvpAppCompatFragment(), LaunchDetailsView {
     }
 
     private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
-        nameTextView.text = launch.missionName
-        nameTextView.setIsVisible(true)
+        toolbar.title = launch.missionName
+        /*nameTextView.text = launch.missionName
+        nameTextView.setIsVisible(true)*/
 
         launchDateTextView.text = launch.launchDate.format(dateTimeFormatter)
         launchDateTextView.setIsVisible(true)
