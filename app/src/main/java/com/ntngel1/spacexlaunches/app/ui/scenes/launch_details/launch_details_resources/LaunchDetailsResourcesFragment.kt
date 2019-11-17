@@ -10,7 +10,7 @@ import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.ListMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ResourceLinkAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
-import com.ntngel1.spacexlaunches.app.utils.setIsVisible
+import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
 import com.ntngel1.spacexlaunches.domain.entity.ResourceLinkEntity
 import kotlinx.android.synthetic.main.fragment_launch_details_resources.*
 import moxy.MvpAppCompatFragment
@@ -47,8 +47,8 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
     }
 
     override fun setIsLoading(isLoading: Boolean) {
-        progressBar.setIsVisible(isLoading)
-        recycler_links.setIsVisible(!isLoading)
+        progressBar.setVisibleOrGone(isLoading)
+        recycler_links.setVisibleOrGone(!isLoading)
     }
 
     override fun setResourceLinks(links: List<ResourceLinkEntity>) {

@@ -18,7 +18,7 @@ import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.di
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
-import com.ntngel1.spacexlaunches.app.utils.setIsVisible
+import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
 import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details.*
@@ -87,7 +87,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
-        progressBar.setIsVisible(isVisible)
+        progressBar.setVisibleOrGone(isVisible)
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
@@ -132,10 +132,10 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
     private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
         toolbar.title = launch.missionName
         /*nameTextView.text = launch.missionName
-        nameTextView.setIsVisible(true)*/
+        nameTextView.setVisibleOrGone(true)*/
 
         launchDateTextView.text = launch.launchDate.format(dateTimeFormatter)
-        launchDateTextView.setIsVisible(true)
+        launchDateTextView.setVisibleOrGone(true)
     }
 
     private fun showMissionPatch(launch: LaunchEntity) {
@@ -145,7 +145,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
             patchImageView.setImageResource(R.drawable.placeholder_no_image_available)
         }
 
-        patchImageView.setIsVisible(true)
+        patchImageView.setVisibleOrGone(true)
     }
 
     private fun showDescription(launch: LaunchEntity) {
@@ -155,15 +155,15 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
         }
 
         descriptionTextView.text = description
-        descriptionTextView.setIsVisible(true)
+        descriptionTextView.setVisibleOrGone(true)
     }
 
     private fun showImages(launch: LaunchEntity) {
         if (launch.links.flickrImages.isNotEmpty()) {
             imageCardAdapter.images = launch.links.flickrImages
-            imagesRecyclerView.setIsVisible(true)
+            imagesRecyclerView.setVisibleOrGone(true)
         } else {
-            imagesRecyclerView.setIsVisible(false)
+            imagesRecyclerView.setVisibleOrGone(false)
         }
     }
 
@@ -180,7 +180,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
         if (linksText.isNotBlank()) {
             linksTextView.text = Html.fromHtml(linksText)
             linksTextView.movementMethod = LinkMovementMethod.getInstance()
-            linksTextView.setIsVisible(true)
+            linksTextView.setVisibleOrGone(true)
         }
     }
 }

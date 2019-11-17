@@ -11,7 +11,7 @@ import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.PaginationScrollListener
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchAdapter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchItemDecoration
-import com.ntngel1.spacexlaunches.app.utils.setIsVisible
+import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launches.*
 import moxy.MvpAppCompatFragment
@@ -50,7 +50,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     override fun setIsProgressBarVisible(isVisible: Boolean) {
-        progressBar.setIsVisible(isVisible)
+        progressBar.setVisibleOrGone(isVisible)
     }
 
     override fun setIsRefreshing(isRefreshing: Boolean) {
