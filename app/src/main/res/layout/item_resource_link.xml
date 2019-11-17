@@ -10,6 +10,7 @@
     app:cardCornerRadius="8dp">
 
     <!-- FIXME Gone description invisible url bug -->
+    <!-- FIXME ProgressBar has messy positions (not in center) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -54,19 +55,41 @@
             app:layout_constraintTop_toBottomOf="@id/text_title"
             tools:text="We have launched our new rocket! Check it out!" />
 
+        <!-- TODO Multiple barriers or just individual margins? -->
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_bottom_title_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="text_title,text_description" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_left_title_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="left"
+            app:constraint_referenced_ids="text_title,text_description" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_right_title_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="right"
+            app:constraint_referenced_ids="text_title,text_description"/>
+
         <TextView
             android:id="@+id/text_url"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="8dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/text_description"
-            app:layout_constraintRight_toRightOf="@id/text_description"
-            app:layout_constraintTop_toBottomOf="@id/text_description"
+            app:layout_constraintLeft_toLeftOf="@id/barrier_left_title_description"
+            app:layout_constraintRight_toRightOf="@id/barrier_right_title_description"
+            app:layout_constraintTop_toBottomOf="@id/barrier_bottom_title_description"
             tools:text="https://google.com" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
