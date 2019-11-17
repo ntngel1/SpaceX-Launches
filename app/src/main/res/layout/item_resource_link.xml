@@ -87,6 +87,7 @@
             android:maxLines="1"
             android:textColor="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             app:layout_constraintLeft_toLeftOf="@id/barrier_left_title_description"
             app:layout_constraintRight_toRightOf="@id/barrier_right_title_description"
             app:layout_constraintTop_toBottomOf="@id/barrier_bottom_title_description"
