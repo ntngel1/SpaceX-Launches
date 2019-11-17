@@ -1,18 +1,25 @@
 package com.ntngel1.spacexlaunches.gateway.jsoup
 
+import com.ntngel1.spacexlaunches.app.utils.isNullOrBlank
 import com.ntngel1.spacexlaunches.domain.entity.ResourceLinkEntity
 import com.ntngel1.spacexlaunches.domain.gateway.ResourceLinkGateway
 import io.reactivex.Single
 import org.jsoup.Jsoup
+import java.net.URI
 
 class JsoupResourceLinkGateway : ResourceLinkGateway {
 
     override fun getResourceLink(url: String) = Single.create<ResourceLinkEntity> { emitter ->
+        performMetaTagParsing(url)
+            .let(emitter::onSuccess)
+    }
+
+    private fun performMetaTagParsing(url: String): ResourceLinkEntity {
         var title: String? = null
         var description: String? = null
         var previewImageUrl: String? = null
 
-        val html = Jsoup.connect(url)
+        Jsoup.connect(url)
             .execute()
             .body()
             .let(Jsoup::parse)
@@ -28,17 +35,16 @@ class JsoupResourceLinkGateway : ResourceLinkGateway {
                 }
             }
 
-        val resourceLink = ResourceLinkEntity(
+        return ResourceLinkEntity(
             title = title,
             description = description,
             previewImageUrl = previewImageUrl,
             url = url
         )
-
-        emitter.onSuccess(resourceLink)
     }
 
     companion object {
+        // Meta Tags
         private const val TITLE = "title"
         private const val OG_TITLE = "og:title"
 

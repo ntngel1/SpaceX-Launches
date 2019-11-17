@@ -26,6 +26,10 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
         fetchLaunch()
     }
 
+    fun onLinkClicked(link: ResourceLinkEntity) {
+        viewState.openUrl(link.url)
+    }
+
     private fun fetchLaunch() {
         compositeDisposable += launchGateway.getLaunchByFlightNumber(flightNumber)
             .flatMap { launch ->

@@ -1,5 +1,7 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details_resources
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +23,7 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
 
     private val flightNumber: Int by argument(FLIGHT_NUMBER_KEY)
 
-    private val linksAdapter = ResourceLinkAdapter()
+    private val linksAdapter = ResourceLinkAdapter(::onLinkClicked)
 
     @InjectPresenter
     internal lateinit var presenter: LaunchDetailsResourcesPresenter
@@ -55,11 +57,19 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
         linksAdapter.links = links
     }
 
+    override fun openUrl(url: String) =
+        Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            .let(::startActivity)
+
     private fun setupLinksRecyclerView() {
         with(recycler_links) {
             adapter = linksAdapter
             addItemDecoration(ListMarginItemDecoration())
         }
+    }
+
+    private fun onLinkClicked(link: ResourceLinkEntity) {
+        presenter.onLinkClicked(link)
     }
 
     companion object {

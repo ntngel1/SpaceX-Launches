@@ -9,7 +9,9 @@ import com.ntngel1.spacexlaunches.app.utils.*
 import com.ntngel1.spacexlaunches.domain.entity.ResourceLinkEntity
 import kotlinx.android.synthetic.main.item_resource_link.view.*
 
-class ResourceLinkAdapter : RecyclerView.Adapter<ResourceLinkAdapter.ViewHolder>() {
+class ResourceLinkAdapter(
+    private val onLinkClicked: (link: ResourceLinkEntity) -> Unit
+) : RecyclerView.Adapter<ResourceLinkAdapter.ViewHolder>() {
 
     var links = emptyList<ResourceLinkEntity>()
         set(value) {
@@ -28,7 +30,17 @@ class ResourceLinkAdapter : RecyclerView.Adapter<ResourceLinkAdapter.ViewHolder>
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private lateinit var link: ResourceLinkEntity
+
+        init {
+            itemView.setOnClickListener {
+                onLinkClicked.invoke(link)
+            }
+        }
+
         fun bind(link: ResourceLinkEntity) = with(itemView) {
+            this@ViewHolder.link = link
+
             image_preview.loadImageOrGone(link.previewImageUrl)
 
             text_title.text = if (link.title.isNullOrBlank()) {
