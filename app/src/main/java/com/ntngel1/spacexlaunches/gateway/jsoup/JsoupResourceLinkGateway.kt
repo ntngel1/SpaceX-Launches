@@ -1,11 +1,9 @@
 package com.ntngel1.spacexlaunches.gateway.jsoup
 
-import com.ntngel1.spacexlaunches.app.utils.isNullOrBlank
 import com.ntngel1.spacexlaunches.domain.entity.ResourceLinkEntity
 import com.ntngel1.spacexlaunches.domain.gateway.ResourceLinkGateway
 import io.reactivex.Single
 import org.jsoup.Jsoup
-import java.net.URI
 
 class JsoupResourceLinkGateway : ResourceLinkGateway {
 
