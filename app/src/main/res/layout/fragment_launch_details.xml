@@ -23,6 +23,7 @@
             app:expandedTitleTextAppearance="@style/ToolbarTitle"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
 
+            <!-- TODO Черные полосы при резком разворачивании  -->
             <ImageView
                 android:id="@+id/patchImageView"
                 android:layout_width="match_parent"
