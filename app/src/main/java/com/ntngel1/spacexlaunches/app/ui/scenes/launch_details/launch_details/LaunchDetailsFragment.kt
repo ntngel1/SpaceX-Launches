@@ -67,7 +67,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        patchImageView.setOnClickListener {
+        image_launch_patch.setOnClickListener {
             presenter.onMissionPatchClicked()
         }
 
@@ -135,18 +135,18 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
         /*nameTextView.text = launch.missionName
         nameTextView.setVisibleOrGone(true)*/
 
-        launchDateTextView.text = launch.launchDate.format(dateTimeFormatter)
-        launchDateTextView.setVisibleOrGone(true)
+        text_launch_item_launch_date.text = launch.launchDate.format(dateTimeFormatter)
+        text_launch_item_launch_date.setVisibleOrGone(true)
     }
 
     private fun showMissionPatch(launch: LaunchEntity) {
         if (launch.links.missionPatch != null) {
-            patchImageView.loadImage(launch.links.missionPatch)
+            image_launch_patch.loadImage(launch.links.missionPatch)
         } else {
-            patchImageView.setImageResource(R.drawable.placeholder_no_image_available)
+            image_launch_patch.setImageResource(R.drawable.placeholder_no_image_available)
         }
 
-        patchImageView.setVisibleOrGone(true)
+        image_launch_patch.setVisibleOrGone(true)
     }
 
     private fun showDescription(launch: LaunchEntity) {

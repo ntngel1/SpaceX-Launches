@@ -64,13 +64,13 @@ class LaunchAdapter(
             this.launch = launch
 
             with(itemView) {
-                nameTextView.text = launch.missionName
-                launchDateTextView.text = getFormattedLaunchDate()
+                text_launch_item_title.text = launch.missionName
+                text_launch_item_launch_date.text = getFormattedLaunchDate()
 
                 if (launch.links.missionPatchSmall != null) {
-                    patchImageView.loadImage(launch.links.missionPatchSmall)
+                    image_launch_item_patch.loadImage(launch.links.missionPatchSmall)
                 } else {
-                    patchImageView.setImageResource(R.drawable.placeholder_no_image_available)
+                    image_launch_item_patch.setImageResource(R.drawable.placeholder_no_image_available)
                 }
             }
         }

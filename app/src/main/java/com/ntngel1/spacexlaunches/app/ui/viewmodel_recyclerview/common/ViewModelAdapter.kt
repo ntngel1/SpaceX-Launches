@@ -250,8 +250,4 @@ open class ViewModelAdapter : RecyclerView.Adapter<ViewHolder>(),
             throw Exception("You cannot clear viewStates without viewStateStore presented.")
         }
     }
-
-    override fun onViewRecycled(holder: ViewHolder) {
-        super.onViewRecycled(holder)
-    }
 }

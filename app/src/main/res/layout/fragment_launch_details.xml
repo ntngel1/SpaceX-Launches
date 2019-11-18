@@ -25,7 +25,7 @@
 
             <!-- TODO Черные полосы при резком разворачивании  -->
             <ImageView
-                android:id="@+id/patchImageView"
+                android:id="@+id/image_launch_patch"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginTop="50dp"
@@ -50,7 +50,7 @@
                 app:layout_collapseMode="parallax">
 
                 <TextView
-                    android:id="@+id/launchDateTextView"
+                    android:id="@+id/text_launch_item_launch_date"
                     style="@style/TextAppearance.AppCompat.Medium"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- TODO Naming: with 'item' or not? -->
         <ImageView
-            android:id="@+id/patchImageView"
+            android:id="@+id/image_launch_item_patch"
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:layout_marginStart="8dp"
@@ -26,28 +27,28 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/nameTextView"
+            android:id="@+id/text_launch_item_title"
             style="@style/TextAppearance.AppCompat.Large"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintLeft_toRightOf="@id/patchImageView"
+            app:layout_constraintLeft_toRightOf="@id/image_launch_item_patch"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Falcon 9" />
 
         <TextView
-            android:id="@+id/launchDateTextView"
+            android:id="@+id/text_launch_item_launch_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintLeft_toRightOf="@id/patchImageView"
+            app:layout_constraintLeft_toRightOf="@id/image_launch_item_patch"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nameTextView"
+            app:layout_constraintTop_toBottomOf="@id/text_launch_item_title"
             tools:text="17.06.2019 15:30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
