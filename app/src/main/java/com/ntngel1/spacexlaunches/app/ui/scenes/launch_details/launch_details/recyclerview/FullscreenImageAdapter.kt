@@ -4,9 +4,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.utils.loadImage
+import com.ntngel1.spacexlaunches.app.utils.loadImageWithProgressBar
+import kotlinx.android.synthetic.main.item_image_fullscreen.view.*
 
 class FullscreenImageAdapter : RecyclerView.Adapter<FullscreenImageAdapter.ViewHolder>() {
 
@@ -34,12 +37,12 @@ class FullscreenImageAdapter : RecyclerView.Adapter<FullscreenImageAdapter.ViewH
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(imageUrl: String) {
-            (itemView as PhotoView).loadImage(imageUrl)
+        fun bind(imageUrl: String) = with(itemView) {
+            photo_image_fullscreen.loadImageWithProgressBar(imageUrl, progress_bar_image_fullscreen)
         }
 
-        fun onDetachedFromWindow() {
-            (itemView as PhotoView).scale = 1.0f
+        fun onDetachedFromWindow() = with(itemView) {
+            photo_image_fullscreen.scale = 1f
         }
     }
 }
