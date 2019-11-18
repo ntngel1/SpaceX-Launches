@@ -9,7 +9,6 @@
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="8dp">
 
-    <!-- FIXME Gone description invisible url bug -->
     <!-- FIXME ProgressBar has messy positions (not in center) -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -38,11 +37,9 @@
             android:maxLines="1"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@id/text_description"
             app:layout_constraintLeft_toRightOf="@id/image_preview"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
             tools:text="SpaceX New Rocket Launch!" />
 
         <TextView
@@ -54,7 +51,6 @@
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:maxLines="3"
-            app:layout_constraintBottom_toTopOf="@id/text_url"
             app:layout_constraintLeft_toRightOf="@id/image_preview"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_title"
@@ -71,6 +67,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@android:color/darker_gray"
+            android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@id/image_preview"
             app:layout_constraintRight_toRightOf="parent"
