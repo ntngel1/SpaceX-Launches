@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.ui.recyclerview.GridMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.Image
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
+import com.ntngel1.spacexlaunches.app.utils.dp
 import kotlinx.android.synthetic.main.fragment_launch_details_images.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -63,6 +65,15 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
     private fun setupImagesRecyclerView() {
         with(imagesRecyclerView) {
             adapter = imageAdapter
+
+            val marginItemDecoration = GridMarginItemDecoration(
+                topMargin = 4.dp,
+                edgeMargin = 4.dp,
+                betweenElementsHorizontalMargin = 4.dp,
+                betweenElementsVerticalMargin = 4.dp
+            )
+
+            addItemDecoration(marginItemDecoration)
         }
     }
 

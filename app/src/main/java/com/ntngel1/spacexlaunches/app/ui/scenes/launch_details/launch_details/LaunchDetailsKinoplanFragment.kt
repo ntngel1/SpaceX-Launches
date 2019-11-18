@@ -69,7 +69,7 @@ class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
-        image_mission_patch.loadImage(launch.links.missionPatchSmall)
+        image_mission_patch.loadImage(launch.links.missionPatchSmall, placeholder = null)
 
         text_mission_name.text = launch.missionName
         text_launch_date.text = launch.launchDate.format(dateTimeFormatter)

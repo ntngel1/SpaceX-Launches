@@ -19,22 +19,22 @@ class LaunchDetailsFragmentAdapter(
 ) : FragmentStateAdapter(fm, lifecycle) {
 
     override fun createFragment(position: Int): Fragment = when (position) {
-        IMAGES_POSITION -> LaunchDetailsImagesFragment.newInstance(flightNumber)
         RESOURCES_POSITION -> LaunchDetailsResourcesFragment.newInstance(flightNumber)
+        IMAGES_POSITION -> LaunchDetailsImagesFragment.newInstance(flightNumber)
         else -> throw IllegalStateException("No such fragment for position = $position")
     }
 
     override fun getItemCount() = 2
 
     companion object {
-        const val IMAGES_POSITION = 0
-        const val RESOURCES_POSITION = 1
+        const val RESOURCES_POSITION = 0
+        const val IMAGES_POSITION = 1
 
         fun getTabLayoutMediator(tabLayout: TabLayout, pager: ViewPager2) =
             TabLayoutMediator(tabLayout, pager) { tab, position ->
                 val titleIdRes = when (position) {
-                    IMAGES_POSITION -> R.string.images
                     RESOURCES_POSITION -> R.string.resources
+                    IMAGES_POSITION -> R.string.images
                     else -> throw IllegalStateException("No such title for position = $position")
                 }
 

@@ -7,3 +7,4 @@ package com.ntngel1.spacexlaunches
 // TODO compositeDisposable += ........ instead of .let(compositeDisposable::add)
 // TODO Locale datetime
 // TODO Base RecyclerView.Adapter?
+// TODO ProgressBar instead of placeholder for fullscreen image dialog
