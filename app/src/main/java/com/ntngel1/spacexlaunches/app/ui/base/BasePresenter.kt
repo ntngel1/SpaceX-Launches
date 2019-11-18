@@ -2,6 +2,7 @@ package com.ntngel1.spacexlaunches.app.ui.base
 
 import androidx.annotation.CallSuper
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import moxy.MvpPresenter
 import moxy.MvpView
 
@@ -13,5 +14,10 @@ abstract class BasePresenter<T : MvpView> : MvpPresenter<T>() {
     override fun onDestroy() {
         super.onDestroy()
         compositeDisposable.clear()
+    }
+
+    // TODO
+    protected fun Disposable.disposeOnDestroy() {
+        compositeDisposable.add(this)
     }
 }
