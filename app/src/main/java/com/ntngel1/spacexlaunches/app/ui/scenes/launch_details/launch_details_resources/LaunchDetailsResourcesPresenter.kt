@@ -46,6 +46,7 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
             .subscribe({ resourceLinks ->
                 viewState.setResourceLinks(resourceLinks)
             }, {
+                // TODO Handle error
                 it.printStackTrace()
             })
     }

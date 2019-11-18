@@ -1,5 +1,6 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.viewpager
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -12,14 +13,14 @@ import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details_re
 import com.ntngel1.spacexlaunches.app.utils.str
 
 class LaunchDetailsFragmentAdapter(
-    private val launchId: Int,
+    private val flightNumber: Int,
     fm: FragmentManager,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fm, lifecycle) {
 
-    override fun createFragment(position: Int) = when (position) {
-        IMAGES_POSITION -> LaunchDetailsImagesFragment.newInstance(launchId)
-        RESOURCES_POSITION -> LaunchDetailsResourcesFragment.newInstance(launchId)
+    override fun createFragment(position: Int): Fragment = when (position) {
+        IMAGES_POSITION -> LaunchDetailsImagesFragment.newInstance(flightNumber)
+        RESOURCES_POSITION -> LaunchDetailsResourcesFragment.newInstance(flightNumber)
         else -> throw IllegalStateException("No such fragment for position = $position")
     }
 

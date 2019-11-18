@@ -6,12 +6,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.ntngel1.spacexlaunches.R
+import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
+import kotlinx.android.synthetic.main.fragment_launch_details_images.*
 import moxy.MvpAppCompatFragment
+import moxy.presenter.InjectPresenter
+import moxy.presenter.ProvidePresenter
 
-class LaunchDetailsImagesFragment : MvpAppCompatFragment() {
+class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesView {
 
-    private val launchId: Int by argument(LAUNCH_ID_KEY)
+    private val flightNumber: Int by argument(FLIGHT_NUMBER_KEY)
+
+    private val imageAdapter = ImageAdapter(::onImageClicked)
+
+    @InjectPresenter
+    internal lateinit var presenter: LaunchDetailsImagesPresenter
+
+    @ProvidePresenter
+    fun provideLaunchDetailsImagesPresenter() =
+        App.appComponent.provideLaunchDetailsImagesPresenter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter.flightNumber = flightNumber
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,13 +40,27 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupImagesRecyclerView()
+    }
+
+    override fun setImages(imageUrls: List<String>) {
+        imageAdapter.imageUrls = imageUrls
+    }
+
+    private fun setupImagesRecyclerView() {
+        with(imagesRecyclerView) {
+            adapter = imageAdapter
+        }
+    }
+
+    private fun onImageClicked(position: Int) {
     }
 
     companion object {
-        private const val LAUNCH_ID_KEY = "launch_id"
+        private const val FLIGHT_NUMBER_KEY = "flight_number"
 
-        fun newInstance(launchId: Int) = LaunchDetailsImagesFragment().apply {
-            arguments = bundleOf(LAUNCH_ID_KEY to launchId)
+        fun newInstance(flightNumber: Int) = LaunchDetailsImagesFragment().apply {
+            arguments = bundleOf(FLIGHT_NUMBER_KEY to flightNumber)
         }
     }
 }
