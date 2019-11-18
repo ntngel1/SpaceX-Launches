@@ -1,7 +1,7 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images
 
+import android.graphics.Color
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.*
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
@@ -10,28 +10,13 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.FullscreenImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
+import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.app.utils.str
-import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.dialog_fullscreen_images.*
 
-// TODO Refactor again
 class FullscreenImagesDialogFragment : DialogFragment() {
 
-    sealed class Params {
-        @Parcelize
-        data class Images(
-            val images: List<String>,
-            val offset: Int = 0
-        ) : Params(), Parcelable
-
-        @Parcelize
-        data class Image(
-            val image: String,
-            val title: String = ""
-        ) : Params(), Parcelable
-    }
-
-    private val params by argument<Params>(
+    private val params by argument<FullscreenImagesParams>(
         PARAMS_KEY
     )
 
@@ -49,68 +34,42 @@ class FullscreenImagesDialogFragment : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
+
+        val toolbarTitle = params.images[params.offset].title
+            ?: context?.str(R.string.imageFormat, params.offset + 1)
+
+        toolbar.setupToolbar(
+            title = toolbarTitle,
+            titleColor = Color.WHITE,
+            navigationIconId = R.drawable.ic_arrow_back_white_24dp
+        ) {
+            dismiss()
+        }
+
         setupImagesRecyclerView()
     }
 
-    private fun setupToolbar() {
-        params.let { params ->
-            toolbar.title = when (params) {
-                is Params.Images -> str(R.string.imageFormat, params.offset + 1)
-                is Params.Image -> params.title
-            }
+    private fun setupImagesRecyclerView() {
+        imagesRecyclerView.adapter = FullscreenImageAdapter().apply {
+            imageUrls = params.images.map { it.url }
         }
 
-        toolbar.setNavigationOnClickListener { dismiss() }
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-    }
 
+        val scrollListener = FullscreenImagesScrollListener { currentPosition ->
+            toolbar.title = params.images[currentPosition].title
+                ?: str(R.string.imageFormat, currentPosition + 1)
+        }
 
-    private fun setupImagesRecyclerView() {
-        imagesRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-
+        imagesRecyclerView.addOnScrollListener(scrollListener)
         PagerSnapHelper().attachToRecyclerView(imagesRecyclerView)
 
-        params.let { params ->
-            when (params) {
-                is Params.Images -> {
-                    initRecyclerViewWithImages(params)
-                }
-                is Params.Image -> {
-                    initRecyclerViewWithImage(params)
-                }
-            }
-        }
-    }
-
-    private fun initRecyclerViewWithImage(params: Params.Image) {
-        val adapter =
-            FullscreenImageAdapter()
-        adapter.images = listOf(params.image)
-        imagesRecyclerView.adapter = adapter
-    }
-
-    private fun initRecyclerViewWithImages(params: Params.Images) {
-        val adapter =
-            FullscreenImageAdapter()
-
-        adapter.images = params.images
-
-        val scrollListener =
-            FullscreenImagesScrollListener { currentPosition ->
-                toolbar.title = str(R.string.imageFormat, currentPosition + 1)
-            }
-
-        imagesRecyclerView.adapter = adapter
-        imagesRecyclerView.addOnScrollListener(scrollListener)
         imagesRecyclerView.scrollToPosition(params.offset)
     }
 
     companion object {
         private const val PARAMS_KEY = "params"
 
-        fun newInstance(params: Params) = FullscreenImagesDialogFragment().apply {
+        fun newInstance(params: FullscreenImagesParams) = FullscreenImagesDialogFragment().apply {
             arguments = bundleOf(PARAMS_KEY to params)
         }
     }

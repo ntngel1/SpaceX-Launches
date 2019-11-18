@@ -79,11 +79,11 @@ class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
         }
     }
 
-    override fun showImagesFullscreen(images: List<String>, offset: Int) {
+    override fun showImagesFullscreen(imageUrls: List<String>, offset: Int) {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun showImageWithTitle(image: String, title: String) {
+    override fun showImageWithTitle(imageUrl: String, title: String) {
         //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

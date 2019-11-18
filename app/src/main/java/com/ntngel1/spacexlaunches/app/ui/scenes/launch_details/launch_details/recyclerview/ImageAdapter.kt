@@ -32,7 +32,9 @@ class ImageAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            onClicked.invoke(adapterPosition)
+            itemView.setOnClickListener {
+                onClicked.invoke(adapterPosition)
+            }
         }
 
         fun bind(imageUrl: String) {

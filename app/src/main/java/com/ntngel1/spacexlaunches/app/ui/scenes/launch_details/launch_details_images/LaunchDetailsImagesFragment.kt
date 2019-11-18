@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.Image
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
 import kotlinx.android.synthetic.main.fragment_launch_details_images.*
@@ -47,6 +50,16 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
         imageAdapter.imageUrls = imageUrls
     }
 
+    override fun showImagesFullscreen(imageUrls: List<String>, offset: Int) {
+        val params = FullscreenImagesParams(
+            images = imageUrls.map { imageUrl -> Image(url = imageUrl) },
+            offset = offset
+        )
+
+        FullscreenImagesDialogFragment.newInstance(params)
+            .show(childFragmentManager, null)
+    }
+
     private fun setupImagesRecyclerView() {
         with(imagesRecyclerView) {
             adapter = imageAdapter
@@ -54,6 +67,7 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
     }
 
     private fun onImageClicked(position: Int) {
+        presenter.onImageClicked(position)
     }
 
     companion object {

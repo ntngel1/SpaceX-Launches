@@ -15,6 +15,8 @@ import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.CarouselMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.StartSnapHelper
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.Image
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
@@ -98,9 +100,9 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
         showLinks(launch)
     }
 
-    override fun showImagesFullscreen(images: List<String>, offset: Int) {
-        val params = FullscreenImagesDialogFragment.Params.Images(
-            images = images,
+    override fun showImagesFullscreen(imageUrls: List<String>, offset: Int) {
+        val params = FullscreenImagesParams(
+            images = imageUrls.map { imageUrl -> Image(url = imageUrl) },
             offset = offset
         )
 
@@ -108,10 +110,9 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
             .show(childFragmentManager, null)
     }
 
-    override fun showImageWithTitle(image: String, title: String) {
-        val params = FullscreenImagesDialogFragment.Params.Image(
-            image = image,
-            title = title
+    override fun showImageWithTitle(imageUrl: String, title: String) {
+        val params = FullscreenImagesParams(
+            images = listOf(Image(url = imageUrl, title = title))
         )
 
         FullscreenImagesDialogFragment.newInstance(params)

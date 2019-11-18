@@ -16,11 +16,11 @@ interface LaunchDetailsView : MvpView {
     fun showLaunchDetails(launch: LaunchEntity)
 
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun showImagesFullscreen(images: List<String>, offset: Int)
+    fun showImagesFullscreen(imageUrls: List<String>, offset: Int)
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun navigateBackWithLoadingError()
 
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun showImageWithTitle(image: String, title: String)
+    fun showImageWithTitle(imageUrl: String, title: String)
 }

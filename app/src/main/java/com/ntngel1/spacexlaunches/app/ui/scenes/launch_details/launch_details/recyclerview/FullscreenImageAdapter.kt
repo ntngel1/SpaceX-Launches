@@ -10,13 +10,13 @@ import com.ntngel1.spacexlaunches.app.utils.loadImage
 
 class FullscreenImageAdapter : RecyclerView.Adapter<FullscreenImageAdapter.ViewHolder>() {
 
-    var images = emptyList<String>()
+    var imageUrls = emptyList<String>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    override fun getItemCount(): Int = images.size
+    override fun getItemCount(): Int = imageUrls.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
@@ -24,7 +24,7 @@ class FullscreenImageAdapter : RecyclerView.Adapter<FullscreenImageAdapter.ViewH
             .let(::ViewHolder)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(images[position])
+        holder.bind(imageUrls[position])
     }
 
     override fun onViewDetachedFromWindow(holder: ViewHolder) {
