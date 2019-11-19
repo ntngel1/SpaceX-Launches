@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,10 +11,12 @@ import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.Image
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.viewpager.LaunchDetailsFragmentAdapter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsPresenter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsView
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesParams
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Image
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.viewpager.LaunchDetailsFragmentAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.app.utils.str

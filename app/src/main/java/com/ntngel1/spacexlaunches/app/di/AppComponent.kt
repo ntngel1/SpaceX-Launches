@@ -1,10 +1,10 @@
 package com.ntngel1.spacexlaunches.app.di
 
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.LaunchDetailsV1Fragment
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.LaunchDetailsV2Fragment
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.LaunchDetailsPresenter
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details_images.LaunchDetailsImagesPresenter
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details_resources.LaunchDetailsResourcesPresenter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v1.LaunchDetailsV1Fragment
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.LaunchDetailsV2Fragment
+import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsPresenter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.images.LaunchDetailsImagesPresenter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.resources.LaunchDetailsResourcesPresenter
 import com.ntngel1.spacexlaunches.app.screens.launches.LaunchesFragment
 import com.ntngel1.spacexlaunches.app.screens.launches.LaunchesPresenter
 import com.ntngel1.spacexlaunches.app.screens.main.MainPresenter

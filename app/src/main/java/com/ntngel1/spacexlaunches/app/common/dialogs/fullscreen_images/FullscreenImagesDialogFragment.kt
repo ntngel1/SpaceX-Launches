@@ -1,6 +1,5 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images
+package com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images
 
-import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
@@ -8,7 +7,6 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.ntngel1.spacexlaunches.R
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.recyclerview.FullscreenImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
 import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.app.utils.str
@@ -50,7 +48,8 @@ class FullscreenImagesDialogFragment : DialogFragment() {
     }
 
     private fun setupImagesRecyclerView() {
-        imagesRecyclerView.adapter = FullscreenImageAdapter().apply {
+        imagesRecyclerView.adapter = FullscreenImageAdapter()
+            .apply {
             imageUrls = params.images.map { it.url }
         }
 

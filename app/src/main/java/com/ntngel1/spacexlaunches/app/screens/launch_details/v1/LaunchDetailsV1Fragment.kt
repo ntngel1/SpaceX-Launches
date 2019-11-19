@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v1
 
 import android.os.Bundle
 import android.text.Html
@@ -14,10 +14,12 @@ import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.common.recyclerview.CarouselMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.common.recyclerview.StartSnapHelper
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.Image
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.recyclerview.ImageCardAdapter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsPresenter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsView
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesParams
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Image
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.*
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details_v1.*

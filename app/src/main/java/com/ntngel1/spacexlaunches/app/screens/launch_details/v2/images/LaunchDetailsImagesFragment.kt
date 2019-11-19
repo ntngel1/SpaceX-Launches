@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details_images
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.images
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import androidx.core.os.bundleOf
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.common.recyclerview.GridMarginItemDecoration
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images.Image
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.recyclerview.ImageAdapter
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesParams
+import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Image
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v1.recyclerview.ImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
 import com.ntngel1.spacexlaunches.app.utils.dp
 import kotlinx.android.synthetic.main.fragment_launch_details_images.*
@@ -23,7 +23,10 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
 
     private val flightNumber: Int by argument(FLIGHT_NUMBER_KEY)
 
-    private val imageAdapter = ImageAdapter(::onImageClicked)
+    private val imageAdapter =
+        ImageAdapter(
+            ::onImageClicked
+        )
 
     @InjectPresenter
     internal lateinit var presenter: LaunchDetailsImagesPresenter

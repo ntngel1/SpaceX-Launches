@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details_resources
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.resources
 
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +10,7 @@ import androidx.core.os.bundleOf
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.common.recyclerview.ListMarginItemDecoration
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.recyclerview.ResourceLinkAdapter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview.ResourceLinkAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
 import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
 import com.ntngel1.spacexlaunches.domain.entity.ResourceLinkEntity

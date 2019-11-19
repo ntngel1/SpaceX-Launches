@@ -1,33 +1,33 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.recyclerview
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.utils.loadImage
+import kotlinx.android.synthetic.main.item_image_card.view.*
 
-class ImageAdapter(
+class ImageCardAdapter(
     private val onClicked: (position: Int) -> Unit
-) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ImageCardAdapter.ViewHolder>() {
 
-    var imageUrls = emptyList<String>()
+    var images = emptyList<String>()
         set(value) {
             field = value
-            notifyDataSetChanged()
+            notifyDataSetChanged() // TODO DiffUtil?
         }
 
-    override fun getItemCount() = imageUrls.size
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_image, parent, false)
-            .let(::ViewHolder)
+    override fun getItemCount(): Int = images.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(imageUrls[position])
+        holder.bind(images[position])
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_image_card, parent, false)
+            .let { ViewHolder(it) }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -38,7 +38,7 @@ class ImageAdapter(
         }
 
         fun bind(imageUrl: String) {
-            (itemView as ImageView).loadImage(imageUrl)
+            itemView.imageView.loadImage(imageUrl)
         }
     }
 }

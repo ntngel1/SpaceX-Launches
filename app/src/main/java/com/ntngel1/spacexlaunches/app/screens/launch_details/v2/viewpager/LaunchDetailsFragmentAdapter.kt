@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.viewpager
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -8,8 +8,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.ntngel1.spacexlaunches.R
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details_images.LaunchDetailsImagesFragment
-import com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details_resources.LaunchDetailsResourcesFragment
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.images.LaunchDetailsImagesFragment
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.resources.LaunchDetailsResourcesFragment
 import com.ntngel1.spacexlaunches.app.utils.str
 
 class LaunchDetailsFragmentAdapter(

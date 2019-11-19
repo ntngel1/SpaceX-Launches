@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.recyclerview
+package com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images
 
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +21,7 @@ class FullscreenImageAdapter : RecyclerView.Adapter<FullscreenImageAdapter.ViewH
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
             .inflate(R.layout.item_image_fullscreen, parent, false)
-            .let(::ViewHolder)
+            .let { ViewHolder(it) }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(imageUrls[position])

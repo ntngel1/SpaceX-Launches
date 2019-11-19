@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.recyclerview
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -24,7 +24,7 @@ class ResourceLinkAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         LayoutInflater.from(parent.context)
             .inflate(R.layout.item_resource_link, parent, false)
-            .let(::ViewHolder)
+            .let { ViewHolder(it) }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(links[position])
 

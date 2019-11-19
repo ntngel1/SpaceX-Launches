@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images
+package com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

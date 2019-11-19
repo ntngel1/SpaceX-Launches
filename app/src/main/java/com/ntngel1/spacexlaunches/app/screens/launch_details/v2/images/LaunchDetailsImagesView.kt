@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details_images
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.images
 
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy

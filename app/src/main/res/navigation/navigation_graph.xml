@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/launchDetailsFragment"
-        android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.LaunchDetailsV1Fragment"
+        android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.v1.LaunchDetailsV1Fragment"
         android:label="LaunchDetailsFragment" >
 
         <argument
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/launchDetailsKinoplanFragment"
-        android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.LaunchDetailsV2Fragment"
+        android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.v2.LaunchDetailsV2Fragment"
         android:label="LaunchDetailsKinoplanFragment" >
 
         <argument

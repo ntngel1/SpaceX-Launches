@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details
+package com.ntngel1.spacexlaunches.app.screens.launch_details
 
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import moxy.MvpView
