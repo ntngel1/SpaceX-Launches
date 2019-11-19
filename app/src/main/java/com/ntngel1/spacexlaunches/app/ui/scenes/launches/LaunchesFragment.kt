@@ -9,16 +9,31 @@ import androidx.navigation.fragment.findNavController
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.PaginationScrollListener
+import com.ntngel1.spacexlaunches.app.ui.recyclerview.progress_bar.ProgressBarViewBinder
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchAdapter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchItemDecoration
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchesSceneController
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.launch.LaunchViewBinder
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.month.MonthViewBinder
+import com.ntngel1.spacexlaunches.app.ui.viewmodel_recyclerview.common.ViewModelAdapter
 import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launches.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
+import javax.inject.Inject
 
 class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
+
+    @Inject
+    lateinit var launchesSceneController: LaunchesSceneController
+
+    private val launchesAdapter = ViewModelAdapter().apply {
+        registerViewBinder(LaunchViewBinder())
+        registerViewBinder(ProgressBarViewBinder())
+        registerViewBinder(MonthViewBinder())
+    }
 
     @InjectPresenter
     internal lateinit var presenter: LaunchesPresenter
@@ -26,7 +41,10 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     @ProvidePresenter
     fun provideLaunchesPresenter() = App.appComponent.provideLaunchesPresenter()
 
-    private val launchAdapter = LaunchAdapter(::onLaunchClicked)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        App.appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,11 +64,13 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     override fun setLaunches(launches: List<LaunchEntity>) {
-        launchAdapter.setLaunches(launches)
+        launchesSceneController.launches = launches
+        recycler_launches.buildScene()
     }
 
     override fun setIsProgressBarVisible(isVisible: Boolean) {
-        progressBar.setVisibleOrGone(isVisible)
+        launchesSceneController.isProgressBarVisible = isVisible
+        recycler_launches.buildScene()
     }
 
     override fun setIsRefreshing(isRefreshing: Boolean) {
@@ -74,8 +94,10 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     private fun setupRecyclerView() {
-        with(launchRecyclerView) {
-            adapter = launchAdapter
+        with(recycler_launches) {
+            adapter = launchesAdapter
+
+            attachSceneController(launchesSceneController)
             addItemDecoration(LaunchItemDecoration())
 
             val paginationScrollListener = PaginationScrollListener(
@@ -85,6 +107,8 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
             addOnScrollListener(paginationScrollListener)
         }
+
+        launchesSceneController.onLaunchClicked = ::onLaunchClicked
     }
 
     private fun onLaunchClicked(launch: LaunchEntity) {

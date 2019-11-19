@@ -8,11 +8,15 @@ import moxy.viewstate.strategy.StateStrategyType
 
 interface LaunchesView : MvpView {
 
+    // RecyclerView
+
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun setLaunches(launches: List<LaunchEntity>)
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun setIsProgressBarVisible(isVisible: Boolean)
+
+    // Fragment
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun setIsRefreshing(isRefreshing: Boolean)

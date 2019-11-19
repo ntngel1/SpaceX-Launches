@@ -6,6 +6,6 @@ data class LaunchViewModel(
     override val id: String,
     val title: String,
     val launchDate: String,
-    val imageUrl: String,
+    val imageUrl: String?,
     val onClicked: () -> Unit
 ) : ViewModel

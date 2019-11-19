@@ -5,6 +5,7 @@ import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.La
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.LaunchDetailsPresenter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details_images.LaunchDetailsImagesPresenter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details_resources.LaunchDetailsResourcesPresenter
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.LaunchesFragment
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.LaunchesPresenter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchAdapter
 import com.ntngel1.spacexlaunches.app.ui.scenes.main.MainPresenter
@@ -17,6 +18,7 @@ interface AppComponent {
     fun inject(target: LaunchAdapter)
     fun inject(target: LaunchDetailsFragment)
     fun inject(target: LaunchDetailsKinoplanFragment)
+    fun inject(target: LaunchesFragment)
 
     fun provideMainPresenter(): MainPresenter
     fun provideLaunchesPresenter(): LaunchesPresenter
