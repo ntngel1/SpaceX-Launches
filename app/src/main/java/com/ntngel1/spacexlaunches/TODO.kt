@@ -8,3 +8,4 @@ package com.ntngel1.spacexlaunches
 // TODO Locale datetime
 // TODO Base RecyclerView.Adapter?
 // TODO Прозрачный статусбар
+// TODO item_launch or item_launches_launch
