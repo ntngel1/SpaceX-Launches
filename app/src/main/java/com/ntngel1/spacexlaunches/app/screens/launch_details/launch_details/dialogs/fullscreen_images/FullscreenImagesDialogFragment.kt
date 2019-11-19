@@ -1,5 +1,6 @@
 package com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.dialogs.fullscreen_images
 
+import android.app.Dialog
 import android.graphics.Color
 import android.os.Bundle
 import android.view.*
@@ -20,7 +21,7 @@ class FullscreenImagesDialogFragment : DialogFragment() {
     )
 
     init {
-        setStyle(STYLE_NO_TITLE, android.R.style.Theme_Black_NoTitleBar)
+        setStyle(STYLE_NORMAL, android.R.style.Theme_Black_NoTitleBar)
     }
 
     override fun onCreateView(

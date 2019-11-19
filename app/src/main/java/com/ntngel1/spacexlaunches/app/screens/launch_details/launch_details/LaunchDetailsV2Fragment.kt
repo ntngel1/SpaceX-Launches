@@ -19,7 +19,7 @@ import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.app.utils.str
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
-import kotlinx.android.synthetic.main.fragment_launch_details_kinoplan.*
+import kotlinx.android.synthetic.main.fragment_launch_details_v2.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -51,7 +51,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_launch_details_kinoplan, container, false)
+    ): View? = inflater.inflate(R.layout.fragment_launch_details_v2, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
