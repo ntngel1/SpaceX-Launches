@@ -102,6 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabSelectedTextColor="@android:color/white"
+            android:fitsSystemWindows="true"
             app:tabTextColor="@color/colorWhite75" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -110,6 +111,7 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

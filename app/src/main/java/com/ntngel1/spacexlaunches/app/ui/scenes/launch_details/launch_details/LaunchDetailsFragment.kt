@@ -18,10 +18,7 @@ import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.di
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.Image
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageCardAdapter
-import com.ntngel1.spacexlaunches.app.utils.loadImage
-import com.ntngel1.spacexlaunches.app.utils.buildHtmlLinks
-import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
-import com.ntngel1.spacexlaunches.app.utils.setupToolbar
+import com.ntngel1.spacexlaunches.app.utils.*
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details.*
 import moxy.MvpAppCompatFragment
@@ -78,14 +75,14 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
         setupImagesRecyclerView()
     }
 
-    private fun setupImagesRecyclerView() {
-        imagesRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    override fun onResume() {
+        super.onResume()
+        setTranslucentStatusBar(true)
+    }
 
-        imagesRecyclerView.adapter = imageCardAdapter
-        imagesRecyclerView.addItemDecoration(CarouselMarginItemDecoration())
-
-        StartSnapHelper().attachToRecyclerView(imagesRecyclerView)
+    override fun onPause() {
+        super.onPause()
+        setTranslucentStatusBar(false)
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
@@ -124,6 +121,16 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
             .show()
 
         findNavController().navigateUp()
+    }
+
+    private fun setupImagesRecyclerView() {
+        imagesRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        imagesRecyclerView.adapter = imageCardAdapter
+        imagesRecyclerView.addItemDecoration(CarouselMarginItemDecoration())
+
+        StartSnapHelper().attachToRecyclerView(imagesRecyclerView)
     }
 
     private fun onFlickrImageClicked(position: Int) {
