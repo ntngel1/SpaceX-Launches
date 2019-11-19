@@ -9,8 +9,8 @@ class AspectRatioImageView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : ImageView(context, attrs, defStyleAttr) {
 
-    private var widthMultiplier = 16F
-    private var heightMultiplier = 9F
+    private var widthMultiplier = DEFAULT_WIDTH_MULTIPLIER
+    private var heightMultiplier = DEFAULT_HEIGHT_MULTIPLIER
 
     init {
         attrs?.let { attrs ->
@@ -50,6 +50,7 @@ class AspectRatioImageView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_ASPECT_RATIO = "16/9"
+        private const val DEFAULT_WIDTH_MULTIPLIER = 1f
+        private const val DEFAULT_HEIGHT_MULTIPLIER = 1f
     }
 }

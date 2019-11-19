@@ -78,9 +78,8 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     override fun openLaunchDetailsScene(flightNumber: Int) {
-        // Fixme Kostil
         if (flightNumber % 2 == 0) {
-            LaunchesFragmentDirections.openLaunchDetailsScene(flightNumber)
+            LaunchesFragmentDirections.openLaunchDetailsLive3Screen(flightNumber)
                 .let(findNavController()::navigate)
         } else {
             LaunchesFragmentDirections.openLaunchDetailsKinoplanScreen(flightNumber)

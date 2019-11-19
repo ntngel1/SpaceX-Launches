@@ -56,10 +56,10 @@ class LaunchesPresenter @Inject constructor(
             .doOnSubscribe {
                 isLoading = true
 
-                if (offset > 0) {
-                    viewState.setIsProgressBarVisible(true)
-                } else {
+                if (isLoadingFirstPage()) {
                     viewState.setIsRefreshing(true)
+                } else {
+                    viewState.setIsProgressBarVisible(true)
                 }
             }
             .doOnSuccess { fetchedLaunches ->
@@ -72,7 +72,7 @@ class LaunchesPresenter @Inject constructor(
                 viewState.setIsRefreshing(false)
             }
             .subscribe({ fetchedLaunches ->
-                offset += LAUNCHES_LIMIT
+                offset += fetchedLaunches.size
 
                 if (fetchedLaunches.isEmpty()) {
                     didLoadAllData = true
@@ -83,6 +83,8 @@ class LaunchesPresenter @Inject constructor(
             })
             .disposeOnDestroy()
     }
+
+    private fun isLoadingFirstPage() = offset == 0
 
     companion object {
         const val LAUNCHES_LIMIT = 10
