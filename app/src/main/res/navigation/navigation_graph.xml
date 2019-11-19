@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/launchDetailsKinoplanFragment"
-        android:name="com.ntngel1.spacexlaunches.app.ui.screens.launch_details.v1.LaunchDetailsKinoplanFragment"
+        android:name="com.ntngel1.spacexlaunches.app.ui.screens.launch_details.v1.LaunchDetailsV1Fragment"
         android:label="LaunchDetailsKinoplanFragment" >
 
         <argument

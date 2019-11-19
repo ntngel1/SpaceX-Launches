@@ -1,5 +1,6 @@
 package com.ntngel1.spacexlaunches.app.ui.screens.launch_details.v1
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.di.launch_details.v1.LaunchDetailsV1Component
 import com.ntngel1.spacexlaunches.app.ui.screens.launch_details.LaunchDetailsPresenter
 import com.ntngel1.spacexlaunches.app.ui.screens.launch_details.LaunchDetailsView
 import com.ntngel1.spacexlaunches.app.ui.screens.launch_details.v1.dialogs.fullscreen_images.FullscreenImagesDialogFragment
@@ -28,10 +30,12 @@ import moxy.presenter.ProvidePresenter
 import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
-class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
+class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     LaunchDetailsView {
 
-    private val args: LaunchDetailsKinoplanFragmentArgs by navArgs()
+    private val args: LaunchDetailsV1FragmentArgs by navArgs()
+
+    private lateinit var component: LaunchDetailsV1Component
 
     @Inject
     lateinit var dateTimeFormatter: DateTimeFormatter
@@ -40,11 +44,16 @@ class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
     internal lateinit var presenter: LaunchDetailsPresenter
 
     @ProvidePresenter
-    fun provideLaunchDetailsPresenter() = App.appComponent.provideLaunchDetailsPresenter()
+    fun providePresenter() = component.presenter
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        component = App.appComponent.launchDetailsV1ComponentBuilder.build()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        App.appComponent.inject(this)
+        component.inject(this)
 
         presenter.launchId = args.launchId
     }
