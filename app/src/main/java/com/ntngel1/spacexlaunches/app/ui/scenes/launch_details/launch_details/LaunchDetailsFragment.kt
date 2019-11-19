@@ -132,8 +132,6 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
 
     private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
         toolbar.title = launch.missionName
-        /*nameTextView.text = launch.missionName
-        nameTextView.setVisibleOrGone(true)*/
 
         text_launch_item_launch_date.text = launch.launchDate.format(dateTimeFormatter)
         text_launch_item_launch_date.setVisibleOrGone(true)
@@ -160,12 +158,14 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
     }
 
     private fun showImages(launch: LaunchEntity) {
-        if (launch.links.flickrImages.isNotEmpty()) {
+        val hasImages = launch.links.flickrImages.isNotEmpty()
+
+        if (hasImages) {
             imageCardAdapter.images = launch.links.flickrImages
-            imagesRecyclerView.setVisibleOrGone(true)
-        } else {
-            imagesRecyclerView.setVisibleOrGone(false)
         }
+
+        imagesRecyclerView.setVisibleOrGone(hasImages)
+        text_images.setVisibleOrGone(hasImages)
     }
 
     private fun showLinks(launch: LaunchEntity) {
@@ -178,10 +178,14 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
             )
         )
 
-        if (linksText.isNotBlank()) {
+        val hasLinks = linksText.isNotBlank()
+
+        if (hasLinks) {
             linksTextView.text = Html.fromHtml(linksText)
             linksTextView.movementMethod = LinkMovementMethod.getInstance()
-            linksTextView.setVisibleOrGone(true)
         }
+
+        text_resources.setVisibleOrGone(hasLinks)
+        linksTextView.setVisibleOrGone(hasLinks)
     }
 }
