@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/launchesFragment"
-        android:name="com.ntngel1.spacexlaunches.app.ui.scenes.launches.LaunchesFragment"
+        android:name="com.ntngel1.spacexlaunches.app.screens.launches.LaunchesFragment"
         android:label="LaunchesFragment" >
 
         <action
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/launchDetailsFragment"
-        android:name="com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.LaunchDetailsFragment"
+        android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.LaunchDetailsV1Fragment"
         android:label="LaunchDetailsFragment" >
 
         <argument
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/launchDetailsKinoplanFragment"
-        android:name="com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.LaunchDetailsKinoplanFragment"
+        android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.launch_details.LaunchDetailsV2Fragment"
         android:label="LaunchDetailsKinoplanFragment" >
 
         <argument

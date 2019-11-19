@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.ntngel1.spacexlaunches.app.ui.viewmodel_recyclerview.ViewModelRecyclerView
+        <com.ntngel1.spacexlaunches.app.common.viewmodel_recyclerview.ViewModelRecyclerView
             android:id="@+id/recycler_launches"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

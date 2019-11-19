@@ -6,11 +6,11 @@ import io.reactivex.Single
 
 class RetrofitLaunchGateway(private val spaceXApi: SpaceXApi) : LaunchGateway {
 
-    override fun getLaunchesWithDescendingLaunchDate(offset: Int, limit: Int): Single<List<LaunchEntity>> {
-        return spaceXApi.getLaunchesWithDescendingLaunchDate(offset, limit)
-    }
+    override fun getLaunchesWithDescendingLaunchDate(offset: Int, limit: Int) =
+        spaceXApi.getLaunchesWithDescendingLaunchDate(offset, limit)
 
-    override fun getLaunchByFlightNumber(flightNumber: Int): Single<LaunchEntity> {
-        return spaceXApi.getLaunchByFlightNumber(flightNumber)
-    }
+
+    override fun getLaunchByFlightNumber(flightNumber: Int) =
+        spaceXApi.getLaunchByFlightNumber(flightNumber)
+
 }
