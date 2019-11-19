@@ -49,7 +49,7 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
     }
 
     override fun setIsLoading(isLoading: Boolean) {
-        progressBar.setVisibleOrGone(isLoading)
+        progress_bar_launch_details.setVisibleOrGone(isLoading)
         recycler_links.setVisibleOrGone(!isLoading)
     }
 

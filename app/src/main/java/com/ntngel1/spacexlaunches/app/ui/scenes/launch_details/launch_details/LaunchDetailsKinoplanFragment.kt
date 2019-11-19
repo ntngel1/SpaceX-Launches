@@ -5,11 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesDialogFragment
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.FullscreenImagesParams
+import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.dialogs.fullscreen_images.Image
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.viewpager.LaunchDetailsFragmentAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 import com.ntngel1.spacexlaunches.app.utils.setupToolbar
@@ -60,6 +64,10 @@ class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
         }
 
         setupViewPager()
+
+        image_mission_patch.setOnClickListener {
+            presenter.onMissionPatchClicked()
+        }
     }
 
     private fun setupViewPager() {
@@ -84,7 +92,12 @@ class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
     }
 
     override fun showImageWithTitle(imageUrl: String, title: String) {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val params = FullscreenImagesParams(
+            images = listOf(Image(url = imageUrl, title = title))
+        )
+
+        FullscreenImagesDialogFragment.newInstance(params)
+            .show(childFragmentManager, null)
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
@@ -92,6 +105,9 @@ class LaunchDetailsKinoplanFragment : MvpAppCompatFragment(),
     }
 
     override fun navigateBackWithLoadingError() {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Toast.makeText(context, getString(R.string.unableToLoadLaunchDetails), Toast.LENGTH_LONG)
+            .show()
+
+        findNavController().navigateUp()
     }
 }

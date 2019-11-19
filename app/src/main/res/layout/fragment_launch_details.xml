@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:statusBarBackground="@android:color/transparent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    app:statusBarBackground="@android:color/transparent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -95,13 +95,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ProgressBar
+                android:id="@+id/progress_bar_launch_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp" />
+
             <TextView
                 android:id="@+id/text_resources"
                 style="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:text="@string/resources" />
 
@@ -110,10 +117,10 @@
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 tools:text="Reddit\nYouTube\nWikipedia\nArticle"
                 tools:visibility="visible" />
 
@@ -122,8 +129,8 @@
                 style="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:text="@string/images" />
 
@@ -134,12 +141,6 @@
                 android:layout_marginTop="16dp"
                 android:clipToPadding="false"
                 android:paddingBottom="8dp" />
-
-            <!-- TODO Сделать что-нибудь с прогресс-баром, мб ShimmerLayout? -->
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

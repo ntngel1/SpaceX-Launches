@@ -86,7 +86,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
-        progressBar.setVisibleOrGone(isVisible)
+        progress_bar_launch_details.setVisibleOrGone(isVisible)
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
