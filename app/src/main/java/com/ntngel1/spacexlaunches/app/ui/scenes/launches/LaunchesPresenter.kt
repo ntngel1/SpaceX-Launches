@@ -1,5 +1,6 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launches
 
+import com.ntngel1.spacexlaunches.app.ui.base.BasePresenter
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import com.ntngel1.spacexlaunches.domain.gateway.LaunchGateway
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,15 +13,13 @@ import javax.inject.Inject
 @InjectViewState
 class LaunchesPresenter @Inject constructor(
     private val launchGateway: LaunchGateway
-) : MvpPresenter<LaunchesView>() {
+) : BasePresenter<LaunchesView>() {
 
     private val launches = arrayListOf<LaunchEntity>()
 
     private var offset: Int = 0
     private var didLoadAllData = false
     private var isLoading = false
-
-    private val compositeDisposable = CompositeDisposable()
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
@@ -82,7 +81,7 @@ class LaunchesPresenter @Inject constructor(
                 viewState.showLoadingError()
                 it.printStackTrace()
             })
-            .let(compositeDisposable::add)
+            .disposeOnDestroy()
     }
 
     companion object {

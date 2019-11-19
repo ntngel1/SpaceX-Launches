@@ -16,6 +16,5 @@
     <string name="images">Images</string>
     <string name="resources">Resources</string>
     <string name="externalLink">External Link</string>
-    <string name="yearFormat">%1$d year</string>
 
 </resources>

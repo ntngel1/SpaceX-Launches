@@ -21,7 +21,7 @@ class YearViewBinder : ViewBinder<YearViewModel, YearViewModelDiffer, Nothing, N
     override fun bind(viewModel: YearViewModel, itemView: View, hasViewState: Boolean) {
         super.bind(viewModel, itemView, hasViewState)
         with(itemView) {
-            text_year.text = context.str(R.string.yearFormat, viewModel.year)
+            text_year.text = viewModel.year.toString()
         }
     }
 }

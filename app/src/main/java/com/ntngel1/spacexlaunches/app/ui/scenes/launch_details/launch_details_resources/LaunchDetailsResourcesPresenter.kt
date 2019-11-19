@@ -31,7 +31,7 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
     }
 
     private fun fetchLaunch() {
-        compositeDisposable += launchGateway.getLaunchByFlightNumber(flightNumber)
+        launchGateway.getLaunchByFlightNumber(flightNumber)
             .flatMap { launch ->
                 fetchLinks(launch)
             }
@@ -49,6 +49,7 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
                 // TODO Handle error
                 it.printStackTrace()
             })
+            .disposeOnDestroy()
     }
 
     private fun fetchLinks(launch: LaunchEntity): Single<List<ResourceLinkEntity>> {

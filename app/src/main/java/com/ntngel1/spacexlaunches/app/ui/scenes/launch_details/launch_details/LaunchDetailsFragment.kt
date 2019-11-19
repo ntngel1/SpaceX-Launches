@@ -20,7 +20,7 @@ import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.di
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.*
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
-import kotlinx.android.synthetic.main.fragment_launch_details.*
+import kotlinx.android.synthetic.main.fragment_launch_details_live3.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
@@ -58,7 +58,7 @@ class LaunchDetailsFragment : MvpAppCompatFragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_launch_details, container, false)
+        return inflater.inflate(R.layout.fragment_launch_details_live3, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
