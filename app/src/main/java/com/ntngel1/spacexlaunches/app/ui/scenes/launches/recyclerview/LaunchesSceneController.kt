@@ -2,7 +2,7 @@ package com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview
 
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.progress_bar.ProgressBarViewModel
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.launch.LaunchViewModel
-import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.month.MonthViewModel
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.year.YearViewModel
 import com.ntngel1.spacexlaunches.app.ui.viewmodel_recyclerview.common.SceneController
 import com.ntngel1.spacexlaunches.app.ui.viewmodel_recyclerview.common.ViewModel
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
@@ -26,7 +26,7 @@ class LaunchesSceneController @Inject constructor(
             if (launch.launchDate.year < lastYear) {
                 lastYear = launch.launchDate.year
 
-                MonthViewModel(id = "year$lastYear", month = lastYear.toString())
+                YearViewModel(id = "year$lastYear", year = lastYear)
                     .let(viewModels::add)
             }
 

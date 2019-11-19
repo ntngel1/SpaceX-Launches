@@ -10,13 +10,11 @@ import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.PaginationScrollListener
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.progress_bar.ProgressBarViewBinder
-import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchAdapter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchesSceneController
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.launch.LaunchViewBinder
-import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.month.MonthViewBinder
+import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.year.YearViewBinder
 import com.ntngel1.spacexlaunches.app.ui.viewmodel_recyclerview.common.ViewModelAdapter
-import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launches.*
 import moxy.MvpAppCompatFragment
@@ -32,7 +30,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     private val launchesAdapter = ViewModelAdapter().apply {
         registerViewBinder(LaunchViewBinder())
         registerViewBinder(ProgressBarViewBinder())
-        registerViewBinder(MonthViewBinder())
+        registerViewBinder(YearViewBinder())
     }
 
     @InjectPresenter
