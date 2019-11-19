@@ -1,9 +1,0 @@
-package com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.year
-
-import com.ntngel1.spacexlaunches.app.ui.viewmodel_recyclerview.common.ViewModelDiffer
-
-class YearViewModelDiffer : ViewModelDiffer<YearViewModel, Nothing>() {
-
-    override fun areContentsTheSame(old: YearViewModel, new: YearViewModel) =
-        old.year == new.year
-}
