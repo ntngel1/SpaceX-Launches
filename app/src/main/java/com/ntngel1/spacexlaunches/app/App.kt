@@ -1,8 +1,8 @@
 package com.ntngel1.spacexlaunches.app
 
 import android.app.Application
-import com.ntngel1.spacexlaunches.app.di.AppComponent
-import com.ntngel1.spacexlaunches.app.di.DaggerAppComponent
+import com.ntngel1.spacexlaunches.app.di.application.AppComponent
+import com.ntngel1.spacexlaunches.app.di.application.DaggerAppComponent
 
 class App : Application() {
 

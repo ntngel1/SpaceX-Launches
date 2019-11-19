@@ -1,5 +1,6 @@
 package com.ntngel1.spacexlaunches.app.ui.scenes.launches
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.di.launches.LaunchesScreenComponent
+import com.ntngel1.spacexlaunches.app.di.launches.RecyclerViewLaunchesScreenModule
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.ListMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.PaginationScrollListener
 import com.ntngel1.spacexlaunches.app.ui.recyclerview.progress_bar.ProgressBarViewBinder
@@ -26,24 +29,32 @@ import javax.inject.Inject
 
 class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
+    lateinit var component: LaunchesScreenComponent
+
     @Inject
     lateinit var launchesSceneController: LaunchesSceneController
 
-    private val launchesAdapter = ViewModelAdapter().apply {
-        registerViewBinder(LaunchViewBinder())
-        registerViewBinder(ProgressBarViewBinder())
-        registerViewBinder(YearViewBinder())
-    }
+    @Inject
+    lateinit var launchesAdapter: ViewModelAdapter
 
     @InjectPresenter
     internal lateinit var presenter: LaunchesPresenter
 
     @ProvidePresenter
-    fun provideLaunchesPresenter() = App.appComponent.provideLaunchesPresenter()
+    fun provideLaunchesPresenter(): LaunchesPresenter {
+        return component.presenter
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        component = App.appComponent.launchesScreenComponentBuilder
+            .recyclerViewModule(RecyclerViewLaunchesScreenModule(::onLoadMoreLaunches))
+            .build()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        App.appComponent.inject(this)
+        component.inject(this)
     }
 
     override fun onCreateView(
@@ -97,22 +108,8 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
             adapter = launchesAdapter
 
             attachSceneController(launchesSceneController)
-
-            val marginItemDecoration = ListMarginItemDecoration(
-                betweenElementsMargin = 8.dp,
-                startMargin = 8.dp,
-                leftMargin = 8.dp,
-                rightMargin = 8.dp
-            )
-
-            addItemDecoration(marginItemDecoration)
-
-            val paginationScrollListener = PaginationScrollListener(
-                LaunchesPresenter.LAUNCHES_LIMIT,
-                presenter::onLoadMoreLaunches
-            )
-
-            addOnScrollListener(paginationScrollListener)
+            addItemDecoration(component.marginItemDecoration)
+            addOnScrollListener(component.paginationScrollListener)
         }
 
         launchesSceneController.onLaunchClicked = ::onLaunchClicked
@@ -120,5 +117,9 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
     private fun onLaunchClicked(launch: LaunchEntity) {
         presenter.onLaunchClicked(launch)
+    }
+
+    private fun onLoadMoreLaunches() {
+        presenter.onLoadMoreLaunches()
     }
 }

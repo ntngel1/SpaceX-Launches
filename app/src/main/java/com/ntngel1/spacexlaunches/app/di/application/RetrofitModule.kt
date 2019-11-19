@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.di
+package com.ntngel1.spacexlaunches.app.di.application
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -13,19 +13,18 @@ import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Singleton
 
 @Module
 class RetrofitModule {
 
     @Provides
-    @Singleton
+    @AppScope
     fun provideSpaceXApi(retrofit: Retrofit): SpaceXApi {
         return retrofit.create(SpaceXApi::class.java)
     }
 
     @Provides
-    @Singleton
+    @AppScope
     fun provideRetrofit(converterFactory: Converter.Factory, client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.SERVER_URL)
@@ -36,13 +35,13 @@ class RetrofitModule {
     }
 
     @Provides
-    @Singleton
+    @AppScope
     fun provideConverterFactory(gson: Gson): Converter.Factory {
         return GsonConverterFactory.create(gson)
     }
 
     @Provides
-    @Singleton
+    @AppScope
     fun provideGson(): Gson {
         return GsonBuilder()
             .let(ThreeTenGsonAdapter::registerZonedDateTime)
@@ -50,7 +49,7 @@ class RetrofitModule {
     }
 
     @Provides
-    @Singleton
+    @AppScope
     fun provideOkHttpClient(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY

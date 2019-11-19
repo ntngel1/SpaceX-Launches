@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.di
+package com.ntngel1.spacexlaunches.app.di.application
 
 import com.ntngel1.spacexlaunches.domain.gateway.LaunchGateway
 import com.ntngel1.spacexlaunches.domain.gateway.ResourceLinkGateway
@@ -7,17 +7,16 @@ import com.ntngel1.spacexlaunches.gateway.retrofit.RetrofitLaunchGateway
 import com.ntngel1.spacexlaunches.gateway.retrofit.SpaceXApi
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
 
 @Module(includes = [RetrofitModule::class])
 class GatewayModule {
 
     @Provides
-    @Singleton
+    @AppScope
     fun provideLaunchGateway(spaceXApi: SpaceXApi): LaunchGateway =
         RetrofitLaunchGateway(spaceXApi)
 
     @Provides
-    @Singleton
+    @AppScope
     fun provideResourceLinkGateway(): ResourceLinkGateway = JsoupResourceLinkGateway()
 }
