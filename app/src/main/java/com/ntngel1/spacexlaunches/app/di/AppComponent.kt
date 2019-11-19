@@ -7,7 +7,6 @@ import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details_im
 import com.ntngel1.spacexlaunches.app.ui.scenes.launch_details.launch_details_resources.LaunchDetailsResourcesPresenter
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.LaunchesFragment
 import com.ntngel1.spacexlaunches.app.ui.scenes.launches.LaunchesPresenter
-import com.ntngel1.spacexlaunches.app.ui.scenes.launches.recyclerview.LaunchAdapter
 import com.ntngel1.spacexlaunches.app.ui.scenes.main.MainPresenter
 import dagger.Component
 import javax.inject.Singleton
@@ -15,7 +14,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [GatewayModule::class, DateTimeModule::class])
 interface AppComponent {
-    fun inject(target: LaunchAdapter)
     fun inject(target: LaunchDetailsFragment)
     fun inject(target: LaunchDetailsKinoplanFragment)
     fun inject(target: LaunchesFragment)
