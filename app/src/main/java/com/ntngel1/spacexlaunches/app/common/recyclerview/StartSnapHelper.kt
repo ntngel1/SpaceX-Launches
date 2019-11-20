@@ -31,6 +31,7 @@ class StartSnapHelper : LinearSnapHelper() {
         return out
     }
 
+    // TODO when
     override fun findSnapView(layoutManager: RecyclerView.LayoutManager) =
         if (layoutManager is LinearLayoutManager) {
             if (layoutManager.canScrollHorizontally()) {
@@ -64,6 +65,7 @@ class StartSnapHelper : LinearSnapHelper() {
 
         val child = layoutManager.findViewByPosition(firstChild)
 
+        // TODO when
         if (helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 &&
             helper.getDecoratedEnd(child) > 0
         ) {
@@ -77,6 +79,7 @@ class StartSnapHelper : LinearSnapHelper() {
         }
     }
 
+    // TODO Remove let
     private fun getVerticalHelper(layoutManager: RecyclerView.LayoutManager) =
         verticalHelper?.let { verticalHelper ->
             verticalHelper

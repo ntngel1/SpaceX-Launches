@@ -91,7 +91,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
-        progressbar_launch_details_v1.setVisibleOrGone(isVisible)
+        progressbar_launch_details_v1.visibleOrGone(isVisible)
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
@@ -150,7 +150,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
         toolbar_launch_details_v1.title = launch.missionName
 
         text_launch_details_v1_launch_date.text = launch.launchDate.format(dateTimeFormatter)
-        text_launch_details_v1_launch_date.setVisibleOrGone(true)
+        text_launch_details_v1_launch_date.visibleOrGone(true)
     }
 
     private fun showMissionPatch(launch: LaunchEntity) {
@@ -164,7 +164,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
         }
 
         text_launch_details_v1_description.text = description
-        text_launch_details_v1_description.setVisibleOrGone(true)
+        text_launch_details_v1_description.visibleOrGone(true)
     }
 
     private fun showImages(launch: LaunchEntity) {
@@ -174,33 +174,30 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
             imageCardAdapter.images = launch.links.flickrImages
         }
 
-        recycler_launch_details_v1_images.setVisibleOrGone(hasImages)
-        text_launch_details_v1_stub_images.setVisibleOrGone(!hasImages)
+        recycler_launch_details_v1_images.visibleOrGone(hasImages)
+        text_launch_details_v1_stub_images.visibleOrGone(!hasImages)
     }
 
     private fun showLinks(launch: LaunchEntity) {
         val linksText = buildHtmlLinks(
-            listOf(
-                launch.links.redditMedia to resources.getString(R.string.launch_details_v1_reddit_media),
-                launch.links.article to resources.getString(R.string.launch_details_v1_article),
-                launch.links.wikipedia to resources.getString(R.string.launch_details_v1_wikipedia),
-                launch.links.youtube to resources.getString(R.string.launch_details_v1_youtube)
-            )
+            with(launch.links) {
+                listOf(
+                    redditMedia to str(R.string.launch_details_v1_reddit_media),
+                    article to str(R.string.launch_details_v1_article),
+                    wikipedia to str(R.string.launch_details_v1_wikipedia),
+                    youtube to str(R.string.launch_details_v1_youtube)
+                )
+            }
         )
 
         val hasLinks = linksText.isNotBlank()
 
         if (hasLinks) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                text_launch_details_v1_links.text = Html.fromHtml(linksText)
-            } else {
-                text_launch_details_v1_links.text = Html.fromHtml(linksText, 0)
-            }
-
+            text_launch_details_v1_links.text = linksText.fromHtml()
             text_launch_details_v1_links.movementMethod = LinkMovementMethod.getInstance()
         }
 
-        text_launch_details_v1_links.setVisibleOrGone(hasLinks)
-        text_launch_details_v1_stub_resources.setVisibleOrGone(!hasLinks)
+        text_launch_details_v1_links.visibleOrGone(hasLinks)
+        text_launch_details_v1_stub_resources.visibleOrGone(!hasLinks)
     }
 }

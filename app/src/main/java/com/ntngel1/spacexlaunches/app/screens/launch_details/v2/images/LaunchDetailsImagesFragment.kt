@@ -14,7 +14,7 @@ import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Image
 import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview.ImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
 import com.ntngel1.spacexlaunches.app.utils.dp
-import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
+import com.ntngel1.spacexlaunches.app.utils.visibleOrGone
 import kotlinx.android.synthetic.main.fragment_launch_details_images.*
 import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
@@ -70,15 +70,15 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
     }
 
     override fun setIsLoadingError(isLoadingError: Boolean) {
-        linearlayout_launch_details_images_loading_error.setVisibleOrGone(isLoadingError)
+        linearlayout_launch_details_images_loading_error.visibleOrGone(isLoadingError)
     }
 
     override fun setIsLoading(isLoading: Boolean) {
-        progressbar_launch_details_images.setVisibleOrGone(isLoading)
+        progressbar_launch_details_images.visibleOrGone(isLoading)
     }
 
     override fun setIsStubVisible(isVisible: Boolean) {
-        text_launch_details_images_stub.setVisibleOrGone(isVisible)
+        text_launch_details_images_stub.visibleOrGone(isVisible)
     }
 
     private fun setupImagesRecyclerView() {

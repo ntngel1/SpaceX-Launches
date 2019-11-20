@@ -6,7 +6,9 @@ import android.widget.ImageView
 import com.ntngel1.spacexlaunches.R
 
 class AspectRatioImageView @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
 ) : ImageView(context, attrs, defStyleAttr) {
 
     private var widthMultiplier = DEFAULT_WIDTH_MULTIPLIER
@@ -25,6 +27,7 @@ class AspectRatioImageView @JvmOverloads constructor(
     }
 
     private fun parseAspectRatio(aspectRatioStr: String?) {
+        // TODO elvis?
         aspectRatioStr?.split('/')
             ?.takeIf { it.size == 2 }
             ?.forEachIndexed { index, value ->
@@ -39,6 +42,7 @@ class AspectRatioImageView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
+        // TODO When
         if (widthMeasureSpec == MeasureSpec.UNSPECIFIED && heightMeasureSpec != MeasureSpec.UNSPECIFIED) {
             val width = (measuredHeight / heightMultiplier * widthMultiplier).toInt()
             setMeasuredDimension(width, measuredHeight)

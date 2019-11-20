@@ -24,6 +24,14 @@ class ListMarginItemDecoration(
         outRect.left = leftMargin
         outRect.right = rightMargin
 
+        // TODO
+        when (position) {
+            0 -> {
+                outRect.top = startMargin
+            }
+
+
+        }
         if (position == 0) {
             outRect.top = startMargin
         }

@@ -12,7 +12,7 @@ import com.ntngel1.spacexlaunches.app.App
 import com.ntngel1.spacexlaunches.app.common.recyclerview.ListMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview.ResourceLinkAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
-import com.ntngel1.spacexlaunches.app.utils.setVisibleOrGone
+import com.ntngel1.spacexlaunches.app.utils.visibleOrGone
 import com.ntngel1.spacexlaunches.domain.entity.ResourceLinkEntity
 import kotlinx.android.synthetic.main.fragment_launch_details_resources.*
 import moxy.MvpAppCompatFragment
@@ -60,16 +60,16 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
             .let(::startActivity)
 
     override fun setIsStubVisible(isVisible: Boolean) {
-        text_launch_details_resources_stub.setVisibleOrGone(isVisible)
+        text_launch_details_resources_stub.visibleOrGone(isVisible)
     }
 
     override fun setIsLoading(isLoading: Boolean) {
-        progressbar_launch_details_resources.setVisibleOrGone(isLoading)
-        recycler_launch_details_resources.setVisibleOrGone(!isLoading)
+        progressbar_launch_details_resources.visibleOrGone(isLoading)
+        recycler_launch_details_resources.visibleOrGone(!isLoading)
     }
 
     override fun setIsLoadingError(isLoadingError: Boolean) {
-        linearlayout_launch_details_resources_loading_error.setVisibleOrGone(isLoadingError)
+        linearlayout_launch_details_resources_loading_error.visibleOrGone(isLoadingError)
     }
 
     private fun setupLinksRecyclerView() {

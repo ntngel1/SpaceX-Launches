@@ -4,7 +4,6 @@ import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
-import androidx.annotation.IdRes
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -23,7 +22,7 @@ fun ImageView.loadImage(url: String?, @DrawableRes placeholder: Int? = R.color.c
 }
 
 fun ImageView.loadImageWithProgressBar(url: String?, progressBar: View) {
-    progressBar.setVisibleOrGone(true)
+    progressBar.visibleOrGone(true)
 
     Glide.with(this)
         .load(url)
@@ -35,7 +34,7 @@ fun ImageView.loadImageWithProgressBar(url: String?, progressBar: View) {
                 target: Target<Drawable>?,
                 isFirstResource: Boolean
             ): Boolean {
-                progressBar.setVisibleOrGone(false)
+                progressBar.visibleOrGone(false)
                 return false
             }
 
@@ -46,7 +45,7 @@ fun ImageView.loadImageWithProgressBar(url: String?, progressBar: View) {
                 dataSource: DataSource?,
                 isFirstResource: Boolean
             ): Boolean {
-                progressBar.setVisibleOrGone(false)
+                progressBar.visibleOrGone(false)
                 return false
             }
 
@@ -64,7 +63,7 @@ fun ImageView.loadImageOrGone(url: String?) {
                 target: Target<Drawable>?,
                 isFirstResource: Boolean
             ): Boolean {
-                setVisibleOrGone(false)
+                visibleOrGone(false)
                 return true
             }
 
@@ -75,7 +74,7 @@ fun ImageView.loadImageOrGone(url: String?) {
                 dataSource: DataSource?,
                 isFirstResource: Boolean
             ): Boolean {
-                setVisibleOrGone(true)
+                visibleOrGone(true)
                 return false
             }
         })

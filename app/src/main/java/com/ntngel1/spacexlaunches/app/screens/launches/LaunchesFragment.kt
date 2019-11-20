@@ -16,6 +16,7 @@ import com.ntngel1.spacexlaunches.app.screens.launches.recyclerview.launch.Launc
 import com.ntngel1.spacexlaunches.app.screens.launches.recyclerview.year.YearViewBinder
 import com.ntngel1.spacexlaunches.app.common.viewmodel_recyclerview.common.ViewModelAdapter
 import com.ntngel1.spacexlaunches.app.utils.dp
+import com.ntngel1.spacexlaunches.app.utils.toast
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launches.*
 import moxy.MvpAppCompatFragment
@@ -87,8 +88,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     override fun showLoadingError() {
-        Toast.makeText(context, getString(R.string.launches_unable_to_load_launches), Toast.LENGTH_LONG)
-            .show()
+        context?.toast(R.string.launches_unable_to_load_launches)
     }
 
     private fun setupRecyclerView() {
