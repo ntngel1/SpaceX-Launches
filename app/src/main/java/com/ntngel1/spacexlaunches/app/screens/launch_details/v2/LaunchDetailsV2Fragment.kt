@@ -57,7 +57,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        toolbar.setupToolbar(
+        toolbar_launch_details_v2.setupToolbar(
             title = str(R.string.launch),
             titleColor = Color.WHITE,
             navigationIconId = R.drawable.ic_arrow_back_white_24dp
@@ -67,30 +67,32 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
 
         setupViewPager()
 
-        image_mission_patch.setOnClickListener {
+        image_launch_details_v2_patch.setOnClickListener {
             presenter.onMissionPatchClicked()
         }
     }
 
     private fun setupViewPager() {
-        pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        pager.adapter = LaunchDetailsFragmentAdapter(args.flightNumber, childFragmentManager, lifecycle)
-        LaunchDetailsFragmentAdapter.getTabLayoutMediator(tab_layout, pager).attach()
+        pager_launch_details_v2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        pager_launch_details_v2.adapter =
+            LaunchDetailsFragmentAdapter(args.flightNumber, childFragmentManager, lifecycle)
+
+        LaunchDetailsFragmentAdapter.getTabLayoutMediator(
+            tablayout_launch_details_v2,
+            pager_launch_details_v2
+        ).attach()
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
-        image_mission_patch.loadImage(launch.links.missionPatchSmall, placeholder = null)
+        image_launch_details_v2_patch.loadImage(launch.links.missionPatchSmall, placeholder = null)
 
-        text_mission_name.text = launch.missionName
-        text_launch_date.text = launch.launchDate.format(dateTimeFormatter)
-        text_description.text = buildString {
+        text_launch_details_v2_mission_name.text = launch.missionName
+        text_launch_details_v2_launch_date.text = launch.launchDate.format(dateTimeFormatter)
+        text_launch_details_v2_description.text = buildString {
             str(R.string.rocketNameFormat, launch.rocket.rocketName).let(::appendln)
             str(R.string.rocketTypeFormat, launch.rocket.rocketType).let(::append)
         }
-    }
-
-    override fun showImagesFullscreen(imageUrls: List<String>, offset: Int) {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun showImageWithTitle(imageUrl: String, title: String) {
@@ -102,14 +104,18 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
             .show(childFragmentManager, null)
     }
 
-    override fun setProgressBarIsVisible(isVisible: Boolean) {
-        //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun navigateBackWithLoadingError() {
         Toast.makeText(context, getString(R.string.unableToLoadLaunchDetails), Toast.LENGTH_LONG)
             .show()
 
         findNavController().navigateUp()
+    }
+
+    override fun setProgressBarIsVisible(isVisible: Boolean) {
+        // NOT USED
+    }
+
+    override fun showImagesFullscreen(imageUrls: List<String>, offset: Int) {
+        // NOT USED
     }
 }
