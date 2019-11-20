@@ -18,9 +18,9 @@ interface AppComponent {
     fun inject(target: LaunchDetailsV2Fragment)
     fun inject(target: LaunchesFragment)
 
-    fun provideMainPresenter(): MainPresenter
-    fun provideLaunchesPresenter(): LaunchesPresenter
-    fun provideLaunchDetailsPresenter(): LaunchDetailsPresenter
-    fun provideLaunchDetailsResourcesPresenter(): LaunchDetailsResourcesPresenter
-    fun provideLaunchDetailsImagesPresenter(): LaunchDetailsImagesPresenter
+    val mainPresenter: MainPresenter
+    val launchesPresenter: LaunchesPresenter
+    val launchDetailsPresenter: LaunchDetailsPresenter
+    val launchDetailsResourcesPresenter: LaunchDetailsResourcesPresenter
+    val launchDetailsImagesPresenter: LaunchDetailsImagesPresenter
 }

@@ -32,8 +32,7 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
     internal lateinit var presenter: LaunchDetailsImagesPresenter
 
     @ProvidePresenter
-    fun provideLaunchDetailsImagesPresenter() =
-        App.appComponent.provideLaunchDetailsImagesPresenter()
+    fun provideLaunchDetailsImagesPresenter() = App.appComponent.launchDetailsImagesPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

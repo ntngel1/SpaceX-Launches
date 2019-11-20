@@ -40,7 +40,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
     internal lateinit var presenter: LaunchDetailsPresenter
 
     @ProvidePresenter
-    fun provideLaunchDetailsPresenter() = App.appComponent.provideLaunchDetailsPresenter()
+    fun provideLaunchDetailsPresenter() = App.appComponent.launchDetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

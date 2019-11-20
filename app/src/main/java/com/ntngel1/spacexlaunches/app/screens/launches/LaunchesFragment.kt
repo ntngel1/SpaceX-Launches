@@ -38,7 +38,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     internal lateinit var presenter: LaunchesPresenter
 
     @ProvidePresenter
-    fun provideLaunchesPresenter() = App.appComponent.provideLaunchesPresenter()
+    fun provideLaunchesPresenter() = App.appComponent.launchesPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

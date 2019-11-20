@@ -13,7 +13,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     internal lateinit var presenter: MainPresenter
 
     @ProvidePresenter
-    fun provideMainPresenter() = App.appComponent.provideMainPresenter()
+    fun provideMainPresenter() = App.appComponent.mainPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
