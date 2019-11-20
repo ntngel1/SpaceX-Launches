@@ -36,7 +36,7 @@ class FullscreenImagesDialogFragment : DialogFragment() {
         val toolbarTitle = params.images[params.offset].title
             ?: context?.str(R.string.imageFormat, params.offset + 1)
 
-        toolbar.setupToolbar(
+        toolbar_fullscreen_images.setupToolbar(
             title = toolbarTitle,
             titleColor = Color.WHITE,
             navigationIconId = R.drawable.ic_arrow_back_white_24dp
@@ -48,21 +48,21 @@ class FullscreenImagesDialogFragment : DialogFragment() {
     }
 
     private fun setupImagesRecyclerView() {
-        imagesRecyclerView.adapter = FullscreenImageAdapter()
+        recycler_fullscreen_images.adapter = FullscreenImageAdapter()
             .apply {
             imageUrls = params.images.map { it.url }
         }
 
 
         val scrollListener = FullscreenImagesScrollListener { currentPosition ->
-            toolbar.title = params.images[currentPosition].title
+            toolbar_fullscreen_images.title = params.images[currentPosition].title
                 ?: str(R.string.imageFormat, currentPosition + 1)
         }
 
-        imagesRecyclerView.addOnScrollListener(scrollListener)
-        PagerSnapHelper().attachToRecyclerView(imagesRecyclerView)
+        recycler_fullscreen_images.addOnScrollListener(scrollListener)
+        PagerSnapHelper().attachToRecyclerView(recycler_fullscreen_images)
 
-        imagesRecyclerView.scrollToPosition(params.offset)
+        recycler_fullscreen_images.scrollToPosition(params.offset)
     }
 
     companion object {

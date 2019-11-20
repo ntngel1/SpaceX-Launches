@@ -14,7 +14,7 @@ class LaunchDetailsPresenter @Inject constructor(
 ): BasePresenter<LaunchDetailsView>() {
 
     // Args
-    var launchId = -1
+    var flightNumber = -1
 
     lateinit var launch: LaunchEntity
 
@@ -34,7 +34,7 @@ class LaunchDetailsPresenter @Inject constructor(
     }
 
     private fun loadLaunch() {
-        launchGateway.getLaunchByFlightNumber(launchId)
+        launchGateway.getLaunchByFlightNumber(flightNumber)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {

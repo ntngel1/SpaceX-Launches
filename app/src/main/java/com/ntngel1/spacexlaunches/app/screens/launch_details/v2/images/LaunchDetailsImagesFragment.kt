@@ -66,7 +66,7 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
     }
 
     private fun setupImagesRecyclerView() {
-        with(imagesRecyclerView) {
+        with(recycler_launch_details_images) {
             adapter = imageAdapter
 
             val marginItemDecoration = GridMarginItemDecoration(

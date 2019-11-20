@@ -46,7 +46,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
 
-        presenter.launchId = args.flightNumber
+        presenter.flightNumber = args.flightNumber
     }
 
     override fun onCreateView(

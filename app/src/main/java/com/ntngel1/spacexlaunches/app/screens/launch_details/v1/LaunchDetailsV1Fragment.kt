@@ -1,5 +1,6 @@
 package com.ntngel1.spacexlaunches.app.screens.launch_details.v1
 
+import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -52,7 +53,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
 
-        presenter.launchId = args.flightNumber
+        presenter.flightNumber = args.flightNumber
     }
 
     override fun onCreateView(
@@ -66,11 +67,13 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        image_launch_patch.setOnClickListener {
+        image_launch_details_v1_patch.setOnClickListener {
             presenter.onMissionPatchClicked()
         }
 
-        toolbar.setupToolbar(navigationIconId = R.drawable.ic_arrow_back_white_24dp) {
+        toolbar_launch_details_v1.setupToolbar(
+            navigationIconId = R.drawable.ic_arrow_back_white_24dp
+        ) {
             findNavController().navigateUp()
         }
 
@@ -88,7 +91,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     }
 
     override fun setProgressBarIsVisible(isVisible: Boolean) {
-        progress_bar_launch_details.setVisibleOrGone(isVisible)
+        progressbar_launch_details_v1.setVisibleOrGone(isVisible)
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
@@ -126,13 +129,13 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     }
 
     private fun setupImagesRecyclerView() {
-        imagesRecyclerView.layoutManager =
+        recycler_launch_details_v1_images.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        imagesRecyclerView.adapter = imageCardAdapter
-        imagesRecyclerView.addItemDecoration(CarouselMarginItemDecoration())
+        recycler_launch_details_v1_images.adapter = imageCardAdapter
+        recycler_launch_details_v1_images.addItemDecoration(CarouselMarginItemDecoration())
 
-        StartSnapHelper().attachToRecyclerView(imagesRecyclerView)
+        StartSnapHelper().attachToRecyclerView(recycler_launch_details_v1_images)
     }
 
     private fun onFlickrImageClicked(position: Int) {
@@ -140,20 +143,14 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     }
 
     private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
-        toolbar.title = launch.missionName
+        toolbar_launch_details_v1.title = launch.missionName
 
-        text_launch_item_launch_date.text = launch.launchDate.format(dateTimeFormatter)
-        text_launch_item_launch_date.setVisibleOrGone(true)
+        text_launch_details_v1_links.text = launch.launchDate.format(dateTimeFormatter)
+        text_launch_details_v1_resources.setVisibleOrGone(true)
     }
 
     private fun showMissionPatch(launch: LaunchEntity) {
-        if (launch.links.missionPatch != null) {
-            image_launch_patch.loadImage(launch.links.missionPatch)
-        } else {
-            image_launch_patch.setImageResource(R.drawable.placeholder_no_image_available)
-        }
-
-        image_launch_patch.setVisibleOrGone(true)
+        image_launch_details_v1_patch.loadImage(launch.links.missionPatch)
     }
 
     private fun showDescription(launch: LaunchEntity) {
@@ -162,8 +159,8 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
             append(resources.getString(R.string.rocketTypeFormat, launch.rocket.rocketType))
         }
 
-        descriptionTextView.text = description
-        descriptionTextView.setVisibleOrGone(true)
+        text_launch_details_v1_description.text = description
+        text_launch_details_v1_description.setVisibleOrGone(true)
     }
 
     private fun showImages(launch: LaunchEntity) {
@@ -173,8 +170,8 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
             imageCardAdapter.images = launch.links.flickrImages
         }
 
-        imagesRecyclerView.setVisibleOrGone(hasImages)
-        text_images.setVisibleOrGone(hasImages)
+        recycler_launch_details_v1_images.setVisibleOrGone(hasImages)
+        text_launch_details_v1_images.setVisibleOrGone(hasImages)
     }
 
     private fun showLinks(launch: LaunchEntity) {
@@ -190,11 +187,16 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
         val hasLinks = linksText.isNotBlank()
 
         if (hasLinks) {
-            linksTextView.text = Html.fromHtml(linksText)
-            linksTextView.movementMethod = LinkMovementMethod.getInstance()
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                text_launch_details_v1_links.text = Html.fromHtml(linksText)
+            } else {
+                text_launch_details_v1_links.text = Html.fromHtml(linksText, 0)
+            }
+
+            text_launch_details_v1_links.movementMethod = LinkMovementMethod.getInstance()
         }
 
-        text_resources.setVisibleOrGone(hasLinks)
-        linksTextView.setVisibleOrGone(hasLinks)
+        text_launch_details_v1_resources.setVisibleOrGone(hasLinks)
+        text_launch_details_v1_links.setVisibleOrGone(hasLinks)
     }
 }

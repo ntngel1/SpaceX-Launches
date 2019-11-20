@@ -49,8 +49,8 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
     }
 
     override fun setIsLoading(isLoading: Boolean) {
-        progress_bar_launch_details.setVisibleOrGone(isLoading)
-        recycler_links.setVisibleOrGone(!isLoading)
+        progressbar_launch_details_resources.setVisibleOrGone(isLoading)
+        recycler_launch_details_resources.setVisibleOrGone(!isLoading)
     }
 
     override fun setResourceLinks(links: List<ResourceLinkEntity>) {
@@ -62,7 +62,7 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
             .let(::startActivity)
 
     private fun setupLinksRecyclerView() {
-        with(recycler_links) {
+        with(recycler_launch_details_resources) {
             adapter = linksAdapter
             addItemDecoration(ListMarginItemDecoration())
         }
