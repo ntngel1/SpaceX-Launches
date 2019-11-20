@@ -46,7 +46,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
 
-        presenter.launchId = args.launchId
+        presenter.launchId = args.flightNumber
     }
 
     override fun onCreateView(
@@ -74,7 +74,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
 
     private fun setupViewPager() {
         pager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        pager.adapter = LaunchDetailsFragmentAdapter(args.launchId, childFragmentManager, lifecycle)
+        pager.adapter = LaunchDetailsFragmentAdapter(args.flightNumber, childFragmentManager, lifecycle)
         LaunchDetailsFragmentAdapter.getTabLayoutMediator(tab_layout, pager).attach()
     }
 

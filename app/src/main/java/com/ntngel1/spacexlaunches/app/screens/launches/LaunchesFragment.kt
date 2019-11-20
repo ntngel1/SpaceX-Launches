@@ -78,10 +78,10 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
 
     override fun openLaunchDetailsScene(flightNumber: Int) {
         if (flightNumber % 2 == 0) {
-            LaunchesFragmentDirections.openLaunchDetailsLive3Screen(flightNumber)
+            LaunchesFragmentDirections.openLaunchDetailsV1Screen(flightNumber)
                 .let(findNavController()::navigate)
         } else {
-            LaunchesFragmentDirections.openLaunchDetailsKinoplanScreen(flightNumber)
+            LaunchesFragmentDirections.openLaunchDetailsV2Screen(flightNumber)
                 .let(findNavController()::navigate)
         }
     }

@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navigation_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
     app:startDestination="@id/launchesFragment">
 
     <fragment
         android:id="@+id/launchesFragment"
         android:name="com.ntngel1.spacexlaunches.app.screens.launches.LaunchesFragment"
-        android:label="LaunchesFragment" >
+        android:label="LaunchesFragment"
+        tools:layout="@layout/fragment_launches">
 
         <action
-            android:id="@+id/openLaunchDetailsLive3Screen"
-            app:destination="@id/launchDetailsFragment" />
+            android:id="@+id/openLaunchDetailsV1Screen"
+            app:destination="@id/launchDetailsV1Fragment" />
 
         <action
-            android:id="@+id/openLaunchDetailsKinoplanScreen"
-            app:destination="@id/launchDetailsKinoplanFragment" />
+            android:id="@+id/openLaunchDetailsV2Screen"
+            app:destination="@id/launchDetailsV2Fragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/launchDetailsFragment"
+        android:id="@+id/launchDetailsV1Fragment"
         android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.v1.LaunchDetailsV1Fragment"
-        android:label="LaunchDetailsFragment" >
+        android:label="LaunchDetailsV1Fragment"
+        tools:layout="@layout/fragment_launch_details_v1">
 
         <argument
-            android:name="launchId"
+            android:name="flightNumber"
             app:argType="integer" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/launchDetailsKinoplanFragment"
+        android:id="@+id/launchDetailsV2Fragment"
         android:name="com.ntngel1.spacexlaunches.app.screens.launch_details.v2.LaunchDetailsV2Fragment"
-        android:label="LaunchDetailsKinoplanFragment" >
+        android:label="LaunchDetailsV2Fragment"
+        tools:layout="@layout/fragment_launch_details_v2">
 
         <argument
-            android:name="launchId"
+            android:name="flightNumber"
             app:argType="integer" />
 
     </fragment>

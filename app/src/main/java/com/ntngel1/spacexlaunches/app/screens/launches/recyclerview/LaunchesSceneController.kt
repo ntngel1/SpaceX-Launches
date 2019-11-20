@@ -23,6 +23,8 @@ class LaunchesSceneController @Inject constructor(
 
         var lastYear = Integer.MAX_VALUE
         launches.forEach { launch ->
+
+            // Разбивка по годам
             if (launch.launchDate.year < lastYear) {
                 lastYear = launch.launchDate.year
 
