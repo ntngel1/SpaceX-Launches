@@ -171,7 +171,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
         }
 
         recycler_launch_details_v1_images.setVisibleOrGone(hasImages)
-        text_launch_details_v1_images.setVisibleOrGone(hasImages)
+        text_launch_details_v1_stub_images.setVisibleOrGone(!hasImages)
     }
 
     private fun showLinks(launch: LaunchEntity) {
@@ -196,7 +196,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
             text_launch_details_v1_links.movementMethod = LinkMovementMethod.getInstance()
         }
 
-        text_launch_details_v1_resources.setVisibleOrGone(hasLinks)
         text_launch_details_v1_links.setVisibleOrGone(hasLinks)
+        text_launch_details_v1_stub_resources.setVisibleOrGone(!hasLinks)
     }
 }

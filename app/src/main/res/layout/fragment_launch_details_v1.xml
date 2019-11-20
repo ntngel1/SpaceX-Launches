@@ -108,7 +108,15 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/resources"
+                android:text="@string/resources"/>
+
+            <TextView
+                android:id="@+id/text_launch_details_v1_stub_resources"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/noResourcesAvailable"
                 android:visibility="gone"
                 tools:visibility="visible" />
 
@@ -132,7 +140,15 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/images"
+                android:text="@string/images" />
+
+            <TextView
+                android:id="@+id/text_launch_details_v1_stub_images"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/noImagesAvailable"
                 android:visibility="gone"
                 tools:visibility="visible" />
 
@@ -142,7 +158,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:clipToPadding="false"
-                android:paddingBottom="8dp" />
+                android:paddingBottom="8dp"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
         </LinearLayout>
 
