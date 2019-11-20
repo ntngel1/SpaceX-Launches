@@ -15,7 +15,7 @@ class ImageCardAdapter(
     var images = emptyList<String>()
         set(value) {
             field = value
-            notifyDataSetChanged() // TODO DiffUtil?
+            notifyDataSetChanged()
         }
 
     override fun getItemCount(): Int = images.size

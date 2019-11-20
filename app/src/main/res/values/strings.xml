@@ -19,5 +19,7 @@
     <string name="rocketNameFormat">Rocket name: %1$s</string>
     <string name="rocketTypeFormat">Rocket type: %1$s</string>
     <string name="imageFormat">Image #%1$d</string>
+    <string name="unableToLoadLaunchResources">Unable to load launch resources!</string>
+    <string name="tryAgain">Try again</string>
 
 </resources>

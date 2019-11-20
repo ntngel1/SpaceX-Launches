@@ -9,8 +9,8 @@
         android:id="@+id/recycler_launch_details_resources"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="8dp"
         android:clipToPadding="false"
+        android:paddingBottom="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <ProgressBar
@@ -20,5 +20,32 @@
         android:layout_gravity="center"
         android:visibility="gone"
         tools:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/linearlayout_launch_details_resources_loading_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/unableToLoadLaunchResources"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/button_launch_details_resources_try_again"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="@string/tryAgain"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
 
 </FrameLayout>

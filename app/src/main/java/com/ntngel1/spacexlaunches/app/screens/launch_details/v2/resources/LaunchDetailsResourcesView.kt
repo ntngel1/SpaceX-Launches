@@ -16,4 +16,7 @@ interface LaunchDetailsResourcesView : MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun openUrl(url: String)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun setIsLoadingError(isLoadingError: Boolean)
 }

@@ -29,6 +29,10 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
         viewState.openUrl(link.url)
     }
 
+    fun onTryAgainClicked() {
+        fetchLaunch()
+    }
+
     private fun fetchLaunch() {
         launchGateway.getLaunchByFlightNumber(flightNumber)
             .flatMap { launch ->
@@ -38,6 +42,7 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 viewState.setIsLoading(true)
+                viewState.setIsLoadingError(false)
             }
             .doFinally {
                 viewState.setIsLoading(false)
@@ -45,7 +50,7 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
             .subscribe({ resourceLinks ->
                 viewState.setResourceLinks(resourceLinks)
             }, {
-                // TODO Handle error
+                viewState.setIsLoadingError(true)
                 it.printStackTrace()
             })
             .disposeOnDestroy()

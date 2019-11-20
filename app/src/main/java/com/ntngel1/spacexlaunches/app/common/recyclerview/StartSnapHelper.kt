@@ -45,7 +45,6 @@ class StartSnapHelper : LinearSnapHelper() {
     private fun distanceToStart(targetView: View, helper: OrientationHelper) =
         helper.getDecoratedStart(targetView) - helper.startAfterPadding
 
-    // TODO Refactor
     private fun getStartView(
         layoutManager: RecyclerView.LayoutManager,
         helper: OrientationHelper
@@ -65,16 +64,15 @@ class StartSnapHelper : LinearSnapHelper() {
 
         val child = layoutManager.findViewByPosition(firstChild)
 
-        return if (helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 && helper.getDecoratedEnd(
-                child
-            ) > 0
+        if (helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 &&
+            helper.getDecoratedEnd(child) > 0
         ) {
-            child
+            return child
         } else {
             if (layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 1) {
-                null
+                return null
             } else {
-                layoutManager.findViewByPosition(firstChild + 1)
+                return layoutManager.findViewByPosition(firstChild + 1)
             }
         }
     }

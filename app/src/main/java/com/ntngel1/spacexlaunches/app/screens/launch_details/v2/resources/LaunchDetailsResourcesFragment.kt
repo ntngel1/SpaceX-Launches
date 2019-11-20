@@ -45,6 +45,10 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupLinksRecyclerView()
+
+        button_launch_details_resources_try_again.setOnClickListener {
+            presenter.onTryAgainClicked()
+        }
     }
 
     override fun setIsLoading(isLoading: Boolean) {
@@ -59,6 +63,10 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
     override fun openUrl(url: String) =
         Intent(Intent.ACTION_VIEW, Uri.parse(url))
             .let(::startActivity)
+
+    override fun setIsLoadingError(isLoadingError: Boolean) {
+        linearlayout_launch_details_resources_loading_error.setVisibleOrGone(isLoadingError)
+    }
 
     private fun setupLinksRecyclerView() {
         with(recycler_launch_details_resources) {
