@@ -145,8 +145,8 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     private fun showMissionNameAndLaunchDate(launch: LaunchEntity) {
         toolbar_launch_details_v1.title = launch.missionName
 
-        text_launch_details_v1_links.text = launch.launchDate.format(dateTimeFormatter)
-        text_launch_details_v1_resources.setVisibleOrGone(true)
+        text_launch_details_v1_launch_date.text = launch.launchDate.format(dateTimeFormatter)
+        text_launch_details_v1_launch_date.setVisibleOrGone(true)
     }
 
     private fun showMissionPatch(launch: LaunchEntity) {

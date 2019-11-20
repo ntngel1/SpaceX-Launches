@@ -20,34 +20,31 @@ class RetrofitModule {
 
     @Provides
     @Singleton
-    fun provideSpaceXApi(retrofit: Retrofit): SpaceXApi {
-        return retrofit.create(SpaceXApi::class.java)
-    }
+    fun provideSpaceXApi(retrofit: Retrofit): SpaceXApi =
+        retrofit.create(SpaceXApi::class.java)
 
     @Provides
     @Singleton
-    fun provideRetrofit(converterFactory: Converter.Factory, client: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
+    fun provideRetrofit(converterFactory: Converter.Factory, client: OkHttpClient): Retrofit =
+        Retrofit.Builder()
             .baseUrl(BuildConfig.SERVER_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(converterFactory)
             .client(client)
             .build()
-    }
 
     @Provides
     @Singleton
-    fun provideConverterFactory(gson: Gson): Converter.Factory {
-        return GsonConverterFactory.create(gson)
-    }
+    fun provideConverterFactory(gson: Gson): Converter.Factory =
+        GsonConverterFactory.create(gson)
+
 
     @Provides
     @Singleton
-    fun provideGson(): Gson {
-        return GsonBuilder()
+    fun provideGson(): Gson =
+        GsonBuilder()
             .let(ThreeTenGsonAdapter::registerZonedDateTime)
             .create()
-    }
 
     @Provides
     @Singleton
