@@ -57,7 +57,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
 
-        swipeRefreshLayout.setOnRefreshListener {
+        swipe_refresh_layout_launches.setOnRefreshListener {
             presenter.onRefreshLaunches()
         }
     }
@@ -73,7 +73,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     override fun setIsRefreshing(isRefreshing: Boolean) {
-        swipeRefreshLayout.isRefreshing = isRefreshing
+        swipe_refresh_layout_launches.isRefreshing = isRefreshing
     }
 
     override fun openLaunchDetailsScene(flightNumber: Int) {

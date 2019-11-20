@@ -38,7 +38,7 @@ class ImageCardAdapter(
         }
 
         fun bind(imageUrl: String) {
-            itemView.imageView.loadImage(imageUrl)
+            itemView.image_image_card.loadImage(imageUrl)
         }
     }
 }

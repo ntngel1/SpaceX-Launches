@@ -35,7 +35,7 @@ class FullscreenImageAdapter : RecyclerView.Adapter<FullscreenImageAdapter.ViewH
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(imageUrl: String) = with(itemView) {
-            photo_image_fullscreen.loadImageWithProgressBar(imageUrl, progress_bar_image_fullscreen)
+            photo_image_fullscreen.loadImageWithProgressBar(imageUrl, progressbar_image_fullscreen)
         }
 
         fun onDetachedFromWindow() = with(itemView) {

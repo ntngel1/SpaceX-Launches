@@ -41,16 +41,16 @@ class ResourceLinkAdapter(
         fun bind(link: ResourceLinkEntity) = with(itemView) {
             this@ViewHolder.link = link
 
-            image_preview.loadImageOrGone(link.previewImageUrl)
+            image_resource_link_preview.loadImageOrGone(link.previewImageUrl)
 
-            text_title.text = if (link.title.isNullOrBlank()) {
+            text_resource_link_title.text = if (link.title.isNullOrBlank()) {
                 context.str(R.string.externalLink)
             } else {
                 link.title
             }
 
-            text_description.setTextOrGone(link.description)
-            text_url.text = link.url
+            text_resource_link_description.setTextOrGone(link.description)
+            text_resource_link_url.text = link.url
         }
     }
 }

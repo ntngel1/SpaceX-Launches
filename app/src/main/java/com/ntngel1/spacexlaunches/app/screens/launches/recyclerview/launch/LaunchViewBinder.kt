@@ -21,9 +21,9 @@ class LaunchViewBinder : ViewBinder<LaunchViewModel, LaunchViewModelDiffer, Noth
     override fun bind(viewModel: LaunchViewModel, itemView: View, hasViewState: Boolean) {
         super.bind(viewModel, itemView, hasViewState)
         with(itemView) {
-            image_launch_item_patch.loadImage(viewModel.imageUrl)
-            text_launch_item_title.text = viewModel.title
-            text_launch_item_launch_date.text = viewModel.launchDate
+            image_launch_patch.loadImage(viewModel.imageUrl)
+            text_launch_title.text = viewModel.title
+            text_launch_launch_date.text = viewModel.launchDate
 
             setOnClickListener { viewModel.onClicked.invoke() }
         }

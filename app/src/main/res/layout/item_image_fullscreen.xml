@@ -9,9 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- Fixme почему-то на девайсах выглядит как будто из очень старых версий андроида -->
     <ProgressBar
-        android:id="@+id/progress_bar_image_fullscreen"
+        android:id="@+id/progressbar_image_fullscreen"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
