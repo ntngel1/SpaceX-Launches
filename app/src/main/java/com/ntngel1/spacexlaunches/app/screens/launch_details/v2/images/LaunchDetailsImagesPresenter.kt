@@ -31,7 +31,7 @@ class LaunchDetailsImagesPresenter @Inject constructor(
     }
 
     private fun fetchImages() {
-        compositeDisposable += launchGateway.getLaunchByFlightNumber(flightNumber)
+        launchGateway.getLaunchByFlightNumber(flightNumber)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ fetchedLaunch ->
@@ -40,5 +40,6 @@ class LaunchDetailsImagesPresenter @Inject constructor(
             }, {
                 it.printStackTrace()
             })
+            .disposeOnDestroy()
     }
 }

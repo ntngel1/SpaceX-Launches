@@ -11,7 +11,7 @@ import com.ntngel1.spacexlaunches.app.common.recyclerview.GridMarginItemDecorati
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesDialogFragment
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesParams
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Image
-import com.ntngel1.spacexlaunches.app.screens.launch_details.v1.recyclerview.ImageAdapter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview.ImageAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
 import com.ntngel1.spacexlaunches.app.utils.dp
 import kotlinx.android.synthetic.main.fragment_launch_details_images.*

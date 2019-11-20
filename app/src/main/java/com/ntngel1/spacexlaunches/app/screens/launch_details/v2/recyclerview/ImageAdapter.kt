@@ -1,4 +1,4 @@
-package com.ntngel1.spacexlaunches.app.screens.launch_details.v1.recyclerview
+package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View

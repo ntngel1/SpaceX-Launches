@@ -20,7 +20,7 @@ import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsView
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesDialogFragment
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesParams
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Image
-import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview.ImageCardAdapter
+import com.ntngel1.spacexlaunches.app.screens.launch_details.v1.recyclerview.ImageCardAdapter
 import com.ntngel1.spacexlaunches.app.utils.*
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details_v1.*

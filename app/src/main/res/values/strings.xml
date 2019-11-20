@@ -1,20 +1,23 @@
 <resources>
 
     <string name="app_name">SpaceX Launches</string>
+
     <string name="missionPatch">Mission Patch</string>
     <string name="redditMedia">Reddit Media</string>
     <string name="article">Article</string>
     <string name="wikipedia">Wikipedia</string>
     <string name="youtube">YouTube</string>
-    <string name="rocketNameFormat">Rocket name: %1$s</string>
-    <string name="rocketTypeFormat">Rocket type: %1$s</string>
-    <string name="unableToLoadLaunchDetails">Unable to load launch details!</string>
-    <string name="unableToLoadLaunches">Unable to load information about launches.</string>
     <string name="back">Back</string>
-    <string name="imageFormat">Image #%1$d</string>
     <string name="launch">Launch</string>
     <string name="images">Images</string>
     <string name="resources">Resources</string>
     <string name="externalLink">External Link</string>
+
+    <string name="unableToLoadLaunchDetails">Unable to load launch details!</string>
+    <string name="unableToLoadLaunches">Unable to load information about launches.</string>
+
+    <string name="rocketNameFormat">Rocket name: %1$s</string>
+    <string name="rocketTypeFormat">Rocket type: %1$s</string>
+    <string name="imageFormat">Image #%1$d</string>
 
 </resources>
