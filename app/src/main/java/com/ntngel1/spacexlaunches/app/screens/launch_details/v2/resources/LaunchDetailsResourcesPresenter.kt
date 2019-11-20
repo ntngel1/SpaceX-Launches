@@ -48,7 +48,11 @@ class LaunchDetailsResourcesPresenter @Inject constructor(
                 viewState.setIsLoading(false)
             }
             .subscribe({ resourceLinks ->
-                viewState.setResourceLinks(resourceLinks)
+                if (resourceLinks.isNotEmpty()) {
+                    viewState.setResourceLinks(resourceLinks)
+                } else {
+                    viewState.setIsStubVisible(true)
+                }
             }, {
                 viewState.setIsLoadingError(true)
                 it.printStackTrace()

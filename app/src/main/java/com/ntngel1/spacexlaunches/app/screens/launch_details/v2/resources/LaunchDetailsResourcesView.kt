@@ -9,10 +9,13 @@ import moxy.viewstate.strategy.StateStrategyType
 interface LaunchDetailsResourcesView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun setIsLoading(isLoading: Boolean)
+    fun setResourceLinks(links: List<ResourceLinkEntity>)
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun setResourceLinks(links: List<ResourceLinkEntity>)
+    fun setIsStubVisible(isVisible: Boolean)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun setIsLoading(isLoading: Boolean)
 
     @StateStrategyType(OneExecutionStateStrategy::class)
     fun openUrl(url: String)

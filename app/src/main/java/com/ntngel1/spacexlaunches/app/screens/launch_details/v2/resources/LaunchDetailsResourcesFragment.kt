@@ -51,11 +51,6 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
         }
     }
 
-    override fun setIsLoading(isLoading: Boolean) {
-        progressbar_launch_details_resources.setVisibleOrGone(isLoading)
-        recycler_launch_details_resources.setVisibleOrGone(!isLoading)
-    }
-
     override fun setResourceLinks(links: List<ResourceLinkEntity>) {
         linksAdapter.links = links
     }
@@ -63,6 +58,15 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
     override fun openUrl(url: String) =
         Intent(Intent.ACTION_VIEW, Uri.parse(url))
             .let(::startActivity)
+
+    override fun setIsStubVisible(isVisible: Boolean) {
+        text_launch_details_resources_stub.setVisibleOrGone(isVisible)
+    }
+
+    override fun setIsLoading(isLoading: Boolean) {
+        progressbar_launch_details_resources.setVisibleOrGone(isLoading)
+        recycler_launch_details_resources.setVisibleOrGone(!isLoading)
+    }
 
     override fun setIsLoadingError(isLoadingError: Boolean) {
         linearlayout_launch_details_resources_loading_error.setVisibleOrGone(isLoadingError)

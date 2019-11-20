@@ -30,14 +30,31 @@ class LaunchDetailsImagesPresenter @Inject constructor(
         }
     }
 
+    fun onTryAgainClicked() {
+        fetchImages()
+    }
+
     private fun fetchImages() {
         launchGateway.getLaunchByFlightNumber(flightNumber)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe {
+                viewState.setIsLoading(true)
+                viewState.setIsLoadingError(false)
+            }
+            .doFinally {
+                viewState.setIsLoading(false)
+            }
             .subscribe({ fetchedLaunch ->
                 launch = fetchedLaunch
-                viewState.setImages(fetchedLaunch.links.flickrImages)
+
+                if (fetchedLaunch.links.flickrImages.isNotEmpty()) {
+                    viewState.setImages(fetchedLaunch.links.flickrImages)
+                } else {
+                    viewState.setIsStubVisible(true)
+                }
             }, {
+                viewState.setIsLoadingError(true)
                 it.printStackTrace()
             })
             .disposeOnDestroy()

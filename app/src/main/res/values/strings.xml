@@ -21,5 +21,8 @@
     <string name="imageFormat">Image #%1$d</string>
     <string name="unableToLoadLaunchResources">Unable to load launch resources!</string>
     <string name="tryAgain">Try again</string>
+    <string name="noImagesAvailable">No images available!</string>
+    <string name="unableToLoadLaunchImages">Unable to load launch images!</string>
+    <string name="noResourcesAvailable">No resources available!</string>
 
 </resources>
