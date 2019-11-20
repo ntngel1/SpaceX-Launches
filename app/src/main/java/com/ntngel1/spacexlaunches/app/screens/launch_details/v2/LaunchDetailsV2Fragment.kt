@@ -58,7 +58,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         toolbar_launch_details_v2.setupToolbar(
-            title = str(R.string.launch),
+            title = str(R.string.launch_details_v2_launch),
             titleColor = Color.WHITE,
             navigationIconId = R.drawable.ic_arrow_back_white_24dp
         ) {
@@ -90,8 +90,8 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
         text_launch_details_v2_mission_name.text = launch.missionName
         text_launch_details_v2_launch_date.text = launch.launchDate.format(dateTimeFormatter)
         text_launch_details_v2_description.text = buildString {
-            str(R.string.rocketNameFormat, launch.rocket.rocketName).let(::appendln)
-            str(R.string.rocketTypeFormat, launch.rocket.rocketType).let(::append)
+            str(R.string.all_rocket_name_format, launch.rocket.rocketName).let(::appendln)
+            str(R.string.all_rocket_type_format, launch.rocket.rocketType).let(::append)
         }
     }
 
@@ -105,7 +105,7 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
     }
 
     override fun navigateBackWithLoadingError() {
-        Toast.makeText(context, getString(R.string.unableToLoadLaunchDetails), Toast.LENGTH_LONG)
+        Toast.makeText(context, getString(R.string.all_unable_to_load_launch_details), Toast.LENGTH_LONG)
             .show()
 
         findNavController().navigateUp()

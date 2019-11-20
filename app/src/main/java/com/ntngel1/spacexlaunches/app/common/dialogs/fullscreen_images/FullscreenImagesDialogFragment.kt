@@ -14,9 +14,7 @@ import kotlinx.android.synthetic.main.dialog_fullscreen_images.*
 
 class FullscreenImagesDialogFragment : DialogFragment() {
 
-    private val params by argument<FullscreenImagesParams>(
-        PARAMS_KEY
-    )
+    private val params by argument<FullscreenImagesParams>(PARAMS_KEY)
 
     init {
         setStyle(STYLE_NORMAL, android.R.style.Theme_Black_NoTitleBar)
@@ -34,7 +32,7 @@ class FullscreenImagesDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val toolbarTitle = params.images[params.offset].title
-            ?: context?.str(R.string.imageFormat, params.offset + 1)
+            ?: context?.str(R.string.fullscreen_images_image_format, params.offset + 1)
 
         toolbar_fullscreen_images.setupToolbar(
             title = toolbarTitle,
@@ -56,7 +54,7 @@ class FullscreenImagesDialogFragment : DialogFragment() {
 
         val scrollListener = FullscreenImagesScrollListener { currentPosition ->
             toolbar_fullscreen_images.title = params.images[currentPosition].title
-                ?: str(R.string.imageFormat, currentPosition + 1)
+                ?: str(R.string.fullscreen_images_image_format, currentPosition + 1)
         }
 
         recycler_fullscreen_images.addOnScrollListener(scrollListener)

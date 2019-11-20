@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/noResourcesAvailable"
+        android:text="@string/all_no_resources_available"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:visibility="gone"
         tools:visibility="visible" />
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/unableToLoadLaunchResources"
+            android:text="@string/launch_details_resources_unable_to_load_launch_resources"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             tools:visibility="visible" />
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:text="@string/tryAgain"
+            android:text="@string/all_try_again"
             android:textColor="@color/colorPrimary" />
 
     </LinearLayout>

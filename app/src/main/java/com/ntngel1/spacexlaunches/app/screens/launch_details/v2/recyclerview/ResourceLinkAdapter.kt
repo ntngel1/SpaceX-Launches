@@ -44,7 +44,7 @@ class ResourceLinkAdapter(
             image_resource_link_preview.loadImageOrGone(link.previewImageUrl)
 
             text_resource_link_title.text = if (link.title.isNullOrBlank()) {
-                context.str(R.string.externalLink)
+                context.str(R.string.launch_details_v2_external_link)
             } else {
                 link.title
             }

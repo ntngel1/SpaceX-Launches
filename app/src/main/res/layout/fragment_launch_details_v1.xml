@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginTop="50dp"
-                android:contentDescription="@string/missionPatch"
+                android:contentDescription="@string/all_mission_patch"
                 android:scaleType="fitCenter"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.75"
@@ -108,7 +108,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/resources"/>
+                android:text="@string/all_resources"/>
 
             <TextView
                 android:id="@+id/text_launch_details_v1_stub_resources"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/noResourcesAvailable"
+                android:text="@string/all_no_resources_available"
                 android:visibility="gone"
                 tools:visibility="visible" />
 
@@ -140,7 +140,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/images" />
+                android:text="@string/all_images" />
 
             <TextView
                 android:id="@+id/text_launch_details_v1_stub_images"
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/noImagesAvailable"
+                android:text="@string/all_no_images_available"
                 android:visibility="gone"
                 tools:visibility="visible" />
 

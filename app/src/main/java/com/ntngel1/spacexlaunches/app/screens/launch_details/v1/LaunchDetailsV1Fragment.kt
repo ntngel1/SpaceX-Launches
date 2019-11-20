@@ -122,7 +122,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     }
 
     override fun navigateBackWithLoadingError() {
-        Toast.makeText(context, getString(R.string.unableToLoadLaunchDetails), Toast.LENGTH_LONG)
+        Toast.makeText(context, getString(R.string.all_unable_to_load_launch_details), Toast.LENGTH_LONG)
             .show()
 
         findNavController().navigateUp()
@@ -155,8 +155,8 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
 
     private fun showDescription(launch: LaunchEntity) {
         val description = buildString {
-            appendln(resources.getString(R.string.rocketNameFormat, launch.rocket.rocketName))
-            append(resources.getString(R.string.rocketTypeFormat, launch.rocket.rocketType))
+            appendln(resources.getString(R.string.all_rocket_name_format, launch.rocket.rocketName))
+            append(resources.getString(R.string.all_rocket_type_format, launch.rocket.rocketType))
         }
 
         text_launch_details_v1_description.text = description
@@ -177,10 +177,10 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     private fun showLinks(launch: LaunchEntity) {
         val linksText = buildHtmlLinks(
             listOf(
-                launch.links.redditMedia to resources.getString(R.string.redditMedia),
-                launch.links.article to resources.getString(R.string.article),
-                launch.links.wikipedia to resources.getString(R.string.wikipedia),
-                launch.links.youtube to resources.getString(R.string.youtube)
+                launch.links.redditMedia to resources.getString(R.string.launch_details_v1_reddit_media),
+                launch.links.article to resources.getString(R.string.launch_details_v1_article),
+                launch.links.wikipedia to resources.getString(R.string.launch_details_v1_wikipedia),
+                launch.links.youtube to resources.getString(R.string.launch_details_v1_youtube)
             )
         )
 

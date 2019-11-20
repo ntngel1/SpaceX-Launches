@@ -87,7 +87,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     override fun showLoadingError() {
-        Toast.makeText(context, getString(R.string.unableToLoadLaunches), Toast.LENGTH_LONG)
+        Toast.makeText(context, getString(R.string.launches_unable_to_load_launches), Toast.LENGTH_LONG)
             .show()
     }
 

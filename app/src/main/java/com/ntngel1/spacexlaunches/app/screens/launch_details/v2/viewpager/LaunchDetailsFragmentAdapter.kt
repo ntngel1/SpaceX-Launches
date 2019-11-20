@@ -33,8 +33,8 @@ class LaunchDetailsFragmentAdapter(
         fun getTabLayoutMediator(tabLayout: TabLayout, pager: ViewPager2) =
             TabLayoutMediator(tabLayout, pager) { tab, position ->
                 val titleIdRes = when (position) {
-                    RESOURCES_POSITION -> R.string.resources
-                    IMAGES_POSITION -> R.string.images
+                    RESOURCES_POSITION -> R.string.all_resources
+                    IMAGES_POSITION -> R.string.all_images
                     else -> throw IllegalStateException("No such title for position = $position")
                 }
 

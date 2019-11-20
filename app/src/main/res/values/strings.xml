@@ -1,29 +1,36 @@
 <resources>
-
     <string name="app_name">SpaceX Launches</string>
 
-    <string name="missionPatch">Mission Patch</string>
-    <string name="redditMedia">Reddit Media</string>
-    <string name="article">Article</string>
-    <string name="wikipedia">Wikipedia</string>
-    <string name="youtube">YouTube</string>
-    <string name="back">Back</string>
-    <string name="launch">Launch</string>
-    <string name="images">Images</string>
-    <string name="resources">Resources</string>
-    <string name="externalLink">External Link</string>
+    <!-- ALL -->
+    <string name="all_mission_patch">Mission Patch</string>
+    <string name="all_images">Images</string>
+    <string name="all_resources">Resources</string>
+    <string name="all_unable_to_load_launch_details">Unable to load launch details!</string>
+    <string name="all_rocket_name_format">Rocket name: %1$s</string>
+    <string name="all_rocket_type_format">Rocket type: %1$s</string>
+    <string name="all_try_again">Try again</string>
+    <string name="all_no_images_available">No images available!</string>
+    <string name="all_no_resources_available">No resources available!</string>
 
-    <string name="unableToLoadLaunchDetails">Unable to load launch details!</string>
-    <string name="unableToLoadLaunches">Unable to load information about launches.</string>
+    <!-- Launch Details V1 -->
+    <string name="launch_details_v1_reddit_media">Reddit Media</string>
+    <string name="launch_details_v1_article">Article</string>
+    <string name="launch_details_v1_wikipedia">Wikipedia</string>
+    <string name="launch_details_v1_youtube">YouTube</string>
 
-    <string name="rocketNameFormat">Rocket name: %1$s</string>
-    <string name="rocketTypeFormat">Rocket type: %1$s</string>
-    <string name="imageFormat">Image #%1$d</string>
-    <string name="unableToLoadLaunchResources">Unable to load launch resources!</string>
-    <string name="tryAgain">Try again</string>
-    <string name="noImagesAvailable">No images available!</string>
-    <string name="unableToLoadLaunchImages">Unable to load launch images!</string>
-    <string name="noResourcesAvailable">No resources available!</string>
-    <string name="noAdditionalInformationAvailable">No additional information available!</string>
+    <!-- Launch Details V2 -->
+    <string name="launch_details_v2_launch">Launch</string>
+    <string name="launch_details_v2_external_link">External Link</string>
 
+    <!-- Launches -->
+    <string name="launches_unable_to_load_launches">Unable to load information about launches.</string>
+
+    <!-- Fullscreen Images -->
+    <string name="fullscreen_images_image_format">Image #%1$d</string>
+
+    <!-- Launch Details Resources (V2) -->
+    <string name="launch_details_resources_unable_to_load_launch_resources">Unable to load launch resources!</string>
+
+    <!-- Launch Details Images (v2) -->
+    <string name="launch_details_images_unable_to_load_launch_images">Unable to load launch images!</string>
 </resources>
