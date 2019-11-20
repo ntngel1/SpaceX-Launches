@@ -28,17 +28,17 @@ class StartSnapHelper : LinearSnapHelper() {
         } else {
             out[1] = 0
         }
+
         return out
     }
 
-    // TODO when
     override fun findSnapView(layoutManager: RecyclerView.LayoutManager) =
         if (layoutManager is LinearLayoutManager) {
-            if (layoutManager.canScrollHorizontally()) {
-                getStartView(layoutManager, getHorizontalHelper(layoutManager))
-            } else {
-                getStartView(layoutManager, getVerticalHelper(layoutManager))
-            }
+            getStartView(
+                layoutManager,
+                if (layoutManager.canScrollHorizontally()) getHorizontalHelper(layoutManager)
+                else getVerticalHelper(layoutManager)
+            )
         } else {
             super.findSnapView(layoutManager)
         }
@@ -54,45 +54,34 @@ class StartSnapHelper : LinearSnapHelper() {
             return super.findSnapView(layoutManager)
         }
 
-        val firstChild = layoutManager.findFirstVisibleItemPosition()
+        val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
 
-        val isLastItem = layoutManager
-            .findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 1
+        val isLastItemVisible = run {
+            val lastVisibleItemPosition = layoutManager.findLastCompletelyVisibleItemPosition()
 
-        if (firstChild == RecyclerView.NO_POSITION || isLastItem) {
-            return null
+            lastVisibleItemPosition == layoutManager.getItemCount() - 1
         }
 
-        val child = layoutManager.findViewByPosition(firstChild)
+        val child = layoutManager.findViewByPosition(firstVisibleItemPosition)
 
-        // TODO when
-        if (helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 &&
-            helper.getDecoratedEnd(child) > 0
-        ) {
-            return child
-        } else {
-            if (layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 1) {
-                return null
-            } else {
-                return layoutManager.findViewByPosition(firstChild + 1)
-            }
+        return when {
+            firstVisibleItemPosition == RecyclerView.NO_POSITION || isLastItemVisible -> null
+
+            helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 &&
+                    helper.getDecoratedEnd(child) > 0 -> child
+
+            else -> layoutManager.findViewByPosition(firstVisibleItemPosition + 1)
         }
     }
 
-    // TODO Remove let
     private fun getVerticalHelper(layoutManager: RecyclerView.LayoutManager) =
-        verticalHelper?.let { verticalHelper ->
-            verticalHelper
-        } ?: run {
+        verticalHelper ?: run {
             verticalHelper = OrientationHelper.createVerticalHelper(layoutManager)
             verticalHelper!!
         }
 
-
     private fun getHorizontalHelper(layoutManager: RecyclerView.LayoutManager) =
-        horizontalHelper?.let { horizontalHelper ->
-            horizontalHelper
-        } ?: run {
+        horizontalHelper ?: run {
             horizontalHelper = OrientationHelper.createHorizontalHelper(layoutManager)
             horizontalHelper!!
         }

@@ -42,15 +42,20 @@ class AspectRatioImageView @JvmOverloads constructor(
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        // TODO When
-        if (widthMeasureSpec == MeasureSpec.UNSPECIFIED && heightMeasureSpec != MeasureSpec.UNSPECIFIED) {
-            val width = (measuredHeight / heightMultiplier * widthMultiplier).toInt()
-            setMeasuredDimension(width, measuredHeight)
-        } else if (heightMeasureSpec == MeasureSpec.UNSPECIFIED && widthMeasureSpec != MeasureSpec.UNSPECIFIED) {
-            val height = (measuredWidth / widthMultiplier * heightMultiplier).toInt()
-            setMeasuredDimension(measuredWidth, height)
-        } else {
-            throw IllegalStateException("Cannot measure size of AspectRatioImageView!")
+        when {
+            widthMeasureSpec == MeasureSpec.UNSPECIFIED &&
+                    heightMeasureSpec != MeasureSpec.UNSPECIFIED -> {
+                val width = (measuredHeight / heightMultiplier * widthMultiplier).toInt()
+                setMeasuredDimension(width, measuredHeight)
+            }
+
+            heightMeasureSpec == MeasureSpec.UNSPECIFIED &&
+                    widthMeasureSpec != MeasureSpec.UNSPECIFIED -> {
+                val height = (measuredWidth / widthMultiplier * heightMultiplier).toInt()
+                setMeasuredDimension(measuredWidth, height)
+            }
+
+            else -> throw IllegalStateException("Cannot measure size of AspectRatioImageView!")
         }
     }
 

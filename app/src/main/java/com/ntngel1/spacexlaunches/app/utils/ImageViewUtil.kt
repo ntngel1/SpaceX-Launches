@@ -11,6 +11,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.ntngel1.spacexlaunches.R
 
+// TODO Seprate method without placeholder
 fun ImageView.loadImage(url: String?, @DrawableRes placeholder: Int? = R.color.colorGray) {
     Glide.with(this)
         .load(url)

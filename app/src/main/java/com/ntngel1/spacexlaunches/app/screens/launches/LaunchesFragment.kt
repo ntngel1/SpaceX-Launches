@@ -88,7 +88,7 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     }
 
     override fun showLoadingError() {
-        context?.toast(R.string.launches_unable_to_load_launches)
+        toast(R.string.launches_unable_to_load_launches)
     }
 
     private fun setupRecyclerView() {

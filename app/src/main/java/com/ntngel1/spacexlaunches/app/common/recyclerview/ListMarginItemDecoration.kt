@@ -24,20 +24,14 @@ class ListMarginItemDecoration(
         outRect.left = leftMargin
         outRect.right = rightMargin
 
-        // TODO
         when (position) {
             0 -> {
                 outRect.top = startMargin
             }
 
-
-        }
-        if (position == 0) {
-            outRect.top = startMargin
-        }
-
-        if (position > 0) {
-            outRect.top = betweenElementsMargin
+            in 0..Integer.MAX_VALUE -> {
+                outRect.top = betweenElementsMargin
+            }
         }
     }
 }

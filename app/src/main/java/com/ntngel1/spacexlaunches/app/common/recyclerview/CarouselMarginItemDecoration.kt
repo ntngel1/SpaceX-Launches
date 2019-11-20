@@ -19,21 +19,20 @@ class CarouselMarginItemDecoration(
         val position = parent.getChildAdapterPosition(view)
         val totalItemsCount = parent.adapter?.itemCount ?: 0
 
-        // TODO
-        // Первый элемент
-        if (position == 0) {
-            outRect.left = firstAndLastElementMargin
-        }
 
-        // Последний элемент
-        if (position == totalItemsCount - 1) {
-            outRect.left = betweenElementsMargin
-            outRect.right = firstAndLastElementMargin
-        }
+        when (position) {
+            0 -> {
+                outRect.left = firstAndLastElementMargin
+            }
 
-        // Все остальные элементы
-        if (position in 1 until totalItemsCount) {
-            outRect.left = betweenElementsMargin
+            totalItemsCount - 1 -> {
+                outRect.left = betweenElementsMargin
+                outRect.right = firstAndLastElementMargin
+            }
+
+            in 1 until totalItemsCount -> {
+                outRect.left = betweenElementsMargin
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ class LaunchesPresenter @Inject constructor(
     private val launchGateway: LaunchGateway
 ) : BasePresenter<LaunchesView>() {
 
+    // todo should be list not array
     private val launches = arrayListOf<LaunchEntity>()
 
     private var offset: Int = 0
