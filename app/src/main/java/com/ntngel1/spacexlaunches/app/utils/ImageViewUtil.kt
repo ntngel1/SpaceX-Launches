@@ -35,6 +35,7 @@ fun ImageView.loadImageWithProgressBar(url: String?, progressBar: View) {
                 target: Target<Drawable>?,
                 isFirstResource: Boolean
             ): Boolean {
+                progressBar.setVisibleOrGone(false)
                 return false
             }
 

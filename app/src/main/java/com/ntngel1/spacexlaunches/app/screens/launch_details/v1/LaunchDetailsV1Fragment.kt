@@ -122,7 +122,11 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     }
 
     override fun navigateBackWithLoadingError() {
-        Toast.makeText(context, getString(R.string.all_unable_to_load_launch_details), Toast.LENGTH_LONG)
+        Toast.makeText(
+            context,
+            getString(R.string.all_unable_to_load_launch_details),
+            Toast.LENGTH_LONG
+        )
             .show()
 
         findNavController().navigateUp()
@@ -150,7 +154,7 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
     }
 
     private fun showMissionPatch(launch: LaunchEntity) {
-        image_launch_details_v1_patch.loadImage(launch.links.missionPatch)
+        image_launch_details_v1_patch.loadImage(launch.links.missionPatch, placeholder = null)
     }
 
     private fun showDescription(launch: LaunchEntity) {
