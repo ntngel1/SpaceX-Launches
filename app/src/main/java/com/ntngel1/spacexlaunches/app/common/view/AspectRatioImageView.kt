@@ -17,22 +17,23 @@ class AspectRatioImageView @JvmOverloads constructor(
             val styledAttrs =
                 context.obtainStyledAttributes(attrs, R.styleable.AspectRatioImageView)
 
-            val aspectRatioStr = styledAttrs.getString(
-                R.styleable.AspectRatioImageView_aspect_ratio
-            )
-
-            aspectRatioStr?.split('/')
-                ?.takeIf { it.size == 2 }
-                ?.forEachIndexed { index, value ->
-                    if (index == 0) {
-                        widthMultiplier = value.toFloat()
-                    } else {
-                        heightMultiplier = value.toFloat()
-                    }
-                }
+            styledAttrs.getString(R.styleable.AspectRatioImageView_aspect_ratio)
+                .let(::parseAspectRatio)
 
             styledAttrs.recycle()
         }
+    }
+
+    private fun parseAspectRatio(aspectRatioStr: String?) {
+        aspectRatioStr?.split('/')
+            ?.takeIf { it.size == 2 }
+            ?.forEachIndexed { index, value ->
+                if (index == 0) {
+                    widthMultiplier = value.toFloat()
+                } else {
+                    heightMultiplier = value.toFloat()
+                }
+            }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
