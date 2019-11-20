@@ -4,6 +4,8 @@ import com.ntngel1.spacexlaunches.app.common.viewmodel_recyclerview.common.ViewM
 
 class ProgressBarViewModelDiffer : ViewModelDiffer<ProgressBarViewModel, Nothing>() {
 
-    override fun areContentsTheSame(old: ProgressBarViewModel, new: ProgressBarViewModel) =
-        true
+    override fun areContentsTheSame(
+        old: ProgressBarViewModel,
+        new: ProgressBarViewModel
+    ) = true
 }
