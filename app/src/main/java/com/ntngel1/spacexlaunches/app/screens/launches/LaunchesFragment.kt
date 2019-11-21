@@ -74,6 +74,7 @@ class LaunchesFragment : BaseFragment(), LaunchesView {
     }
 
     override fun openLaunchDetailsScene(flightNumber: Int) {
+        // TODO?
         if (flightNumber % 2 == 0) {
             LaunchesFragmentDirections.openLaunchDetailsV1Screen(flightNumber)
                 .let(findNavController()::navigate)

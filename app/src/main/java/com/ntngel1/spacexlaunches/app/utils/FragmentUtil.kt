@@ -12,10 +12,10 @@ inline fun <reified T> Fragment.argument(name: String? = null): ReadOnlyProperty
         }
     }
 
-fun Fragment.setTranslucentStatusBar(isTranslucent: Boolean) {
+fun Fragment.setTranslucentStatusBar(isTranslucent: Boolean) = activity?.let { activity ->
     if (isTranslucent) {
-        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        activity.window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
     } else {
-        activity?.window?.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        activity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
     }
 }
