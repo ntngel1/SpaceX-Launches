@@ -47,7 +47,7 @@ class FullscreenImagesDialogFragment : DialogFragment() {
 
     private fun setupImagesRecyclerView() {
         recycler_fullscreen_images.adapter = FullscreenImageAdapter().apply {
-            imageUrls = params.images.map { it.url }
+            items = params.images.map { it.url }
         }
 
 

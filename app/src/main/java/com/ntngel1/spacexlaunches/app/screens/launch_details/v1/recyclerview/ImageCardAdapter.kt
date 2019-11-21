@@ -16,6 +16,9 @@ class ImageCardAdapter(
 
     override fun createViewHolder(itemView: View) = ViewHolder(itemView)
 
+    override fun areContentsTheSame(oldItem: String, newItem: String) =
+        oldItem == newItem
+
     inner class ViewHolder(itemView: View) : BaseViewHolder<String>(itemView) {
 
         init {

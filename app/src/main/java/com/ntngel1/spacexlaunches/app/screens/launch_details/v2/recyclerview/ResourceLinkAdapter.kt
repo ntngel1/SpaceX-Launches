@@ -20,6 +20,14 @@ class ResourceLinkAdapter(
 
     override fun createViewHolder(itemView: View) = ViewHolder(itemView)
 
+    override fun areContentsTheSame(
+        oldItem: ResourceLinkEntity,
+        newItem: ResourceLinkEntity
+    ) = oldItem.title == newItem.title &&
+            oldItem.description == newItem.description &&
+            oldItem.previewImageUrl == newItem.previewImageUrl &&
+            oldItem.url == newItem.url
+
     inner class ViewHolder(itemView: View) : BaseViewHolder<ResourceLinkEntity>(itemView) {
 
         init {
