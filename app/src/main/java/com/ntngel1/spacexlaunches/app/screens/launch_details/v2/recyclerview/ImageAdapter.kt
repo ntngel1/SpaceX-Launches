@@ -1,35 +1,22 @@
 package com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview
 
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.recyclerview.widget.RecyclerView
 import com.ntngel1.spacexlaunches.R
+import com.ntngel1.spacexlaunches.app.common.base.BaseAdapter
+import com.ntngel1.spacexlaunches.app.common.base.BaseViewHolder
 import com.ntngel1.spacexlaunches.app.utils.loadImage
 
 class ImageAdapter(
     private val onClicked: (position: Int) -> Unit
-) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
+) : BaseAdapter<String, ImageAdapter.ViewHolder>() {
 
-    var imageUrls = emptyList<String>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    override val layoutId: Int
+        get() = R.layout.item_image
 
-    override fun getItemCount() = imageUrls.size
+    override fun createViewHolder(itemView: View) = ViewHolder(itemView)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_image, parent, false)
-            .let { ViewHolder(it) }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(imageUrls[position])
-    }
-
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : BaseViewHolder<String>(itemView) {
 
         init {
             itemView.setOnClickListener {
@@ -37,8 +24,9 @@ class ImageAdapter(
             }
         }
 
-        fun bind(imageUrl: String) {
-            (itemView as ImageView).loadImage(imageUrl)
+        override fun bind(item: String) {
+            super.bind(item)
+            (itemView as ImageView).loadImage(item)
         }
     }
 }

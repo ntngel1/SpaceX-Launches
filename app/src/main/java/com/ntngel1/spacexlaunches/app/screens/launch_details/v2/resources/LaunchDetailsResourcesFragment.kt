@@ -50,7 +50,7 @@ class LaunchDetailsResourcesFragment : BaseFragment(), LaunchDetailsResourcesVie
     }
 
     override fun setResourceLinks(links: List<ResourceLinkEntity>) {
-        linksAdapter.links = links
+        linksAdapter.items = links
     }
 
     override fun openUrl(url: String) =

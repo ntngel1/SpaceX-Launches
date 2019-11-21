@@ -5,52 +5,41 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ntngel1.spacexlaunches.R
+import com.ntngel1.spacexlaunches.app.common.base.BaseAdapter
+import com.ntngel1.spacexlaunches.app.common.base.BaseViewHolder
 import com.ntngel1.spacexlaunches.app.utils.*
 import com.ntngel1.spacexlaunches.domain.entity.ResourceLinkEntity
 import kotlinx.android.synthetic.main.item_resource_link.view.*
 
 class ResourceLinkAdapter(
-    private val onLinkClicked: (link: ResourceLinkEntity) -> Unit
-) : RecyclerView.Adapter<ResourceLinkAdapter.ViewHolder>() {
+    private val onClicked: (link: ResourceLinkEntity) -> Unit
+) : BaseAdapter<ResourceLinkEntity, ResourceLinkAdapter.ViewHolder>() {
 
-    var links = emptyList<ResourceLinkEntity>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    override val layoutId: Int
+        get() = R.layout.item_resource_link
 
-    override fun getItemCount(): Int = links.size
+    override fun createViewHolder(itemView: View) = ViewHolder(itemView)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_resource_link, parent, false)
-            .let { ViewHolder(it) }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bind(links[position])
-
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private lateinit var link: ResourceLinkEntity
+    inner class ViewHolder(itemView: View) : BaseViewHolder<ResourceLinkEntity>(itemView) {
 
         init {
             itemView.setOnClickListener {
-                onLinkClicked.invoke(link)
+                onClicked.invoke(item)
             }
         }
 
-        fun bind(link: ResourceLinkEntity) = with(itemView) {
-            this@ViewHolder.link = link
+        override fun bind(item: ResourceLinkEntity) = with(itemView) {
+            super.bind(item)
+            image_resource_link_preview.loadImageOrGone(item.previewImageUrl)
 
-            image_resource_link_preview.loadImageOrGone(link.previewImageUrl)
-
-            text_resource_link_title.text = if (link.title.isNullOrBlank()) {
+            text_resource_link_title.text = if (item.title.isNullOrBlank()) {
                 context.str(R.string.launch_details_v2_external_link)
             } else {
-                link.title
+                item.title
             }
 
-            text_resource_link_description.setTextOrGone(link.description)
-            text_resource_link_url.text = link.url
+            text_resource_link_description.setTextOrGone(item.description)
+            text_resource_link_url.text = item.url
         }
     }
 }

@@ -51,7 +51,7 @@ class LaunchDetailsImagesFragment : BaseFragment(), LaunchDetailsImagesView {
     }
 
     override fun setImages(imageUrls: List<String>) {
-        imageAdapter.imageUrls = imageUrls
+        imageAdapter.items = imageUrls
     }
 
     override fun showImagesFullscreen(imageUrls: List<String>, offset: Int) {

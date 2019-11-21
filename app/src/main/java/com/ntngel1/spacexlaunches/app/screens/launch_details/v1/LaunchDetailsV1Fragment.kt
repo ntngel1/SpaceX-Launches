@@ -163,7 +163,7 @@ class LaunchDetailsV1Fragment : BaseFragment(), LaunchDetailsView {
         val hasImages = launch.links.flickrImages.isNotEmpty()
 
         if (hasImages) {
-            imageCardAdapter.images = launch.links.flickrImages
+            imageCardAdapter.items = launch.links.flickrImages
         }
 
         recycler_launch_details_v1_images.visibleOrGone(hasImages)
