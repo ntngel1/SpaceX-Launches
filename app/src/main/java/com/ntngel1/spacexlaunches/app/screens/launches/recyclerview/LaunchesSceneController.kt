@@ -21,19 +21,15 @@ class LaunchesSceneController @Inject constructor(
     override fun buildViewModels(): List<ViewModel> {
         val viewModels = ArrayList<ViewModel>(launches.size)
 
-        var lastYear = Integer.MAX_VALUE
-        launches.forEach { launch ->
-
-            // Разбивка по годам
-            if (launch.launchDate.year < lastYear) {
-                lastYear = launch.launchDate.year
-
-                YearViewModel(id = "year$lastYear", year = lastYear)
+        launches.groupBy { it.launchDate.year }
+            .toList()
+            .forEach { (year, launches) ->
+                year.toYearViewModel()
                     .let(viewModels::add)
-            }
 
-            buildLaunch(launch).let(viewModels::add)
-        }
+                launches.map { it.toLaunchViewModel() }
+                    .let(viewModels::addAll)
+            }
 
         if (isProgressBarVisible) {
             ProgressBarViewModel().let(viewModels::add)
@@ -42,12 +38,13 @@ class LaunchesSceneController @Inject constructor(
         return viewModels
     }
 
-    private fun buildLaunch(launch: LaunchEntity) =
-        LaunchViewModel(
-            id = "launch${launch.flightNumber}",
-            title = launch.missionName,
-            launchDate = launch.launchDate.format(dateTimeFormatter),
-            imageUrl = launch.links.missionPatchSmall,
-            onClicked = { onLaunchClicked?.invoke(launch) }
-        )
+    private fun Int.toYearViewModel() = YearViewModel(id = "year$this", year = this)
+
+    private fun LaunchEntity.toLaunchViewModel() = LaunchViewModel(
+        id = "launch${flightNumber}",
+        title = missionName,
+        launchDate = launchDate.format(dateTimeFormatter),
+        imageUrl = links.missionPatchSmall,
+        onClicked = { onLaunchClicked?.invoke(this) }
+    )
 }

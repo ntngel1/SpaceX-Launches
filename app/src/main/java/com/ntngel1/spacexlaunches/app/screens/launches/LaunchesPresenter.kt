@@ -1,6 +1,8 @@
 package com.ntngel1.spacexlaunches.app.screens.launches
 
 import com.ntngel1.spacexlaunches.app.common.base.BasePresenter
+import com.ntngel1.spacexlaunches.app.common.exception.AlreadyLoadedException
+import com.ntngel1.spacexlaunches.app.common.exception.AlreadyLoadingException
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import com.ntngel1.spacexlaunches.domain.gateway.LaunchGateway
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -13,8 +15,7 @@ class LaunchesPresenter @Inject constructor(
     private val launchGateway: LaunchGateway
 ) : BasePresenter<LaunchesView>() {
 
-    // todo should be list not array
-    private val launches = arrayListOf<LaunchEntity>()
+    private var launches = emptyList<LaunchEntity>()
 
     private var offset: Int = 0
     private var didLoadAllData = false
@@ -26,7 +27,9 @@ class LaunchesPresenter @Inject constructor(
     }
 
     fun onLoadMoreLaunches() {
-        loadLaunches()
+        if (!isLoading && !didLoadAllData) {
+            loadLaunches()
+        }
     }
 
     fun onRefreshLaunches() {
@@ -34,7 +37,7 @@ class LaunchesPresenter @Inject constructor(
         offset = 0
         didLoadAllData = false
         isLoading = false
-        launches.clear()
+        launches = emptyList()
         viewState.setLaunches(launches)
 
         loadLaunches()
@@ -45,8 +48,11 @@ class LaunchesPresenter @Inject constructor(
     }
 
     private fun loadLaunches() {
-        if (isLoading || didLoadAllData) {
-            return
+        // TODO Custom exception or not?
+        if (isLoading) {
+            throw AlreadyLoadingException()
+        } else if (didLoadAllData) {
+            throw AlreadyLoadedException()
         }
 
         launchGateway.getLaunchesWithDescendingLaunchDate(offset, LAUNCHES_LIMIT)
@@ -62,7 +68,7 @@ class LaunchesPresenter @Inject constructor(
                 }
             }
             .doOnSuccess { fetchedLaunches ->
-                launches.addAll(fetchedLaunches)
+                launches = launches + fetchedLaunches
                 viewState.setLaunches(launches)
             }
             .doFinally {

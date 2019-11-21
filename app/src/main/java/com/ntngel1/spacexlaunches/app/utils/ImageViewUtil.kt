@@ -11,8 +11,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.ntngel1.spacexlaunches.R
 
-// TODO Seprate method without placeholder
-fun ImageView.loadImage(url: String?, @DrawableRes placeholder: Int? = R.color.colorGray) {
+fun ImageView.loadImageWithPlaceholder(url: String?, @DrawableRes placeholder: Int? = R.color.colorGray) {
     Glide.with(this)
         .load(url)
         .also {
@@ -20,6 +19,10 @@ fun ImageView.loadImage(url: String?, @DrawableRes placeholder: Int? = R.color.c
         }
         .error(R.drawable.placeholder_no_image_available)
         .into(this)
+}
+
+fun ImageView.loadImage(url: String?) {
+    loadImageWithPlaceholder(url, null)
 }
 
 fun ImageView.loadImageWithProgressBar(url: String?, progressBar: View) {

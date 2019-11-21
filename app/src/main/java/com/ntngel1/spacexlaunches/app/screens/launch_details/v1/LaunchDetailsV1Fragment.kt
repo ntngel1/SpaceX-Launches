@@ -1,12 +1,8 @@
 package com.ntngel1.spacexlaunches.app.screens.launch_details.v1
 
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.text.method.LinkMovementMethod
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -25,7 +21,6 @@ import com.ntngel1.spacexlaunches.app.screens.launch_details.v1.recyclerview.Ima
 import com.ntngel1.spacexlaunches.app.utils.*
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details_v1.*
-import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import org.threeten.bp.format.DateTimeFormatter
@@ -146,7 +141,7 @@ class LaunchDetailsV1Fragment : BaseFragment(), LaunchDetailsView {
     }
 
     private fun showMissionPatch(launch: LaunchEntity) {
-        image_launch_details_v1_patch.loadImage(launch.links.missionPatch, placeholder = null)
+        image_launch_details_v1_patch.loadImage(launch.links.missionPatch)
     }
 
     private fun showDescription(launch: LaunchEntity) {

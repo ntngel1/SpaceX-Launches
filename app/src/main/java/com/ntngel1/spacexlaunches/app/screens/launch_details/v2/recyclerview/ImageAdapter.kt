@@ -5,7 +5,7 @@ import android.widget.ImageView
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.common.base.BaseAdapter
 import com.ntngel1.spacexlaunches.app.common.base.BaseViewHolder
-import com.ntngel1.spacexlaunches.app.utils.loadImage
+import com.ntngel1.spacexlaunches.app.utils.loadImageWithPlaceholder
 
 class ImageAdapter(
     private val onClicked: (position: Int) -> Unit
@@ -26,7 +26,7 @@ class ImageAdapter(
 
         override fun bind(item: String) {
             super.bind(item)
-            (itemView as ImageView).loadImage(item)
+            (itemView as ImageView).loadImageWithPlaceholder(item)
         }
     }
 }

@@ -2,9 +2,7 @@ package com.ntngel1.spacexlaunches.app.screens.launch_details.v2
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -19,11 +17,11 @@ import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Fullscree
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.Image
 import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.viewpager.LaunchDetailsFragmentAdapter
 import com.ntngel1.spacexlaunches.app.utils.loadImage
+import com.ntngel1.spacexlaunches.app.utils.loadImageWithPlaceholder
 import com.ntngel1.spacexlaunches.app.utils.setupToolbar
 import com.ntngel1.spacexlaunches.app.utils.str
 import com.ntngel1.spacexlaunches.domain.entity.LaunchEntity
 import kotlinx.android.synthetic.main.fragment_launch_details_v2.*
-import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import org.threeten.bp.format.DateTimeFormatter
@@ -82,7 +80,7 @@ class LaunchDetailsV2Fragment : BaseFragment(), LaunchDetailsView {
     }
 
     override fun showLaunchDetails(launch: LaunchEntity) {
-        image_launch_details_v2_patch.loadImage(launch.links.missionPatchSmall, placeholder = null)
+        image_launch_details_v2_patch.loadImage(launch.links.missionPatchSmall)
 
         text_launch_details_v2_mission_name.text = launch.missionName
         text_launch_details_v2_launch_date.text = launch.launchDate.format(dateTimeFormatter)

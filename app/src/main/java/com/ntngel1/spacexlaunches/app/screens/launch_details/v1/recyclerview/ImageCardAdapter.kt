@@ -1,13 +1,10 @@
 package com.ntngel1.spacexlaunches.app.screens.launch_details.v1.recyclerview
 
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.common.base.BaseAdapter
 import com.ntngel1.spacexlaunches.app.common.base.BaseViewHolder
-import com.ntngel1.spacexlaunches.app.utils.loadImage
+import com.ntngel1.spacexlaunches.app.utils.loadImageWithPlaceholder
 import kotlinx.android.synthetic.main.item_image_card.view.*
 
 class ImageCardAdapter(
@@ -29,7 +26,7 @@ class ImageCardAdapter(
 
         override fun bind(item: String) {
             super.bind(item)
-            itemView.image_image_card.loadImage(item)
+            itemView.image_image_card.loadImageWithPlaceholder(item)
         }
     }
 }
