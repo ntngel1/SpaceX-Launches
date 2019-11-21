@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.common.base.BaseFragment
 import com.ntngel1.spacexlaunches.app.common.recyclerview.ListMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.screens.launch_details.v2.recyclerview.ResourceLinkAdapter
 import com.ntngel1.spacexlaunches.app.utils.argument
@@ -19,7 +20,10 @@ import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 
-class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsResourcesView {
+class LaunchDetailsResourcesFragment : BaseFragment(), LaunchDetailsResourcesView {
+
+    override val layoutId: Int
+        get() = R.layout.fragment_launch_details_resources
 
     private val flightNumber: Int by argument(FLIGHT_NUMBER_KEY)
 
@@ -35,12 +39,6 @@ class LaunchDetailsResourcesFragment : MvpAppCompatFragment(), LaunchDetailsReso
         super.onCreate(savedInstanceState)
         presenter.flightNumber = flightNumber
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_launch_details_resources, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

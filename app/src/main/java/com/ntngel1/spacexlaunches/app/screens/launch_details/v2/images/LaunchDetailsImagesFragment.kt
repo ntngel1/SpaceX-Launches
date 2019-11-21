@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.common.base.BaseFragment
 import com.ntngel1.spacexlaunches.app.common.recyclerview.GridMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesDialogFragment
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesParams
@@ -20,14 +21,14 @@ import moxy.MvpAppCompatFragment
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 
-class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesView {
+class LaunchDetailsImagesFragment : BaseFragment(), LaunchDetailsImagesView {
+
+    override val layoutId: Int
+        get() = R.layout.fragment_launch_details_images
 
     private val flightNumber: Int by argument(FLIGHT_NUMBER_KEY)
 
-    private val imageAdapter =
-        ImageAdapter(
-            ::onImageClicked
-        )
+    private val imageAdapter = ImageAdapter(::onImageClicked)
 
     @InjectPresenter
     internal lateinit var presenter: LaunchDetailsImagesPresenter
@@ -39,12 +40,6 @@ class LaunchDetailsImagesFragment : MvpAppCompatFragment(), LaunchDetailsImagesV
         super.onCreate(savedInstanceState)
         presenter.flightNumber = flightNumber
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_launch_details_images, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

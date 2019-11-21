@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.common.base.BaseFragment
 import com.ntngel1.spacexlaunches.app.common.recyclerview.CarouselMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.common.recyclerview.StartSnapHelper
 import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsPresenter
@@ -30,15 +31,14 @@ import moxy.presenter.ProvidePresenter
 import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
-class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
-    LaunchDetailsView {
+class LaunchDetailsV1Fragment : BaseFragment(), LaunchDetailsView {
+
+    override val layoutId: Int
+        get() = R.layout.fragment_launch_details_v1
 
     private val args: LaunchDetailsV1FragmentArgs by navArgs()
 
-    private val imageCardAdapter =
-        ImageCardAdapter(
-            ::onFlickrImageClicked
-        )
+    private val imageCardAdapter = ImageCardAdapter(::onFlickrImageClicked)
 
     @Inject
     lateinit var dateTimeFormatter: DateTimeFormatter
@@ -54,14 +54,6 @@ class LaunchDetailsV1Fragment : MvpAppCompatFragment(),
         App.appComponent.inject(this)
 
         presenter.flightNumber = args.flightNumber
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_launch_details_v1, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

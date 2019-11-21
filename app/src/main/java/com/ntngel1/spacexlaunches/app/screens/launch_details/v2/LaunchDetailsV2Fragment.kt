@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.common.base.BaseFragment
 import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsPresenter
 import com.ntngel1.spacexlaunches.app.screens.launch_details.LaunchDetailsView
 import com.ntngel1.spacexlaunches.app.common.dialogs.fullscreen_images.FullscreenImagesDialogFragment
@@ -28,8 +29,10 @@ import moxy.presenter.ProvidePresenter
 import org.threeten.bp.format.DateTimeFormatter
 import javax.inject.Inject
 
-class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
-    LaunchDetailsView {
+class LaunchDetailsV2Fragment : BaseFragment(), LaunchDetailsView {
+
+    override val layoutId: Int
+        get() = R.layout.fragment_launch_details_v2
 
     private val args: LaunchDetailsV2FragmentArgs by navArgs()
 
@@ -48,12 +51,6 @@ class LaunchDetailsV2Fragment : MvpAppCompatFragment(),
 
         presenter.flightNumber = args.flightNumber
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_launch_details_v2, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

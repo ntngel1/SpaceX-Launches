@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.ntngel1.spacexlaunches.R
 import com.ntngel1.spacexlaunches.app.App
+import com.ntngel1.spacexlaunches.app.common.base.BaseFragment
 import com.ntngel1.spacexlaunches.app.common.recyclerview.ListMarginItemDecoration
 import com.ntngel1.spacexlaunches.app.common.recyclerview.PaginationScrollListener
 import com.ntngel1.spacexlaunches.app.common.recyclerview.progress_bar.ProgressBarViewBinder
@@ -24,7 +25,10 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import javax.inject.Inject
 
-class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
+class LaunchesFragment : BaseFragment(), LaunchesView {
+
+    override val layoutId: Int
+        get() = R.layout.fragment_launches
 
     @Inject
     lateinit var launchesSceneController: LaunchesSceneController
@@ -44,14 +48,6 @@ class LaunchesFragment : MvpAppCompatFragment(), LaunchesView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         App.appComponent.inject(this)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_launches, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

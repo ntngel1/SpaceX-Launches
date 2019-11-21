@@ -19,6 +19,7 @@ class GridMarginItemDecoration(
     ) {
         val position = parent.getChildAdapterPosition(view)
 
+        // Левые/правые отступы
         if (position % 2 == 0) {
             // Левые элементы
             outRect.right = betweenElementsHorizontalMargin / 2
@@ -29,6 +30,7 @@ class GridMarginItemDecoration(
             outRect.right = edgeMargin
         }
 
+        // Верхние отступы
         if (position != 0 && position != 1) {
             // Все элементы кроме первой строки
             outRect.top = betweenElementsVerticalMargin

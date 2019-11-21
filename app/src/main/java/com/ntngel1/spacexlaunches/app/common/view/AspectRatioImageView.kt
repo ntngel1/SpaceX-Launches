@@ -20,16 +20,15 @@ class AspectRatioImageView @JvmOverloads constructor(
                 context.obtainStyledAttributes(attrs, R.styleable.AspectRatioImageView)
 
             styledAttrs.getString(R.styleable.AspectRatioImageView_aspect_ratio)
-                .let(::parseAspectRatio)
+                ?.let(::parseAspectRatio)
 
             styledAttrs.recycle()
         }
     }
 
-    private fun parseAspectRatio(aspectRatioStr: String?) {
-        // TODO elvis?
-        aspectRatioStr?.split('/')
-            ?.takeIf { it.size == 2 }
+    private fun parseAspectRatio(aspectRatioStr: String) {
+        aspectRatioStr.split('/')
+            .takeIf { it.size == 2 }
             ?.forEachIndexed { index, value ->
                 if (index == 0) {
                     widthMultiplier = value.toFloat()
