@@ -3,11 +3,13 @@ package com.ntngel1.spacexlaunches.app.common.base
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseAdapter<T : Any, VH : BaseViewHolder<T>> : RecyclerView.Adapter<VH>() {
 
+    @get:LayoutRes
     protected abstract val layoutId: Int
 
     var items = emptyList<T>()

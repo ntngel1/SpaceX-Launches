@@ -1,11 +1,14 @@
 package com.ntngel1.spacexlaunches.app.common.viewmodel_recyclerview.common
 
 import android.view.View
+import androidx.annotation.LayoutRes
 import kotlin.reflect.KClass
 
 abstract class ViewBinder<VM : ViewModel, out VD : ViewModelDiffer<VM, P>, P : Payload, VS : ViewState> {
 
+    @get:LayoutRes
     abstract val layoutId: Int
+
     abstract val viewModelClass: KClass<VM>
     abstract val viewModelDiffer: VD
 
