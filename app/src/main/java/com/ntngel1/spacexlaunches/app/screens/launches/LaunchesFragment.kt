@@ -33,12 +33,6 @@ class LaunchesFragment : BaseFragment(), LaunchesView {
     @Inject
     lateinit var launchesSceneController: LaunchesSceneController
 
-    private val launchesAdapter = ViewModelAdapter().apply {
-        registerViewBinder(LaunchViewBinder())
-        registerViewBinder(ProgressBarViewBinder())
-        registerViewBinder(YearViewBinder())
-    }
-
     @InjectPresenter
     internal lateinit var presenter: LaunchesPresenter
 
@@ -90,8 +84,6 @@ class LaunchesFragment : BaseFragment(), LaunchesView {
 
     private fun setupRecyclerView() {
         with(recycler_launches) {
-            adapter = launchesAdapter
-
             attachSceneController(launchesSceneController)
 
             val marginItemDecoration = ListMarginItemDecoration(

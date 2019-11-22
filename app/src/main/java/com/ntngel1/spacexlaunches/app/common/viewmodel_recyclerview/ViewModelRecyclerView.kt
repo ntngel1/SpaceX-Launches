@@ -27,7 +27,7 @@ class ViewModelRecyclerView @JvmOverloads constructor(
 
     fun attachSceneController(controller: SceneController) {
         sceneController = controller
-        (adapter as ViewModelAdapter).setViewStateStore(controller)
+        adapter = controller.adapter
     }
 
     override fun setAdapter(adapter: Adapter<*>?) {

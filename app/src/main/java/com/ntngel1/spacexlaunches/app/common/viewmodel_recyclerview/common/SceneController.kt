@@ -4,6 +4,10 @@ import androidx.collection.ArrayMap
 
 abstract class SceneController : ViewStateStore {
 
+    val adapter = ViewModelAdapter().apply {
+        setViewStateStore(this@SceneController)
+    }
+
     private val viewStates = ArrayMap<String, ViewState>()
 
     abstract fun buildViewModels(): List<ViewModel>
